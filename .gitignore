@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+.env
+.env.*
+*.log
+# Exclude raw 8-10MB DSLR camera files in root (optimized HD versions are in public/images/reales/)
+/DSC_*.jpg
+/scripts/restore_logo.py
+/scripts/finalize_ai_logo.py

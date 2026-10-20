@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://espirales-de-vida.wtxw5j.easypanel.host/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://espirales-de-vida.wtxw5j.easypanel.host/images/hero-marinilla.jpg</image:loc>
+      <image:title>Fundacion Espirales de Vida · Apadrina un Nino en Marinilla y Medellin</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://espirales-de-vida.wtxw5j.easypanel.host/#mision</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://espirales-de-vida.wtxw5j.easypanel.host/brand/logo-espirales-hd.png</image:loc>
+      <image:title>Nuestra Mision y 4 Pilares Fundamentales en Marinilla, Antioquia</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://espirales-de-vida.wtxw5j.easypanel.host/#testimonio</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://espirales-de-vida.wtxw5j.easypanel.host/images/hero-marinilla.jpg</image:loc>
+      <image:title>Testimonio Real · Ex-beneficiaria de la Fundacion Espirales de Vida</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://espirales-de-vida.wtxw5j.easypanel.host/#frentes</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://espirales-de-vida.wtxw5j.easypanel.host/images/huerta-vida.jpg</image:loc>
+      <image:title>Tres Frentes de Transformacion: Dignidad Diaria, Parque Infantil e Infraestructura</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://espirales-de-vida.wtxw5j.easypanel.host/#historias</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://espirales-de-vida.wtxw5j.easypanel.host/images/taller-arte.jpg</image:loc>
+      <image:title>Historias de los 22 Ninos y Adolescentes · Apadrinamiento en Marinilla y Medellin</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://espirales-de-vida.wtxw5j.easypanel.host/#apadrinar</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://espirales-de-vida.wtxw5j.easypanel.host/images/taller-musica.jpg</image:loc>
+      <image:title>Programa de Padrinos, Madrinas y Alianzas Empresariales RSE (NIT 900150558-5)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://espirales-de-vida.wtxw5j.easypanel.host/#empresas-medellin-oriente</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://espirales-de-vida.wtxw5j.easypanel.host/images/hero-marinilla.jpg</image:loc>
+      <image:title>Responsabilidad Social Empresarial (RSE) en Medellin, Rionegro y Marinilla</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://espirales-de-vida.wtxw5j.easypanel.host/#preguntas-frecuentes</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://espirales-de-vida.wtxw5j.easypanel.host/brand/logo-espirales-hd.png</image:loc>
+      <image:title>Preguntas Frecuentes sobre Donaciones y Apadrinamiento en Antioquia</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://espirales-de-vida.wtxw5j.easypanel.host/#contacto</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://espirales-de-vida.wtxw5j.easypanel.host/images/hero-marinilla.jpg</image:loc>
+      <image:title>Contacto y Visitas · Via El Penol Km 10, Marinilla, Antioquia</image:title>
+    </image:image>
+  </url>
+</urlset>
