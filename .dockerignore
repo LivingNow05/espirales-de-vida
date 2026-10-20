@@ -1,0 +1,10 @@
+node_modules
+dist
+.git
+.env*
+*.mp4
+*.mov
+DSC_*.jpg
+logo.jpeg
+logo.png
+scripts

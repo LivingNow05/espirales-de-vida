@@ -8,3 +8,5 @@ dist/
 /DSC_*.jpg
 /scripts/restore_logo.py
 /scripts/finalize_ai_logo.py
+*.mp4
+DSC_*.jpg
