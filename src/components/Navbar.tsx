@@ -13,12 +13,15 @@ import {
 import { FOUNDATION_INFO } from "../data/foundationData";
 
 export interface NavbarProps {
-  onOpenQuickSponsor?: () => void;
+  currentPage?: "inicio" | "historias";
+  onNavigateHomeSection?: (sectionHash?: string) => void;
+  onNavigateToStoriesPage?: (initialStoryId?: string) => void;
 }
 
 interface NavItem {
   label: string;
   href: string;
+  isStoriesPage?: boolean;
   dotColor: string;
   mobileBg: string;
   icon: React.ElementType;
@@ -34,7 +37,8 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     label: "22 Historias",
-    href: "#historias",
+    href: "/historias",
+    isStoriesPage: true,
     dotColor: "bg-sky-500",
     mobileBg: "bg-sky-50 text-sky-800 border-sky-200",
     icon: BookOpenText,
@@ -62,7 +66,11 @@ const NAV_ITEMS: NavItem[] = [
   },
 ];
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenQuickSponsor }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  currentPage = "inicio",
+  onNavigateHomeSection,
+  onNavigateToStoriesPage,
+}) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -74,12 +82,29 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuickSponsor }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleSponsorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (onOpenQuickSponsor) {
-      e.preventDefault();
-      onOpenQuickSponsor();
-    }
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    item: NavItem
+  ) => {
+    e.preventDefault();
     setMobileOpen(false);
+    if (item.isStoriesPage) {
+      onNavigateToStoriesPage?.();
+    } else {
+      onNavigateHomeSection?.(item.href);
+    }
+  };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setMobileOpen(false);
+    onNavigateHomeSection?.("#inicio");
+  };
+
+  const handleSponsorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setMobileOpen(false);
+    onNavigateToStoriesPage?.();
   };
 
   return (
@@ -95,7 +120,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuickSponsor }) => {
         >
           {/* Brand Identity */}
           <a
-            href="#inicio"
+            href="/"
+            onClick={handleLogoClick}
             className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none shrink-0"
           >
             <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-rose-100 via-amber-50 to-sky-100 ring-2 ring-rose-300/60 p-1 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
@@ -119,22 +145,31 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuickSponsor }) => {
 
           {/* Single-Line Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1.5">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="px-3.5 py-2 rounded-full text-sm font-bold text-zinc-700 hover:text-zinc-950 hover:bg-zinc-100/90 transition-all flex items-center gap-2 whitespace-nowrap"
-              >
-                <span className={`w-2 h-2 rounded-full ${item.dotColor}`} />
-                <span>{item.label}</span>
-              </a>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const isActiveStories =
+                item.isStoriesPage && currentPage === "historias";
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item)}
+                  className={`px-3.5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
+                    isActiveStories
+                      ? "bg-rose-50 text-rose-700 ring-2 ring-rose-200"
+                      : "text-zinc-700 hover:text-zinc-950 hover:bg-zinc-100/90"
+                  }`}
+                >
+                  <span className={`w-2 h-2 rounded-full ${item.dotColor}`} />
+                  <span>{item.label}</span>
+                </a>
+              );
+            })}
           </div>
 
           {/* Right Actions: Quick Sponsor Button + Mobile Menu Trigger */}
           <div className="flex items-center gap-2 shrink-0">
             <a
-              href="#historias"
+              href="/historias"
               onClick={handleSponsorClick}
               className="group inline-flex items-center gap-2 pl-4 pr-2 py-2 min-h-[44px] rounded-full bg-rose-600 text-white text-xs sm:text-sm font-extrabold hover:bg-rose-700 active:scale-95 transition-all shadow-[0_6px_20px_rgba(225,29,72,0.28)] whitespace-nowrap"
             >
@@ -176,9 +211,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuickSponsor }) => {
                   const IconComponent = item.icon;
                   return (
                     <a
-                      key={item.href}
+                      key={item.label}
                       href={item.href}
-                      onClick={() => setMobileOpen(false)}
+                      onClick={(e) => handleNavClick(e, item)}
                       className={`min-h-[52px] px-4 py-3 rounded-2xl border font-bold text-base flex items-center gap-3 transition-transform active:scale-98 ${item.mobileBg}`}
                     >
                       <IconComponent weight="fill" className="w-5 h-5 shrink-0" />

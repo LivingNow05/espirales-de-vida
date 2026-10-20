@@ -12,6 +12,9 @@ import {
   SoccerBall,
   BookOpen,
   Smiley,
+  ArrowLeft,
+  HouseLine,
+  UsersThree,
 } from "@phosphor-icons/react";
 import {
   STORY_CATEGORIES,
@@ -25,9 +28,11 @@ import {
 export interface SponsorshipStoriesSectionProps {
   externalSelectedStoryId?: string | null;
   onClearExternalStory?: () => void;
+  onBackToHome?: () => void;
+  onGoToMetas?: () => void;
 }
 
-type ViewMode = "destacadas" | "espacios-22";
+type ViewMode = "espacios-22" | "destacadas";
 
 interface ColorPaletteItem {
   cardBg: string;
@@ -185,8 +190,10 @@ const QUICK_CITIES = ["Medellín", "Marinilla", "Rionegro", "Otra ciudad"] as co
 export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps> = ({
   externalSelectedStoryId,
   onClearExternalStory,
+  onBackToHome,
+  onGoToMetas,
 }) => {
-  const [viewMode, setViewMode] = useState<ViewMode>("destacadas");
+  const [viewMode, setViewMode] = useState<ViewMode>("espacios-22");
   const [activeCategory, setActiveCategory] = useState<StoryCategory>("Todas");
   const [selectedStory, setSelectedStory] = useState<ChildStoryProfile | null>(null);
 
@@ -197,12 +204,17 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
   const [sponsorName, setSponsorName] = useState<string>("");
   const [sponsorCity, setSponsorCity] = useState<string>("Medellín");
 
+  const fullHomeStory =
+    CHILDREN_STORIES.find((s) => s.id === "hogar-completo-22-ninos") ||
+    CHILDREN_STORIES[CHILDREN_STORIES.length - 1];
+
   useEffect(() => {
     if (externalSelectedStoryId) {
       const found =
         CHILDREN_STORIES.find((s) => s.id === externalSelectedStoryId) ||
+        TWENTY_TWO_SPACES.find((s) => s.id === externalSelectedStoryId) ||
         CHILDREN_STORIES[0];
-      setSelectedStory(found);
+      handleOpenStory(found);
     }
   }, [externalSelectedStoryId]);
 
@@ -232,13 +244,13 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
     }
   };
 
-  const filteredStories =
-    activeCategory === "Todas"
-      ? CHILDREN_STORIES
-      : CHILDREN_STORIES.filter((story) => story.category === activeCategory);
+  const baseList =
+    viewMode === "espacios-22" ? TWENTY_TWO_SPACES : CHILDREN_STORIES;
 
   const displayedCards =
-    viewMode === "destacadas" ? filteredStories : TWENTY_TWO_SPACES;
+    activeCategory === "Todas"
+      ? baseList
+      : baseList.filter((story) => story.category === activeCategory);
 
   const buildSimpleWhatsAppUrl = (story: ChildStoryProfile) => {
     const cleanName = sponsorName.trim() || "Un amigo solidario";
@@ -253,100 +265,194 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
 
   return (
     <section
-      id="historias"
-      className="py-16 sm:py-24 bg-gradient-to-b from-[#FFFDF9] via-rose-50/30 to-sky-50/30 relative border-t border-zinc-200/60"
+      id="historias-pagina"
+      className="pt-24 sm:pt-28 lg:pt-32 pb-20 sm:pb-28 bg-gradient-to-b from-rose-50/50 via-[#FFFDF9] to-sky-50/35 relative min-h-screen"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Friendly, Kid-Readable Header */}
+        {/* Top Breadcrumb & Back to Home Bar */}
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-8 pb-4 border-b border-rose-200/70">
+          <button
+            type="button"
+            onClick={onBackToHome}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white hover:bg-rose-50 text-zinc-900 border-2 border-zinc-200 hover:border-rose-300 text-xs sm:text-sm font-extrabold shadow-2xs transition-all cursor-pointer active:scale-95"
+          >
+            <ArrowLeft weight="bold" className="w-4 h-4 text-rose-600" />
+            <span>Volver a la Página de Inicio</span>
+          </button>
+
+          <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-zinc-600">
+            <button
+              type="button"
+              onClick={onBackToHome}
+              className="inline-flex items-center gap-1 hover:text-rose-600 transition-colors cursor-pointer"
+            >
+              <HouseLine weight="fill" className="w-4 h-4 text-rose-500" />
+              <span>Inicio</span>
+            </button>
+            <span>/</span>
+            <span className="text-rose-600 font-extrabold">
+              Las 22 Historias en Marinilla
+            </span>
+          </div>
+        </div>
+
+        {/* Dedicated Page Hero Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-100 border-2 border-rose-300 text-rose-800 text-xs sm:text-sm font-extrabold mb-4">
             <Heart weight="fill" className="w-4 h-4 text-rose-600" />
             <span>Espacios sin foto · Aquí lo más importante es su historia</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-950 leading-[1.12] mb-4">
-            Conoce sus sueños y sé su{" "}
+          <h1 className="font-logo text-3xl sm:text-5xl lg:text-[3.4rem] font-extrabold tracking-tight text-zinc-950 leading-[1.12] mb-4">
+            Los{" "}
             <span className="text-rose-600 underline decoration-amber-400 decoration-4 underline-offset-4">
-              Padrino o Madrina
-            </span>
-          </h2>
+              22 Espacios
+            </span>{" "}
+            de Nuestros Niños en Marinilla
+          </h1>
 
           <p className="text-base sm:text-lg text-zinc-700 font-medium leading-relaxed">
-            Para cuidar a nuestros 22 niños no mostramos su rostro en las tarjetas. ¡Sus sueños, sus talentos y su historia son los verdaderos protagonistas!
+            Para proteger a nuestros 22 niños no mostramos su rostro en las tarjetas. ¡Elige cualquier número del <strong>#01 al #22</strong>, lee su sueño y conviértete en su padrino o madrina!
           </p>
         </div>
 
-        {/* View Toggle: Vista 1 (Historias Destacadas) vs Vista 2 (Los 22 Espacios Limpios) */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 mb-8 max-w-2xl mx-auto">
+        {/* 3 Simple Steps Strip for Clear UX */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-10 max-w-4xl mx-auto">
+          <div className="rounded-2xl bg-white border-2 border-rose-200 p-4 flex items-center gap-3.5 shadow-2xs">
+            <span className="w-10 h-10 rounded-xl bg-rose-600 text-white font-logo text-xl font-extrabold flex items-center justify-center shrink-0">
+              1
+            </span>
+            <div>
+              <p className="text-sm font-extrabold text-zinc-900">
+                Elige del #01 al #22
+              </p>
+              <p className="text-xs text-zinc-600 font-medium">
+                Explora los 22 espacios o filtra por su taller favorito.
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-2xl bg-white border-2 border-sky-200 p-4 flex items-center gap-3.5 shadow-2xs">
+            <span className="w-10 h-10 rounded-xl bg-sky-600 text-white font-logo text-xl font-extrabold flex items-center justify-center shrink-0">
+              2
+            </span>
+            <div>
+              <p className="text-sm font-extrabold text-zinc-900">
+                Elige cómo apoyar
+              </p>
+              <p className="text-xs text-zinc-600 font-medium">
+                Apadrinamiento mensual, kit escolar o apoyo familiar.
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-2xl bg-white border-2 border-emerald-200 p-4 flex items-center gap-3.5 shadow-2xs">
+            <span className="w-10 h-10 rounded-xl bg-emerald-600 text-white font-logo text-xl font-extrabold flex items-center justify-center shrink-0">
+              3
+            </span>
+            <div>
+              <p className="text-sm font-extrabold text-zinc-900">
+                Conecta por WhatsApp
+              </p>
+              <p className="text-xs text-zinc-600 font-medium">
+                Habla directo con el hogar al {FOUNDATION_INFO.phoneDisplay}.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Collective / Corporate Sponsorship Highlight Banner */}
+        <div className="mb-10 rounded-3xl p-2 bg-gradient-to-r from-indigo-600 via-rose-600 to-amber-500 shadow-md">
+          <div className="rounded-[calc(1.5rem-0.25rem)] bg-white p-5 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4 text-center sm:text-left flex-col sm:flex-row">
+              <div className="w-13 h-13 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0">
+                <UsersThree weight="fill" className="w-7 h-7" />
+              </div>
+              <div>
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-800 text-[11px] font-extrabold mb-1">
+                  Opción para Empresas (NIT {FOUNDATION_INFO.nit}) y Familias
+                </span>
+                <h2 className="font-logo text-xl sm:text-2xl font-extrabold text-zinc-950">
+                  ¿Prefieres apadrinar a los 22 niños juntos como Hogar Completo?
+                </h2>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => handleOpenStory(fullHomeStory)}
+              className="w-full md:w-auto min-h-[48px] px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm sm:text-base font-extrabold shrink-0 shadow-sm transition-all cursor-pointer active:scale-95"
+            >
+              Apadrinar Hogar Completo (22 Niños)
+            </button>
+          </div>
+        </div>
+
+        {/* View Toggle: Vista Completa (Los 22 Espacios) vs Vista Resumen (8 Destacadas) */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 mb-6 max-w-2xl mx-auto">
           <button
             type="button"
-            onClick={() => setViewMode("destacadas")}
+            onClick={() => {
+              setViewMode("espacios-22");
+              setActiveCategory("Todas");
+            }}
             className={`min-h-[52px] flex-1 px-5 py-3 rounded-2xl font-extrabold text-sm sm:text-base flex items-center justify-center gap-2.5 border-2 transition-all cursor-pointer ${
-              viewMode === "destacadas"
+              viewMode === "espacios-22"
                 ? "bg-rose-600 border-rose-600 text-white shadow-[0_8px_24px_rgba(225,29,72,0.28)]"
                 : "bg-white border-zinc-200 text-zinc-700 hover:bg-rose-50/60"
             }`}
           >
-            <Sparkle weight="fill" className="w-5 h-5 shrink-0" />
-            <span>Historias Destacadas</span>
+            <Smiley weight="fill" className="w-5 h-5 shrink-0" />
+            <span>Todos los 22 Espacios (#01 al #22)</span>
           </button>
 
           <button
             type="button"
-            onClick={() => setViewMode("espacios-22")}
+            onClick={() => {
+              setViewMode("destacadas");
+              setActiveCategory("Todas");
+            }}
             className={`min-h-[52px] flex-1 px-5 py-3 rounded-2xl font-extrabold text-sm sm:text-base flex items-center justify-center gap-2.5 border-2 transition-all cursor-pointer ${
-              viewMode === "espacios-22"
+              viewMode === "destacadas"
                 ? "bg-indigo-600 border-indigo-600 text-white shadow-[0_8px_24px_rgba(79,70,229,0.28)]"
                 : "bg-white border-zinc-200 text-zinc-700 hover:bg-indigo-50/60"
             }`}
           >
-            <Smiley weight="fill" className="w-5 h-5 shrink-0" />
-            <span>Los 22 Espacios de los Niños (Plantillas Limpias)</span>
+            <Sparkle weight="fill" className="w-5 h-5 shrink-0" />
+            <span>Ver Solo 8 Historias Ejemplo</span>
           </button>
         </div>
 
-        {/* Category Filter Pills (Only in Historias Destacadas view) */}
-        {viewMode === "destacadas" && (
-          <div
-            role="tablist"
-            aria-label="Filtrar historias por taller"
-            className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-3 mb-8 no-scrollbar"
-          >
-            {STORY_CATEGORIES.map((category) => {
-              const isActive = activeCategory === category;
-              return (
-                <button
-                  key={category}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  onClick={() => setActiveCategory(category)}
-                  className={`min-h-[44px] px-4 py-2 rounded-full text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all cursor-pointer border-2 ${
-                    isActive
-                      ? "bg-zinc-900 border-zinc-900 text-white shadow-sm"
-                      : "bg-white border-zinc-200 text-zinc-700 hover:border-zinc-300"
-                  }`}
-                >
-                  {category}
-                </button>
-              );
-            })}
-          </div>
-        )}
-
-        {/* Info Banner when viewing all 22 clean spaces */}
-        {viewMode === "espacios-22" && (
-          <div className="mb-8 rounded-3xl bg-amber-50 border-2 border-amber-200 p-4 sm:p-5 text-center max-w-3xl mx-auto">
-            <p className="text-sm sm:text-base font-extrabold text-amber-950">
-              🌟 Aquí están los 22 espacios limpios (#01 al #22) para cada uno de los niños de la fundación. ¡Elige cualquier número para apadrinar su historia!
-            </p>
-          </div>
-        )}
+        {/* Category Filter Pills */}
+        <div
+          role="tablist"
+          aria-label="Filtrar historias por taller"
+          className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-3 mb-8 no-scrollbar"
+        >
+          {STORY_CATEGORIES.map((category) => {
+            const isActive = activeCategory === category;
+            return (
+              <button
+                key={category}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setActiveCategory(category)}
+                className={`min-h-[42px] px-4 py-2 rounded-full text-xs sm:text-sm font-extrabold whitespace-nowrap transition-all cursor-pointer border-2 ${
+                  isActive
+                    ? "bg-zinc-900 border-zinc-900 text-white shadow-sm"
+                    : "bg-white border-zinc-200 text-zinc-700 hover:border-zinc-300"
+                }`}
+              >
+                {category}
+              </button>
+            );
+          })}
+        </div>
 
         {/* Vibrant, Airy Story Cards Grid (Sin fotos en las tarjetas de los niños) */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-14"
         >
           <AnimatePresence mode="popLayout">
             {displayedCards.map((story, index) => {
@@ -402,7 +508,7 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
                     </div>
 
                     {/* Story Title & Short 2-Sentence Story */}
-                    <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight mb-2">
+                    <h3 className="font-logo text-xl sm:text-2xl font-extrabold tracking-tight mb-2">
                       {story.name}
                     </h3>
 
@@ -440,6 +546,50 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
             })}
           </AnimatePresence>
         </motion.div>
+
+        {/* Bottom Helper Banner on the /historias Page */}
+        <div className="rounded-3xl bg-white border-2 border-amber-200 p-6 sm:p-8 text-center max-w-3xl mx-auto shadow-sm">
+          <h3 className="font-logo text-2xl sm:text-3xl font-extrabold text-zinc-950 mb-2">
+            ¿No sabes cuál de los 22 espacios elegir?
+          </h3>
+          <p className="text-sm sm:text-base text-zinc-600 font-medium mb-6">
+            Escríbenos directamente a nuestro WhatsApp en Marinilla y te ayudaremos a asignarte el niño o niña que más necesite un padrino o madrina hoy.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href={buildWhatsAppLink(
+                "Hola Fundación Espirales de Vida, estoy viendo la página de las 22 historias y quiero que me orienten para apadrinar al niño o niña que más lo necesite hoy."
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto min-h-[52px] inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-sm sm:text-base font-extrabold shadow-md transition-all"
+            >
+              <WhatsappLogo weight="fill" className="w-5 h-5" />
+              <span>Recibir Asesoría por WhatsApp</span>
+            </a>
+
+            {onGoToMetas && (
+              <button
+                type="button"
+                onClick={onGoToMetas}
+                className="w-full sm:w-auto min-h-[52px] inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-sky-50 hover:bg-sky-100 text-sky-900 border-2 border-sky-200 text-sm sm:text-base font-extrabold transition-all cursor-pointer"
+              >
+                <span>Ver las 3 Metas del Hogar</span>
+              </button>
+            )}
+
+            {onBackToHome && (
+              <button
+                type="button"
+                onClick={onBackToHome}
+                className="w-full sm:w-auto min-h-[52px] inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-800 text-sm sm:text-base font-extrabold transition-all cursor-pointer"
+              >
+                <ArrowLeft weight="bold" className="w-4 h-4" />
+                <span>Volver al Inicio</span>
+              </button>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Super Clean, Kid-Friendly 3-Step Sponsorship Modal */}
@@ -473,7 +623,7 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
                   </span>
                   <h3
                     id="modal-story-title"
-                    className="text-2xl sm:text-3xl font-extrabold text-zinc-950"
+                    className="font-logo text-2xl sm:text-3xl font-extrabold text-zinc-950"
                   >
                     {selectedStory.name} ({selectedStory.age})
                   </h3>

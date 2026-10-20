@@ -243,7 +243,13 @@ const REAL_GALLERY_PHOTOS: GalleryPhoto[] = [
   },
 ];
 
-export const ThreeFrontsSection: React.FC = () => {
+export interface ThreeFrontsSectionProps {
+  onNavigateToStoriesPage?: () => void;
+}
+
+export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
+  onNavigateToStoriesPage,
+}) => {
   const [activePhotoIndexByMeta, setActivePhotoIndexByMeta] = useState<Record<string, 0 | 1>>({
     "meta-1-dignidad": 0,
     "meta-2-parque": 0,
@@ -685,14 +691,16 @@ export const ThreeFrontsSection: React.FC = () => {
                 </p>
               </div>
               <a
-                href={buildWhatsAppLink(
-                  "Hola Fundación Espirales de Vida, quiero ser Padrino o Madrina de Corazón de los niños en Marinilla."
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/historias"
+                onClick={(e) => {
+                  if (onNavigateToStoriesPage) {
+                    e.preventDefault();
+                    onNavigateToStoriesPage();
+                  }
+                }}
                 className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-rose-600 hover:bg-rose-700 text-white py-2.5 px-4 text-xs sm:text-sm font-bold transition-colors"
               >
-                <span>Quiero Apadrinar</span>
+                <span>Ver las 22 Historias</span>
                 <ArrowUpRight weight="bold" className="w-4 h-4" />
               </a>
             </div>

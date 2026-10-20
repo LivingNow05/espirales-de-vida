@@ -1,25 +1,78 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { WhatsappLogo } from "@phosphor-icons/react";
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
 import { PillarsAndVisionSection } from "./components/PillarsAndVisionSection";
+import { HomeStoriesPreviewSection } from "./components/HomeStoriesPreviewSection";
 import { SponsorshipStoriesSection } from "./components/SponsorshipStoriesSection";
 import { ThreeFrontsSection } from "./components/ThreeFrontsSection";
 import { SeoMedellinMarinillaSection } from "./components/SeoMedellinMarinillaSection";
 import { Footer } from "./components/Footer";
 import { FOUNDATION_INFO, buildWhatsAppLink } from "./data/foundationData";
 
+export type ActivePage = "inicio" | "historias";
+
+function detectInitialPage(): ActivePage {
+  if (typeof window === "undefined") return "inicio";
+  const path = window.location.pathname.toLowerCase();
+  if (path.startsWith("/historias")) {
+    return "historias";
+  }
+  return "inicio";
+}
+
 export const App: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<ActivePage>(detectInitialPage);
   const [quickSponsorStoryId, setQuickSponsorStoryId] = useState<string | null>(
     null
   );
 
-  const handleOpenQuickSponsor = () => {
-    const storiesElement = document.getElementById("historias");
-    if (storiesElement) {
-      storiesElement.scrollIntoView({ behavior: "smooth" });
+  // Sync browser back/forward button
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPage(detectInitialPage());
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  const navigateToStoriesPage = (initialStoryId?: string) => {
+    if (typeof window !== "undefined") {
+      if (window.location.pathname !== "/historias") {
+        window.history.pushState({}, "", "/historias");
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
-    setQuickSponsorStoryId("hogar-completo-22-ninos");
+    setCurrentPage("historias");
+    if (initialStoryId) {
+      setQuickSponsorStoryId(initialStoryId);
+    }
+  };
+
+  const navigateToHomeSection = (sectionHash?: string) => {
+    if (typeof window !== "undefined") {
+      const targetUrl =
+        sectionHash && sectionHash !== "#inicio" ? `/${sectionHash}` : "/";
+      if (window.location.pathname !== "/" || window.location.hash !== (sectionHash || "")) {
+        window.history.pushState({}, "", targetUrl);
+      }
+    }
+    setCurrentPage("inicio");
+
+    // Wait a tick for the home page DOM to mount if coming from /historias
+    setTimeout(() => {
+      if (!sectionHash || sectionHash === "#inicio") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      const cleanId = sectionHash.replace(/^#/, "");
+      const el = document.getElementById(cleanId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }, 60);
   };
 
   const handleClearExternalStory = () => {
@@ -29,31 +82,53 @@ export const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#FFFDF9] text-zinc-900 flex flex-col selection:bg-rose-600/15 selection:text-rose-900">
       {/* Floating Top Navigation */}
-      <Navbar onOpenQuickSponsor={handleOpenQuickSponsor} />
+      <Navbar
+        currentPage={currentPage}
+        onNavigateHomeSection={navigateToHomeSection}
+        onNavigateToStoriesPage={navigateToStoriesPage}
+      />
 
       {/* Main Dynamic & Colorful Narrative Flow */}
       <main className="flex-1">
-        {/* 1. Hero + Real Impact in Marinilla */}
-        <HeroSection onOpenQuickSponsor={handleOpenQuickSponsor} />
+        {currentPage === "inicio" ? (
+          <>
+            {/* 1. Hero + Impact in Marinilla */}
+            <HeroSection
+              onNavigateToStoriesPage={() => navigateToStoriesPage()}
+            />
 
-        {/* 2. Official Vision, Real Alumna Testimony & 4 Pillars */}
-        <PillarsAndVisionSection />
+            {/* 2. Official Vision, Alumna Testimony & 4 Pillars */}
+            <PillarsAndVisionSection />
 
-        {/* 3. Interactive Children Stories & Sponsorship */}
-        <SponsorshipStoriesSection
-          externalSelectedStoryId={quickSponsorStoryId}
-          onClearExternalStory={handleClearExternalStory}
-        />
+            {/* 3. Uncluttered 3-Card Preview + Dedicated CTA to the 22 Stories Page (/historias) */}
+            <HomeStoriesPreviewSection
+              onNavigateToStoriesPage={navigateToStoriesPage}
+            />
 
-        {/* 4. 3 Real Metas + 1-Click Help Checklist + Real Photo Gallery in Marinilla */}
-        <ThreeFrontsSection />
+            {/* 4. 3 Metas + 1-Click Help Checklist + Photo Gallery in Marinilla */}
+            <ThreeFrontsSection
+              onNavigateToStoriesPage={() => navigateToStoriesPage()}
+            />
 
-        {/* 5. Where We Are, How to Arrive in 3 Steps, NIT & Simple 1-Sentence FAQs */}
-        <SeoMedellinMarinillaSection />
+            {/* 5. Where We Are, How to Arrive in 3 Steps, NIT & Simple 1-Sentence FAQs */}
+            <SeoMedellinMarinillaSection />
+          </>
+        ) : (
+          /* Dedicated Page (/historias): All 22 Children's Spaces & Sponsorship Hub */
+          <SponsorshipStoriesSection
+            externalSelectedStoryId={quickSponsorStoryId}
+            onClearExternalStory={handleClearExternalStory}
+            onBackToHome={() => navigateToHomeSection("#inicio")}
+            onGoToMetas={() => navigateToHomeSection("#frentes")}
+          />
+        )}
       </main>
 
-      {/* 7. Warm Institutional Footer */}
-      <Footer />
+      {/* Warm Institutional Footer */}
+      <Footer
+        onNavigateHomeSection={navigateToHomeSection}
+        onNavigateToStoriesPage={() => navigateToStoriesPage()}
+      />
 
       {/* Desktop Floating Direct WhatsApp Support Pill */}
       <a
@@ -78,23 +153,43 @@ export const App: React.FC = () => {
       >
         <div className="max-w-md mx-auto grid grid-cols-4 gap-1.5">
           <a
-            href="#inicio"
-            className="flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-amber-50 hover:bg-amber-100 active:scale-95 text-amber-950 border border-amber-200/80 transition-all"
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateToHomeSection("#inicio");
+            }}
+            className={`flex flex-col items-center justify-center py-2 px-1 rounded-2xl border transition-all active:scale-95 ${
+              currentPage === "inicio"
+                ? "bg-amber-400 text-zinc-950 border-amber-500 shadow-xs"
+                : "bg-amber-50 hover:bg-amber-100 text-amber-950 border-amber-200/80"
+            }`}
           >
             <span className="text-lg leading-none mb-1">🏠</span>
             <span className="text-[11px] font-extrabold leading-none">Hogar</span>
           </a>
 
           <a
-            href="#historias"
-            className="flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-rose-50 hover:bg-rose-100 active:scale-95 text-rose-950 border border-rose-200/80 transition-all"
+            href="/historias"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateToStoriesPage();
+            }}
+            className={`flex flex-col items-center justify-center py-2 px-1 rounded-2xl border transition-all active:scale-95 ${
+              currentPage === "historias"
+                ? "bg-rose-600 text-white border-rose-600 shadow-xs"
+                : "bg-rose-50 hover:bg-rose-100 text-rose-950 border-rose-200/80"
+            }`}
           >
             <span className="text-lg leading-none mb-1">❤️</span>
             <span className="text-[11px] font-extrabold leading-none">22 Historias</span>
           </a>
 
           <a
-            href="#frentes"
+            href="/#frentes"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateToHomeSection("#frentes");
+            }}
             className="flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-sky-50 hover:bg-sky-100 active:scale-95 text-sky-950 border border-sky-200/80 transition-all"
           >
             <span className="text-lg leading-none mb-1">🛝</span>

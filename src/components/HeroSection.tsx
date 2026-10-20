@@ -12,7 +12,7 @@ import {
 import { FOUNDATION_INFO } from "../data/foundationData";
 
 export interface HeroSectionProps {
-  onOpenQuickSponsor?: () => void;
+  onNavigateToStoriesPage?: () => void;
 }
 
 interface RealHeroPhoto {
@@ -80,13 +80,15 @@ const COLORFUL_IMPACT_CARDS = [
   },
 ];
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuickSponsor }) => {
+export const HeroSection: React.FC<HeroSectionProps> = ({
+  onNavigateToStoriesPage,
+}) => {
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
 
-  const handleSponsorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (onOpenQuickSponsor) {
+  const handleStoriesClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (onNavigateToStoriesPage) {
       e.preventDefault();
-      onOpenQuickSponsor();
+      onNavigateToStoriesPage();
     }
   };
 
@@ -158,12 +160,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuickSponsor }) 
             {/* Big Touch-Friendly Buttons for Mobile & Tablet */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
               <a
-                href="#historias"
-                onClick={handleSponsorClick}
+                href="/historias"
+                onClick={handleStoriesClick}
                 className="group min-h-[54px] inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-full bg-rose-600 text-white text-base sm:text-lg font-extrabold hover:bg-rose-700 active:scale-95 transition-all shadow-[0_10px_28px_rgba(225,29,72,0.3)]"
               >
                 <Heart weight="fill" className="w-5 h-5 text-amber-300 shrink-0" />
-                <span>Ver las 22 Historias</span>
+                <span>Conocer las 22 Historias</span>
               </a>
 
               <a
@@ -176,7 +178,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuickSponsor }) 
             </div>
           </motion.div>
 
-          {/* Right Column: Interactive Real Photo Showcase (100% Real Photos!) */}
+          {/* Right Column: Interactive Photo Showcase */}
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -184,7 +186,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuickSponsor }) 
             className="lg:col-span-6"
           >
             <div className="rounded-3xl p-2 sm:p-3 bg-white border-2 border-rose-200 shadow-[0_16px_40px_rgba(225,29,72,0.1)]">
-              {/* Main Active Real Photograph */}
+              {/* Main Active Photograph */}
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-zinc-100">
                 <AnimatePresence mode="wait">
                   <motion.img
@@ -201,7 +203,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuickSponsor }) 
 
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/75 via-transparent to-transparent" />
 
-                {/* Top Real Photo Badge */}
+                {/* Top Photo Badge */}
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
                   <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/95 text-zinc-900 text-xs sm:text-sm font-extrabold shadow-sm">
                     <Camera weight="fill" className="w-4 h-4 text-rose-600" />
@@ -228,7 +230,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuickSponsor }) 
                 </div>
               </div>
 
-              {/* 4 Real Photo Thumbnails Selector (Easy to tap on mobile & tablet) */}
+              {/* 4 Photo Thumbnails Selector (Easy to tap on mobile & tablet) */}
               <div className="grid grid-cols-4 gap-2 sm:gap-2.5 mt-2.5">
                 {REAL_HERO_PHOTOS.map((photo, index) => {
                   const isSelected = index === activePhotoIndex;

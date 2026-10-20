@@ -9,13 +9,38 @@ import {
 } from "@phosphor-icons/react";
 import { FOUNDATION_INFO, buildWhatsAppLink } from "../data/foundationData";
 
-export const Footer: React.FC = () => {
+export interface FooterProps {
+  onNavigateHomeSection?: (sectionHash?: string) => void;
+  onNavigateToStoriesPage?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({
+  onNavigateHomeSection,
+  onNavigateToStoriesPage,
+}) => {
   const currentYear = new Date().getFullYear();
+
+  const handleHomeLink = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    hash: string
+  ) => {
+    if (onNavigateHomeSection) {
+      e.preventDefault();
+      onNavigateHomeSection(hash);
+    }
+  };
+
+  const handleStoriesLink = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (onNavigateToStoriesPage) {
+      e.preventDefault();
+      onNavigateToStoriesPage();
+    }
+  };
 
   return (
     <footer className="bg-zinc-900 text-zinc-200 border-t border-zinc-800 pb-28 lg:pb-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-16">
-        {/* Vibrant Closing Callout Card with Real Group Photo */}
+        {/* Vibrant Closing Callout Card with Group Photo */}
         <div className="rounded-3xl p-2 bg-gradient-to-r from-rose-500/30 via-amber-500/25 to-emerald-500/30 ring-1 ring-white/15 mb-12">
           <div className="rounded-[calc(1.5rem-0.25rem)] bg-zinc-950/90 p-6 sm:p-8 lg:p-10 flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left max-w-2xl">
@@ -40,7 +65,16 @@ export const Footer: React.FC = () => {
               </div>
             </div>
 
-            <div className="shrink-0 w-full sm:w-auto">
+            <div className="shrink-0 w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <a
+                href="/historias"
+                onClick={handleStoriesLink}
+                className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3.5 text-sm sm:text-base font-bold transition-all active:scale-95"
+              >
+                <Heart weight="fill" className="w-4 h-4 text-rose-400" />
+                <span>Ver las 22 Historias</span>
+              </a>
+
               <a
                 href={buildWhatsAppLink(
                   "Hola Fundación Espirales de Vida, quiero apadrinar o hacer mi aporte hoy para los 22 niños en Marinilla."
@@ -50,7 +84,7 @@ export const Footer: React.FC = () => {
                 className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto rounded-full bg-rose-600 hover:bg-rose-500 text-white px-6 py-3.5 text-sm sm:text-base font-bold transition-all shadow-lg shadow-rose-600/30 active:scale-95"
               >
                 <WhatsappLogo weight="fill" className="w-5 h-5" />
-                <span>Apadrinar o Donar Ahora</span>
+                <span>Apadrinar por WhatsApp</span>
                 <ArrowUpRight weight="bold" className="w-4 h-4" />
               </a>
             </div>
@@ -61,7 +95,11 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-zinc-800">
           {/* Column 1: Brand */}
           <div className="md:col-span-5">
-            <a href="#inicio" className="inline-flex items-center gap-3 mb-3">
+            <a
+              href="/"
+              onClick={(e) => handleHomeLink(e, "#inicio")}
+              className="inline-flex items-center gap-3 mb-3"
+            >
               <div className="w-12 h-12 rounded-2xl bg-white p-1.5 flex items-center justify-center shadow-xs shrink-0">
                 <img
                   src="/brand/isotipo-espirales-hd.png"
@@ -93,32 +131,56 @@ export const Footer: React.FC = () => {
             </h3>
             <ul className="space-y-2 text-xs sm:text-sm text-zinc-400 font-medium">
               <li>
-                <a href="#inicio" className="hover:text-rose-400 transition-colors">
+                <a
+                  href="/"
+                  onClick={(e) => handleHomeLink(e, "#inicio")}
+                  className="hover:text-rose-400 transition-colors"
+                >
                   🏠 Inicio y Hogar
                 </a>
               </li>
               <li>
-                <a href="#mision" className="hover:text-rose-400 transition-colors">
+                <a
+                  href="#mision"
+                  onClick={(e) => handleHomeLink(e, "#mision")}
+                  className="hover:text-rose-400 transition-colors"
+                >
                   ✨ Nuestros 4 Pilares
                 </a>
               </li>
               <li>
-                <a href="#historias" className="hover:text-rose-400 transition-colors">
-                  ❤️ Las 22 Historias
+                <a
+                  href="/historias"
+                  onClick={handleStoriesLink}
+                  className="hover:text-rose-400 transition-colors font-bold text-rose-300"
+                >
+                  ❤️ Página de las 22 Historias
                 </a>
               </li>
               <li>
-                <a href="#frentes" className="hover:text-rose-400 transition-colors">
+                <a
+                  href="#frentes"
+                  onClick={(e) => handleHomeLink(e, "#frentes")}
+                  className="hover:text-rose-400 transition-colors"
+                >
                   🛝 Las 3 Metas y el Parque
                 </a>
               </li>
               <li>
-                <a href="#galeria" className="hover:text-rose-400 transition-colors">
+                <a
+                  href="#galeria"
+                  onClick={(e) => handleHomeLink(e, "#galeria")}
+                  className="hover:text-rose-400 transition-colors"
+                >
                   📷 Galería de Fotos
                 </a>
               </li>
               <li>
-                <a href="#contacto" className="hover:text-rose-400 transition-colors">
+                <a
+                  href="#contacto"
+                  onClick={(e) => handleHomeLink(e, "#contacto")}
+                  className="hover:text-rose-400 transition-colors"
+                >
                   📍 Cómo Llegar y NIT
                 </a>
               </li>
