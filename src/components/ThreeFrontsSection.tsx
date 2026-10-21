@@ -55,7 +55,7 @@ const OFFICIAL_THREE_FRONTS: OfficialFrontCard[] = [
     theme: "rose",
     pills: [
       "🧼 Utensilios de aseo personal",
-      "🛏️ Cobijas abrigadoras (40 unidades)",
+      "🛏️ Cobijas abrigadoras",
       "👕 Pijamas cómodas y juegos de sábanas",
     ],
     whatsappMessage:
@@ -74,7 +74,7 @@ const OFFICIAL_THREE_FRONTS: OfficialFrontCard[] = [
     secondaryCaption: "Espacio recreativo de la fundación",
     theme: "emerald",
     pills: [
-      "🎒 22 Kits escolares para su formación",
+      "🎒 Kits escolares para su formación",
       "🧸 Juguetes, libros y balones",
       "🛝 Sueño grande: construir su parque propio",
     ],
@@ -123,22 +123,22 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
   {
     id: "pilar-1-kits-escolares",
     number: "1",
-    title: "KITS ESCOLARES (22 KITS)",
+    title: "KITS ESCOLARES",
     subtitle: "Cada kit contiene los siguientes elementos:",
     headerBg: "bg-sky-700 text-white",
     cardBorder: "border-sky-300",
     cardBg: "bg-sky-50/50",
     badgeText: "text-sky-800",
     items: [
-      { qty: "[1]", label: "Morral escolar resistente" },
-      { qty: "[4]", label: "Cuadernos rayados" },
-      { qty: "[2]", label: "Cuadernos cuadriculados" },
-      { qty: "[1]", label: "Borrador de nata + 1 Sacapuntas" },
-      { qty: "[1]", label: "Lápiz negro + 1 Lápiz rojo" },
-      { qty: "[1]", label: "Lapicero negro + 1 Lapicero rojo" },
-      { qty: "[1]", label: "Regla graduada + 1 Caja de colores" },
-      { qty: "[1]", label: "Cartuchera + 1 Block de hojas" },
-      { qty: "[1]", label: "Colbón + 1 Tijeras punta roma" },
+      { label: "Morral escolar resistente" },
+      { label: "Cuadernos rayados" },
+      { label: "Cuadernos cuadriculados" },
+      { label: "Borrador de nata y sacapuntas" },
+      { label: "Lápiz negro y lápiz rojo" },
+      { label: "Lapicero negro y lapicero rojo" },
+      { label: "Regla graduada y caja de colores" },
+      { label: "Cartuchera y block de hojas" },
+      { label: "Colbón y tijeras punta roma" },
     ],
   },
   {
@@ -151,12 +151,12 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
     cardBg: "bg-emerald-50/50",
     badgeText: "text-emerald-800",
     items: [
-      { qty: "[22]", label: "Cepillos de dientes" },
-      { qty: "[22]", label: "Cremas dentales" },
-      { qty: "[22]", label: "Talcos para pies" },
-      { qty: "[22]", label: "Sedas dentales" },
-      { qty: "[15]", label: "Desodorantes" },
-      { qty: "[10]", label: "Paquetes de toallas y protectores" },
+      { label: "Cepillos de dientes" },
+      { label: "Cremas dentales" },
+      { label: "Talcos para pies" },
+      { label: "Sedas dentales" },
+      { label: "Desodorantes" },
+      { label: "Paquetes de toallas y protectores" },
     ],
   },
   {
@@ -204,12 +204,12 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
     cardBg: "bg-rose-50/50",
     badgeText: "text-rose-800",
     items: [
-      { qty: "[40]", label: "Cobijas térmicas" },
-      { qty: "[20]", label: "Almohadas confortables" },
-      { qty: "[20]", label: "Juegos de sábanas" },
-      { qty: "[10]", label: "Colchonetas" },
-      { qty: "[5]", label: "Camarotes + 4 Closets" },
-      { qty: "[4]", label: "Basureras + 3 Canastas para ropa" },
+      { label: "Cobijas térmicas" },
+      { label: "Almohadas confortables" },
+      { label: "Juegos de sábanas" },
+      { label: "Colchonetas" },
+      { label: "Camarotes y closets" },
+      { label: "Basureras y canastas para ropa" },
     ],
   },
   {
@@ -222,11 +222,11 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
     cardBg: "bg-teal-50/50",
     badgeText: "text-teal-800",
     items: [
-      { qty: "[40]", label: "Libros infantiles y juveniles" },
-      { qty: "[20]", label: "Juguetes personalizados" },
-      { qty: "[10]", label: "Juegos de mesa instructivos" },
-      { qty: "[4]", label: "Balones (baloncesto / fútbol / vóley)" },
-      { qty: "[2]", label: "Arcos de fútbol + 1 Piscina inflable" },
+      { label: "Libros infantiles y juveniles" },
+      { label: "Juguetes personalizados" },
+      { label: "Juegos de mesa instructivos" },
+      { label: "Balones (baloncesto / fútbol / vóley)" },
+      { label: "Arcos de fútbol y piscina inflable" },
       { label: "Lazos de salto y aros de ula-ula" },
     ],
   },
@@ -332,7 +332,6 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
     "pilar-5-habitaciones",
   ]);
 
-  const [showPosterModal, setShowPosterModal] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const togglePillarSelection = (id: string) => {
@@ -343,7 +342,7 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
 
   const selectedPillarTitles = OFFICIAL_CAMPAIGN_6_PILLARS.filter((p) =>
     selectedPillarIds.includes(p.id)
-  ).map((p) => `${p.number}. ${p.title}`);
+  ).map((p) => p.title);
 
   const campaignWhatsAppMessage =
     selectedPillarTitles.length > 0
@@ -567,46 +566,20 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
         >
           <div className="rounded-[calc(2.25rem-0.5rem)] bg-white p-5 sm:p-8 lg:p-10">
             {/* Campaign Header Banner */}
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-6 pb-8 mb-8 border-b-2 border-amber-100">
-              <div className="text-center lg:text-left max-w-2xl">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-amber-950 text-xs sm:text-sm font-extrabold mb-3">
-                  <Sparkle weight="fill" className="w-4 h-4 text-rose-600" />
-                  <span>Campaña Actual en Marinilla · Lista Oficial</span>
-                </div>
-                <h3 className="font-logo text-2xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-2">
-                  JUNTOS POR UNA INFANCIA CON AMOR
-                </h3>
-                <p className="text-sm sm:text-lg font-bold text-rose-600">
-                  LISTA DE NECESIDADES Y 6 PILARES DE APOYO
-                </p>
-                <p className="text-xs sm:text-sm text-zinc-600 mt-1">
-                  Toca cualquiera de los 6 pilares de la campaña para seleccionar con qué insumos, talento profesional, infraestructura o aporte deseas sumarte hoy.
-                </p>
+            <div className="text-center max-w-3xl mx-auto pb-8 mb-8 border-b-2 border-amber-100">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-amber-950 text-xs sm:text-sm font-extrabold mb-3">
+                <Sparkle weight="fill" className="w-4 h-4 text-rose-600" />
+                <span>Campaña Actual en Marinilla · Lista Oficial</span>
               </div>
-
-              {/* Thumbnail button to view the official campaign poster */}
-              <button
-                type="button"
-                onClick={() => setShowPosterModal(true)}
-                className="group flex items-center gap-3.5 p-3 rounded-2xl bg-amber-50/90 hover:bg-amber-100 border-2 border-amber-200 transition-all cursor-pointer shrink-0 shadow-xs"
-              >
-                <img
-                  src="/images/campana-lista-necesidades.png"
-                  alt="Afiche Oficial Campaña Juntos por una Infancia con Amor"
-                  className="w-16 h-20 object-cover rounded-xl border border-amber-300 shadow-2xs group-hover:scale-105 transition-transform"
-                />
-                <div className="text-left pr-2">
-                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-rose-600 block">
-                    📄 Pieza Oficial
-                  </span>
-                  <span className="text-sm font-extrabold text-zinc-900 block leading-snug">
-                    Ver Afiche Completo de la Campaña
-                  </span>
-                  <span className="text-xs font-bold text-amber-900 underline">
-                    Toca para ampliar 🔍
-                  </span>
-                </div>
-              </button>
+              <h3 className="font-logo text-2xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-2">
+                JUNTOS POR UNA INFANCIA CON AMOR
+              </h3>
+              <p className="text-sm sm:text-lg font-bold text-rose-600">
+                LISTA DE NECESIDADES Y PILARES DE APOYO
+              </p>
+              <p className="text-xs sm:text-sm text-zinc-600 mt-1">
+                Toca cualquiera de los pilares de la campaña para seleccionar con qué insumos, talento profesional, infraestructura o aporte deseas sumarte hoy.
+              </p>
             </div>
 
             {/* 6 Official Pillars Grid (Exact items and quantities from user's image) */}
@@ -628,14 +601,9 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
                       <div
                         className={`px-4 py-3 flex items-center justify-between gap-2 ${pillar.headerBg}`}
                       >
-                        <div className="flex items-center gap-2.5">
-                          <span className="w-7 h-7 rounded-full bg-white text-zinc-950 font-logo text-sm font-extrabold flex items-center justify-center shrink-0">
-                            {pillar.number}
-                          </span>
-                          <h4 className="font-logo text-sm sm:text-base font-extrabold tracking-wide uppercase">
-                            {pillar.title}
-                          </h4>
-                        </div>
+                        <h4 className="font-logo text-sm sm:text-base font-extrabold tracking-wide uppercase">
+                          {pillar.title}
+                        </h4>
                         <span
                           className={`px-2.5 py-0.5 rounded-full text-[11px] font-extrabold ${
                             isSelected
@@ -910,47 +878,6 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
           </div>
         </div>
       </div>
-
-      {/* Modal to view the Official Campaign Poster in full size */}
-      <AnimatePresence>
-        {showPosterModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-zinc-950/90 backdrop-blur-md flex items-center justify-center p-4"
-            onClick={() => setShowPosterModal(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.94, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.94, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-2xl w-full bg-white rounded-3xl overflow-hidden border-2 border-amber-300 shadow-2xl max-h-[92dvh] flex flex-col"
-            >
-              <div className="px-5 py-3.5 bg-amber-50 border-b border-amber-200 flex items-center justify-between">
-                <span className="font-logo text-base sm:text-lg font-extrabold text-zinc-900">
-                  Juntos por una Infancia con Amor · Lista Oficial
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setShowPosterModal(false)}
-                  className="w-9 h-9 rounded-full bg-white hover:bg-rose-50 text-zinc-800 border border-zinc-200 flex items-center justify-center cursor-pointer"
-                >
-                  <X weight="bold" className="w-5 h-5" />
-                </button>
-              </div>
-              <div className="p-3 sm:p-4 overflow-y-auto flex-1 bg-zinc-100 flex items-center justify-center">
-                <img
-                  src="/images/campana-lista-necesidades.png"
-                  alt="Lista de Necesidades y Pilares de Apoyo - Fundación Espirales de Vida"
-                  className="max-w-full h-auto rounded-2xl shadow-md"
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Lightbox Modal for Photo Gallery */}
       <AnimatePresence>

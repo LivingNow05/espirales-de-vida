@@ -42,9 +42,9 @@ const SIMPLE_KIDS_FAQS: SimpleFaq[] = [
   {
     id: "faq-3",
     emoji: "🎒",
-    question: "¿Cuáles son los 6 pilares de la Lista de Necesidades?",
+    question: "¿Cuáles son los pilares de la Lista de Necesidades?",
     answer:
-      "1. Kits Escolares (22 kits), 2. Kits de Aseo Personal, 3. Personal de Apoyo (salud, psicología, peluquería), 4. Infraestructura y Remodelación, 5. Habitaciones y Confort, y 6. Juguetería y Entretenimiento.",
+      "Kits Escolares, Kits de Aseo Personal, Personal de Apoyo (salud, psicología, peluquería), Infraestructura y Remodelación, Habitaciones y Confort, y Juguetería y Entretenimiento.",
     badgeColor: "bg-sky-100 text-sky-900 border-sky-200",
   },
   {

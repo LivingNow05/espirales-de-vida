@@ -175,8 +175,8 @@ const FULL_HOME_COLLECTIVE_SPACE: ChildStoryProfile = {
     "Respaldo institucional con NIT 900150558-5 en Marinilla, Antioquia",
   ],
   needsList: [
-    "22 Kits Escolares y 22 Kits de Aseo Personal",
-    "40 Cobijas térmicas, 20 almohadas, 20 juegos de sábanas, camarotes y closets",
+    "Kits Escolares y Kits de Aseo Personal",
+    "Cobijas térmicas, almohadas, juegos de sábanas, camarotes y closets",
     "Pintura, madera para biblioteca, voluntariado profesional y parque propio",
   ],
   monthlySponsorshipCOP: 0,
