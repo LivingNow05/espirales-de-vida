@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   CheckCircle,
@@ -16,6 +16,11 @@ import {
   PhoneCall,
 } from "@phosphor-icons/react";
 import { FOUNDATION_INFO, buildWhatsAppLink } from "../data/foundationData";
+import {
+  INITIAL_PILLAR_PROGRESS,
+  PillarProgressData,
+  fetchLiveCampaignProgress,
+} from "../utils/googleSheetLiveProgress";
 
 export interface ThreeFrontsSectionProps {
   onNavigateToStoriesPage?: () => void;
@@ -109,6 +114,8 @@ interface CampaignNeedPillar {
   title: string;
   subtitle: string;
   headerBg: string;
+  progressBarFill: string;
+  progressTrackBg: string;
   cardBorder: string;
   cardBg: string;
   badgeText: string;
@@ -126,6 +133,8 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
     title: "KITS ESCOLARES",
     subtitle: "Cada kit contiene los siguientes elementos:",
     headerBg: "bg-sky-700 text-white",
+    progressBarFill: "bg-gradient-to-r from-sky-500 to-sky-700",
+    progressTrackBg: "bg-sky-100",
     cardBorder: "border-sky-300",
     cardBg: "bg-sky-50/50",
     badgeText: "text-sky-800",
@@ -147,6 +156,8 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
     title: "KITS DE ASEO PERSONAL",
     subtitle: "Insumos de higiene personal y femenina:",
     headerBg: "bg-emerald-700 text-white",
+    progressBarFill: "bg-gradient-to-r from-emerald-500 to-emerald-700",
+    progressTrackBg: "bg-emerald-100",
     cardBorder: "border-emerald-300",
     cardBg: "bg-emerald-50/50",
     badgeText: "text-emerald-800",
@@ -165,6 +176,8 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
     title: "PERSONAL DE APOYO",
     subtitle: "Voluntariado y profesionales aliados:",
     headerBg: "bg-amber-700 text-white",
+    progressBarFill: "bg-gradient-to-r from-amber-500 to-amber-700",
+    progressTrackBg: "bg-amber-100",
     cardBorder: "border-amber-300",
     cardBg: "bg-amber-50/50",
     badgeText: "text-amber-800",
@@ -182,6 +195,8 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
     title: "INFRAESTRUCTURA Y REMODELACIÓN",
     subtitle: "Materiales e insumos para la sede:",
     headerBg: "bg-purple-700 text-white",
+    progressBarFill: "bg-gradient-to-r from-purple-500 to-purple-700",
+    progressTrackBg: "bg-purple-100",
     cardBorder: "border-purple-300",
     cardBg: "bg-purple-50/50",
     badgeText: "text-purple-800",
@@ -200,6 +215,8 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
     title: "HABITACIONES Y CONFORT",
     subtitle: "Dotación de dormitorios y descanso:",
     headerBg: "bg-rose-700 text-white",
+    progressBarFill: "bg-gradient-to-r from-rose-500 to-rose-700",
+    progressTrackBg: "bg-rose-100",
     cardBorder: "border-rose-300",
     cardBg: "bg-rose-50/50",
     badgeText: "text-rose-800",
@@ -218,6 +235,8 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
     title: "JUGUETERÍA Y ENTRETENIMIENTO",
     subtitle: "Recreación, deporte y aprendizaje:",
     headerBg: "bg-teal-700 text-white",
+    progressBarFill: "bg-gradient-to-r from-teal-500 to-teal-700",
+    progressTrackBg: "bg-teal-100",
     cardBorder: "border-teal-300",
     cardBg: "bg-teal-50/50",
     badgeText: "text-teal-800",
@@ -332,7 +351,34 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
     "pilar-5-habitaciones",
   ]);
 
+  const [pillarProgressMap, setPillarProgressMap] = useState<
+    Record<string, PillarProgressData>
+  >(INITIAL_PILLAR_PROGRESS);
+
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const syncProgress = async () => {
+      try {
+        const liveState = await fetchLiveCampaignProgress();
+        if (isMounted && liveState.pillars) {
+          setPillarProgressMap(liveState.pillars);
+        }
+      } catch {
+        // Mantiene el estado de respaldo si hay corte temporal de red
+      }
+    };
+
+    syncProgress();
+    const intervalId = window.setInterval(syncProgress, 60000);
+
+    return () => {
+      isMounted = false;
+      window.clearInterval(intervalId);
+    };
+  }, []);
 
   const togglePillarSelection = (id: string) => {
     setSelectedPillarIds((prev) =>
@@ -586,6 +632,9 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-8">
               {OFFICIAL_CAMPAIGN_6_PILLARS.map((pillar) => {
                 const isSelected = selectedPillarIds.includes(pillar.id);
+                const progressInfo = pillarProgressMap[pillar.id];
+                const percentage = progressInfo ? progressInfo.percentage : 0;
+
                 return (
                   <div
                     key={pillar.id}
@@ -615,6 +664,39 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
                         </span>
                       </div>
 
+                      {/* Real-Time Progress Bar per Card */}
+                      <div className="px-4 sm:px-5 pt-3.5 pb-3 bg-zinc-50/80 border-b border-zinc-200/70">
+                        <div className="flex items-center justify-between gap-2 mb-1.5">
+                          <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-zinc-600 flex items-center gap-1.5">
+                            <span
+                              className={`w-2 h-2 rounded-full ${
+                                percentage > 0
+                                  ? "bg-emerald-500 animate-pulse"
+                                  : "bg-amber-400"
+                              }`}
+                            />
+                            Progreso estimado
+                          </span>
+                          <span
+                            className={`font-logo text-sm sm:text-base font-extrabold ${pillar.badgeText}`}
+                          >
+                            {percentage}%
+                          </span>
+                        </div>
+                        <div
+                          className={`w-full h-2.5 rounded-full overflow-hidden p-0.5 ${pillar.progressTrackBg} shadow-inner`}
+                        >
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{
+                              width: `${Math.max(percentage, percentage > 0 ? 6 : 0)}%`,
+                            }}
+                            transition={{ duration: 0.75, ease: "easeOut" }}
+                            className={`h-full rounded-full ${pillar.progressBarFill}`}
+                          />
+                        </div>
+                      </div>
+
                       {/* Subtitle & Exact Item List */}
                       <div className="p-4 sm:p-5">
                         <p className="text-xs sm:text-sm font-extrabold text-zinc-800 mb-3">
@@ -628,7 +710,7 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
                             >
                               {item.qty ? (
                                 <span
-                                  className={`font-mono font-extrabold shrink-0 ${pillar.badgeText}`}
+                                  className={`font-extrabold shrink-0 ${pillar.badgeText}`}
                                 >
                                   {item.qty}
                                 </span>
