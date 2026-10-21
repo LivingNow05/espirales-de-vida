@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "motion/react";
 import {
   Heart,
-  Sparkle,
   ArrowRight,
   BookOpen,
   UsersThree,
@@ -208,10 +207,6 @@ export const HomeStoriesPreviewSection: React.FC<HomeStoriesPreviewSectionProps>
                 <UsersThree weight="fill" className="w-9 h-9" />
               </div>
               <div>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-950 text-xs font-extrabold mb-2">
-                  <Sparkle weight="fill" className="w-3.5 h-3.5 text-rose-600" />
-                  <span>Página Exclusiva · Los 22 Espacios (#01 al #22)</span>
-                </span>
                 <h3 className="font-logo text-2xl sm:text-3xl font-extrabold text-zinc-950 mb-2">
                   “Los 22 niños de Espirales de Vida en Marinilla no son invisibles”
                 </h3>
