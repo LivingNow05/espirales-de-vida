@@ -2,5 +2,5 @@ User-agent: *
 Allow: /
 
 # SitemapFast Dual Pointers for Fundacion Espirales de Vida (Marinilla & Medellin)
-Sitemap: https://espirales-de-vida.wtxw5j.easypanel.host/sitemap-index.xml
-Sitemap: https://espirales-de-vida.wtxw5j.easypanel.host/sitemap.xml
+Sitemap: https://espiralesdevida.org/sitemap-index.xml
+Sitemap: https://espiralesdevida.org/sitemap.xml

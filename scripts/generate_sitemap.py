@@ -7,7 +7,7 @@ Generates public/sitemap-index.xml, public/sitemap-0.xml, public/sitemap.xml, an
 import os
 from datetime import datetime, timezone
 
-DOMAIN = "https://espirales-de-vida.wtxw5j.easypanel.host"
+DOMAIN = "https://espiralesdevida.org"
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PUBLIC_DIR = os.path.join(ROOT_DIR, "public")
 TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
