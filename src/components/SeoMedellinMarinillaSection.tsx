@@ -28,39 +28,39 @@ const SIMPLE_KIDS_FAQS: SimpleFaq[] = [
     emoji: "📍",
     question: "¿Dónde queda la Fundación Espirales de Vida?",
     answer:
-      "Estamos en una casa campestre hermosa en la Vía El Peñol Km 10, Marinilla (Antioquia), a solo 40 minutos de Medellín.",
+      "Estamos ubicados en la Vía El Peñol Km 10, en el municipio de Marinilla (Antioquia), donde viven y se forman nuestros 22 niños, niñas y adolescentes.",
     badgeColor: "bg-emerald-100 text-emerald-900 border-emerald-200",
   },
   {
     id: "faq-2",
     emoji: "❤️",
-    question: "¿Cómo puedo apadrinar a uno de los 22 niños?",
+    question: "¿En qué consiste el modelo de apadrinamiento?",
     answer:
-      "Puedes apadrinar desde $120.000 COP al mes y también compartirles cartas, cariño y visitas programadas en Marinilla.",
+      "Buscamos que las personas y empresas no solo donen un recurso, sino que se involucren acompañando el crecimiento de los niños con tiempo, guía y presencia.",
     badgeColor: "bg-rose-100 text-rose-900 border-rose-200",
   },
   {
     id: "faq-3",
-    emoji: "🏢",
-    question: "¿Entregan certificado de donación tributaria para empresas?",
+    emoji: "🎒",
+    question: "¿Cuáles son los 6 pilares de la Lista de Necesidades?",
     answer:
-      "¡Sí! Expedimos certificado oficial de donación con nuestro NIT 900150558-5 para todas las empresas aliadas en Medellín y Colombia.",
+      "1. Kits Escolares (22 kits), 2. Kits de Aseo Personal, 3. Personal de Apoyo (salud, psicología, peluquería), 4. Infraestructura y Remodelación, 5. Habitaciones y Confort, y 6. Juguetería y Entretenimiento.",
     badgeColor: "bg-sky-100 text-sky-900 border-sky-200",
   },
   {
     id: "faq-4",
-    emoji: "🎁",
-    question: "¿Qué cosas físicas podemos llevar o donar hoy?",
+    emoji: "🏢",
+    question: "¿Cómo pueden sumarse empresas, directivos y colectivos?",
     answer:
-      "Recibimos 22 cobijas térmicas, pijamas (tallas 6 a 16), kits de aseo, útiles escolares, juguetes y ayuda para construir nuestro Parque Infantil.",
+      "Nuestra fundación cuenta con NIT oficial 900150558-5. Las empresas pueden aportar insumos, apoyar la remodelación de espacios, hacer voluntariado profesional o apadrinar a los 22 niños.",
     badgeColor: "bg-amber-100 text-amber-900 border-amber-200",
   },
   {
     id: "faq-5",
-    emoji: "🚌",
-    question: "¿Podemos ir a visitar la casa hogar en Marinilla?",
+    emoji: "📞",
+    question: "¿A qué números podemos comunicarnos para donar o visitar?",
     answer:
-      "¡Claro que sí! Solo escríbenos antes al WhatsApp 313 652 5841 para agendar tu visita familiar o jornada de voluntariado empresarial.",
+      "Puedes comunicarte a la línea de la fundación 313 652 5841 o a las líneas de la campaña Juntos por una Infancia con Amor: 302 832 5126 y 304 387 0899.",
     badgeColor: "bg-purple-100 text-purple-900 border-purple-200",
   },
 ];
@@ -298,10 +298,13 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
                 <div className="rounded-2xl bg-rose-50/70 border border-rose-200 p-3.5">
                   <p className="text-[11px] font-bold text-rose-800 flex items-center gap-1">
                     <PhoneCall weight="fill" className="w-3.5 h-3.5" />
-                    Teléfono y WhatsApp Directo
+                    Teléfonos Oficiales y de Campaña
                   </p>
-                  <p className="font-mono text-lg font-extrabold text-zinc-900 mt-0.5">
-                    Tel: {FOUNDATION_INFO.phoneDisplay}
+                  <p className="font-mono text-base sm:text-lg font-extrabold text-zinc-900 mt-0.5">
+                    Fundación: {FOUNDATION_INFO.phoneDisplay}
+                  </p>
+                  <p className="font-mono text-xs sm:text-sm font-bold text-rose-800 mt-0.5">
+                    Campaña: 302 832 5126 | 304 387 0899
                   </p>
                 </div>
 

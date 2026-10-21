@@ -10,7 +10,6 @@ import {
   Camera,
   CheckCircle,
 } from "@phosphor-icons/react";
-import { ALUMNA_TESTIMONIAL } from "../data/foundationData";
 
 interface ColorfulPillarCard {
   id: string;
@@ -30,12 +29,12 @@ const COLORFUL_PILLARS: ColorfulPillarCard[] = [
   {
     id: "albergue-seguro",
     number: "Pilar 01",
-    title: "Un Hogar Seguro",
+    title: "Albergue Seguro",
     shortText:
-      "Una casa campestre en Marinilla donde los 22 niños viven protegidos, tranquilos y rodeados de naturaleza las 24 horas.",
+      "Un verdadero hogar y refugio en Marinilla donde los 22 niños, niñas y adolescentes se sienten protegidos todos los días.",
     realPhoto: "/images/reales/casa-hogar-instalaciones.jpg",
     photoCaption: "Nuestra casa en Vía El Peñol Km 10",
-    tags: ["Techo cálido 24/7", "Ambiente familiar"],
+    tags: ["Hogar protegido", "Dignidad diaria"],
     cardTheme: "bg-rose-50 border-rose-200 text-rose-950",
     badgeTheme: "bg-rose-600 text-white",
     tagTheme: "bg-white/90 text-rose-700 border-rose-200",
@@ -44,12 +43,12 @@ const COLORFUL_PILLARS: ColorfulPillarCard[] = [
   {
     id: "cuidado-alimentacion",
     number: "Pilar 02",
-    title: "Comida Rica y Cuidado",
+    title: "Cuidado Personal",
     shortText:
-      "Preparar juntos alimentos nutritivos, compartir helados y tener ropa abrigadora para crecer sanos y fuertes.",
+      "Alimentación, abrigo y atención cercana que garantiza su bienestar diario con un amor incalculable.",
     realPhoto: "/images/reales/tarde-de-helados.jpg",
-    photoCaption: "Tarde de helados y sonrisas en casa",
-    tags: ["Nutrición diaria", "Salud y bienestar"],
+    photoCaption: "Cuidado y alimentación diaria",
+    tags: ["Alimentación", "Bienestar diario"],
     cardTheme: "bg-amber-50 border-amber-200 text-amber-950",
     badgeTheme: "bg-amber-500 text-zinc-950",
     tagTheme: "bg-white/90 text-amber-900 border-amber-200",
@@ -58,12 +57,12 @@ const COLORFUL_PILLARS: ColorfulPillarCard[] = [
   {
     id: "apoyo-psicosocial",
     number: "Pilar 03",
-    title: "Escucha y Corazón Sano",
+    title: "Apoyo Psicosocial",
     shortText:
-      "Círculos de la palabra, abrazos y apoyo psicológico para sanar la historia de cada niño y devolverle la confianza.",
+      "Ayuda psicológica y acompañamiento humano que sana las heridas de su historia y les devuelve la confianza.",
     realPhoto: "/images/reales/circulo-de-la-palabra.jpg",
-    photoCaption: "Círculo de reflexión y escucha",
-    tags: ["Amor y psicología", "Confianza propia"],
+    photoCaption: "Acompañamiento psicosocial",
+    tags: ["Ayuda psicológica", "Confianza y paz"],
     cardTheme: "bg-sky-50 border-sky-200 text-sky-950",
     badgeTheme: "bg-sky-600 text-white",
     tagTheme: "bg-white/90 text-sky-800 border-sky-200",
@@ -72,12 +71,12 @@ const COLORFUL_PILLARS: ColorfulPillarCard[] = [
   {
     id: "educacion-futuro",
     number: "Pilar 04",
-    title: "Educación y Sueños",
+    title: "Educación",
     shortText:
-      "Ir al colegio, aprender bajo los árboles, pintar y descubrir talentos para construir una vida independiente.",
+      "La herramienta más poderosa para que puedan soñar en grande y construir una vida independiente con mayores oportunidades.",
     realPhoto: "/images/reales/taller-pedagogico-arbol.jpg",
-    photoCaption: "Taller pedagógico al aire libre",
-    tags: ["Colegio y talleres", "Futuro brillante"],
+    photoCaption: "Formación integral en Marinilla",
+    tags: ["Formación integral", "Vida independiente"],
     cardTheme: "bg-emerald-50 border-emerald-200 text-emerald-950",
     badgeTheme: "bg-emerald-600 text-white",
     tagTheme: "bg-white/90 text-emerald-800 border-emerald-200",
@@ -94,22 +93,22 @@ export const PillarsAndVisionSection: React.FC = () => {
       className="py-16 sm:py-24 bg-white relative overflow-hidden border-t border-zinc-200/60"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Friendly, Clear Section Header */}
+        {/* Friendly, Clear Section Header + Official Vision */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border-2 border-indigo-200 text-indigo-700 text-xs sm:text-sm font-extrabold mb-4">
             <Heart weight="fill" className="w-4 h-4 text-rose-500" />
-            <span>¿Qué hacemos todos los días en Marinilla?</span>
+            <span>Un Refugio donde la Dignidad se Reconstruye Día a Día</span>
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-950 leading-[1.12] mb-4">
-            4 pilares llenos de amor para{" "}
-            <span className="text-rose-600">transformar vidas</span>
+          <h2 className="font-logo text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-950 leading-[1.12] mb-4">
+            4 pilares fundamentales para su{" "}
+            <span className="text-rose-600">desarrollo</span>
           </h2>
-          <p className="text-base sm:text-lg text-zinc-600 font-medium leading-relaxed">
-            En Espirales de Vida acompañamos a 22 niños, niñas y adolescentes para que crezcan seguros, estudien felices y cumplan sus metas.
+          <p className="text-base sm:text-lg text-zinc-700 font-medium leading-relaxed">
+            <strong>Visión:</strong> Brindar acompañamiento, educación y formación integral a niños, niñas y adolescentes en condición de vulnerabilidad o con experiencias de calle, entregándoles herramientas para construir una vida independiente y con mayores oportunidades.
           </p>
         </div>
 
-        {/* 4 Colorful Pillar Cards with 100% Real Photos */}
+        {/* 4 Colorful Pillar Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-12 sm:mb-16">
           {COLORFUL_PILLARS.map((pillar, index) => {
             const IconComponent = pillar.icon;
@@ -123,7 +122,6 @@ export const PillarsAndVisionSection: React.FC = () => {
                 className={`rounded-3xl border-2 p-4 sm:p-5 flex flex-col justify-between shadow-xs hover:shadow-md transition-all ${pillar.cardTheme}`}
               >
                 <div>
-                  {/* Real Photo Header */}
                   <div className="relative rounded-2xl overflow-hidden aspect-[4/3] mb-4 bg-white ring-1 ring-black/5">
                     <img
                       src={pillar.realPhoto}
@@ -143,25 +141,22 @@ export const PillarsAndVisionSection: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Title + Icon */}
                   <div className="flex items-center gap-2.5 mb-2">
                     <div
                       className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${pillar.badgeTheme}`}
                     >
                       <IconComponent weight="fill" className="w-5 h-5" />
                     </div>
-                    <h3 className="text-xl font-extrabold tracking-tight leading-snug">
+                    <h3 className="font-logo text-xl font-extrabold tracking-tight leading-snug">
                       {pillar.title}
                     </h3>
                   </div>
 
-                  {/* Max 2 short sentences */}
                   <p className="text-base leading-relaxed opacity-90 mb-4">
                     {pillar.shortText}
                   </p>
                 </div>
 
-                {/* 2 Simple Colorful Chips */}
                 <div className="flex flex-wrap gap-2 pt-3 border-t border-black/10">
                   {pillar.tags.map((tag) => (
                     <span
@@ -178,7 +173,7 @@ export const PillarsAndVisionSection: React.FC = () => {
           })}
         </div>
 
-        {/* Real Testimony + Real Photo Banner (Easy to read & warm) */}
+        {/* Exact Alumna Testimony Word-for-Word */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -187,42 +182,40 @@ export const PillarsAndVisionSection: React.FC = () => {
           className="rounded-3xl bg-indigo-50 border-2 border-indigo-200 p-5 sm:p-8 lg:p-10 shadow-xs"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
-            {/* Real Photo Pair on Left */}
             <div className="lg:col-span-5 grid grid-cols-2 gap-3">
               <div className="relative rounded-2xl overflow-hidden aspect-[4/5] border-2 border-white shadow-sm">
                 <img
                   src="/images/reales/sonrisa-confianza.jpg"
-                  alt="Sonrisa y confianza en la Fundación Espirales de Vida"
+                  alt="Apoyo y amor en la Fundación Espirales de Vida"
                   className="w-full h-full object-cover"
                 />
                 <span className="absolute bottom-2 left-2 right-2 px-2.5 py-1 rounded-xl bg-white/95 text-zinc-900 text-[11px] font-extrabold text-center shadow-xs">
-                  Amor y Confianza
+                  Apoyo y Amor
                 </span>
               </div>
               <div className="relative rounded-2xl overflow-hidden aspect-[4/5] border-2 border-white shadow-sm mt-4 sm:mt-6">
                 <img
                   src="/images/reales/alegria-espontanea.jpg"
-                  alt="Alegría de los niños en Marinilla"
+                  alt="Tranquilidad y alegría en Marinilla"
                   className="w-full h-full object-cover"
                 />
                 <span className="absolute bottom-2 left-2 right-2 px-2.5 py-1 rounded-xl bg-white/95 text-zinc-900 text-[11px] font-extrabold text-center shadow-xs">
-                  Alegría Verdadera
+                  Tranquilidad
                 </span>
               </div>
             </div>
 
-            {/* Real Alumna Quote on Right */}
             <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border-2 border-indigo-100 shadow-xs">
               <div className="flex items-center justify-between gap-3 mb-4">
                 <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-xs sm:text-sm font-extrabold">
                   <Heart weight="fill" className="w-4 h-4 text-rose-600" />
-                  <span>Testimonio de una Ex-Beneficiaria</span>
+                  <span>Por qué escogimos a Espirales de Vida</span>
                 </span>
                 <Quotes weight="fill" className="w-8 h-8 text-indigo-200 shrink-0" />
               </div>
 
               <blockquote className="text-lg sm:text-xl font-bold text-zinc-900 leading-relaxed mb-4">
-                "{ALUMNA_TESTIMONIAL.quote}"
+                “Quiero que escojan esta fundación, ya que yo estuve allí durante un año cuando era niña. Es un lugar hermoso en el cual me brindaron mucho apoyo, amor y tranquilidad, y deseo que más niños y niñas sigan beneficiándose de este espacio y de bellas personas que allí laboran.”
               </blockquote>
 
               <AnimatePresence initial={false}>
@@ -235,7 +228,7 @@ export const PillarsAndVisionSection: React.FC = () => {
                     className="overflow-hidden"
                   >
                     <p className="pt-3 mt-3 border-t border-zinc-100 text-base text-zinc-700 leading-relaxed mb-3">
-                      {ALUMNA_TESTIMONIAL.fullTestimony}
+                      “Chicos, en el día de hoy quiero contarles un poco sobre la fundación escogida por mi equipo. De todas las fundaciones propuestas se escogió la mía. Esta se llama Espirales de Vida. Es una fundación que alberga 22 niños en condiciones de vulnerabilidad, las cuales les presta ayuda psicológica, alimentación y educación, entre otras.”
                     </p>
                   </motion.div>
                 )}
@@ -244,10 +237,10 @@ export const PillarsAndVisionSection: React.FC = () => {
               <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-zinc-100">
                 <div>
                   <p className="text-sm sm:text-base font-extrabold text-zinc-900">
-                    {ALUMNA_TESTIMONIAL.author}
+                    Testimonio de una Ex-Beneficiaria del Hogar
                   </p>
                   <p className="text-xs sm:text-sm text-zinc-600 font-medium">
-                    Vivió 1 año en nuestro hogar de Marinilla cuando era niña
+                    Estuvo 1 año en la Fundación Espirales de Vida cuando era niña · Marinilla
                   </p>
                 </div>
 
@@ -256,7 +249,7 @@ export const PillarsAndVisionSection: React.FC = () => {
                   onClick={() => setShowFullTestimony((prev) => !prev)}
                   className="min-h-[44px] px-4 py-2 rounded-full bg-indigo-50 hover:bg-indigo-100 text-indigo-800 text-xs sm:text-sm font-extrabold inline-flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
-                  <span>{showFullTestimony ? "Ver menos" : "Leer historia completa"}</span>
+                  <span>{showFullTestimony ? "Ver menos" : "Leer mensaje completo"}</span>
                   <CaretDown
                     weight="bold"
                     className={`w-4 h-4 transition-transform ${

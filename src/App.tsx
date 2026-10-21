@@ -192,8 +192,8 @@ export const App: React.FC = () => {
             }}
             className="flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-sky-50 hover:bg-sky-100 active:scale-95 text-sky-950 border border-sky-200/80 transition-all"
           >
-            <span className="text-lg leading-none mb-1">🛝</span>
-            <span className="text-[11px] font-extrabold leading-none">3 Metas</span>
+            <span className="text-lg leading-none mb-1">🎒</span>
+            <span className="text-[11px] font-extrabold leading-none">Campaña</span>
           </a>
 
           <a

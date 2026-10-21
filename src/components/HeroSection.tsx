@@ -52,28 +52,28 @@ const REAL_HERO_PHOTOS: RealHeroPhoto[] = [
 const COLORFUL_IMPACT_CARDS = [
   {
     metric: "22 Niños",
-    label: "Viven seguros y felices en nuestro hogar",
+    label: "Niños, niñas y adolescentes en un verdadero hogar",
     cardStyle: "bg-rose-50 border-rose-200 text-rose-900",
     badgeStyle: "bg-rose-600 text-white",
     icon: HandHeart,
   },
   {
     metric: "4 Pilares",
-    label: "Techo seguro, comida rica, amor y estudio",
+    label: "Albergue seguro, cuidado personal, psicología y educación",
     cardStyle: "bg-sky-50 border-sky-200 text-sky-900",
     badgeStyle: "bg-sky-600 text-white",
     icon: ShieldCheck,
   },
   {
-    metric: "3 Metas",
-    label: "Abrigo, útiles y construir nuestro Parque Infantil",
+    metric: "6 Necesidades",
+    label: "Kits escolares, aseo, confort, juguetes, salud e infraestructura",
     cardStyle: "bg-emerald-50 border-emerald-200 text-emerald-900",
     badgeStyle: "bg-emerald-600 text-white",
     icon: Sparkle,
   },
   {
     metric: "Marinilla",
-    label: "Vía El Peñol Km 10 · A 45 min de Medellín",
+    label: "Vía El Peñol Km 10 · Marinilla, Antioquia",
     cardStyle: "bg-amber-50 border-amber-200 text-amber-950",
     badgeStyle: "bg-amber-500 text-zinc-950",
     icon: MapPin,

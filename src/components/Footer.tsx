@@ -205,19 +205,24 @@ export const Footer: React.FC<FooterProps> = ({
                   <strong>Sede:</strong> {FOUNDATION_INFO.address}
                 </span>
               </li>
-              <li className="flex items-center gap-2">
-                <PhoneCall weight="fill" className="w-4 h-4 text-rose-400 shrink-0" />
-                <span>
-                  <strong>WhatsApp:</strong>{" "}
-                  <a
-                    href={buildWhatsAppLink()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono font-bold text-rose-400 hover:underline"
-                  >
-                    +57 {FOUNDATION_INFO.phoneDisplay}
-                  </a>
-                </span>
+              <li className="flex items-start gap-2">
+                <PhoneCall weight="fill" className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+                <div>
+                  <span className="block">
+                    <strong>Fundación:</strong>{" "}
+                    <a
+                      href={buildWhatsAppLink()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono font-bold text-rose-400 hover:underline"
+                    >
+                      +57 {FOUNDATION_INFO.phoneDisplay}
+                    </a>
+                  </span>
+                  <span className="block text-xs text-zinc-400 font-mono mt-0.5">
+                    Campaña: 302 832 5126 | 304 387 0899
+                  </span>
+                </div>
               </li>
             </ul>
           </div>
