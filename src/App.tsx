@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { WhatsappLogo } from "@phosphor-icons/react";
 import { Navbar } from "./components/Navbar";
+import { HeaderSponsorModal } from "./components/HeaderSponsorModal";
 import { HeroSection } from "./components/HeroSection";
 import { PillarsAndVisionSection } from "./components/PillarsAndVisionSection";
 import { HomeStoriesPreviewSection } from "./components/HomeStoriesPreviewSection";
@@ -26,6 +27,7 @@ export const App: React.FC = () => {
   const [quickSponsorStoryId, setQuickSponsorStoryId] = useState<string | null>(
     null
   );
+  const [isSponsorModalOpen, setIsSponsorModalOpen] = useState<boolean>(false);
 
   // Sync browser back/forward button
   useEffect(() => {
@@ -86,6 +88,14 @@ export const App: React.FC = () => {
         currentPage={currentPage}
         onNavigateHomeSection={navigateToHomeSection}
         onNavigateToStoriesPage={navigateToStoriesPage}
+        onOpenSponsorModal={() => setIsSponsorModalOpen(true)}
+      />
+
+      {/* Global Header Sponsorship Modal */}
+      <HeaderSponsorModal
+        isOpen={isSponsorModalOpen}
+        onClose={() => setIsSponsorModalOpen(false)}
+        onNavigateToStoriesPage={() => navigateToStoriesPage()}
       />
 
       {/* Main Dynamic & Colorful Narrative Flow */}

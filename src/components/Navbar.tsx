@@ -16,6 +16,7 @@ export interface NavbarProps {
   currentPage?: "inicio" | "historias";
   onNavigateHomeSection?: (sectionHash?: string) => void;
   onNavigateToStoriesPage?: (initialStoryId?: string) => void;
+  onOpenSponsorModal?: () => void;
 }
 
 interface NavItem {
@@ -70,6 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   currentPage = "inicio",
   onNavigateHomeSection,
   onNavigateToStoriesPage,
+  onOpenSponsorModal,
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -101,10 +103,16 @@ export const Navbar: React.FC<NavbarProps> = ({
     onNavigateHomeSection?.("#inicio");
   };
 
-  const handleSponsorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleSponsorClick = (
+    e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
+  ) => {
     e.preventDefault();
     setMobileOpen(false);
-    onNavigateToStoriesPage?.();
+    if (onOpenSponsorModal) {
+      onOpenSponsorModal();
+    } else {
+      onNavigateToStoriesPage?.();
+    }
   };
 
   return (
@@ -168,16 +176,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Right Actions: Quick Sponsor Button + Mobile Menu Trigger */}
           <div className="flex items-center gap-2 shrink-0">
-            <a
-              href="/historias"
+            <button
+              type="button"
               onClick={handleSponsorClick}
-              className="group inline-flex items-center gap-2 pl-4 pr-2 py-2 min-h-[44px] rounded-full bg-rose-600 text-white text-xs sm:text-sm font-extrabold hover:bg-rose-700 active:scale-95 transition-all shadow-[0_6px_20px_rgba(225,29,72,0.28)] whitespace-nowrap"
+              className="group inline-flex items-center gap-2 pl-4 pr-2 py-2 min-h-[44px] rounded-full bg-rose-600 text-white text-xs sm:text-sm font-extrabold hover:bg-rose-700 active:scale-95 transition-all shadow-[0_6px_20px_rgba(225,29,72,0.28)] whitespace-nowrap cursor-pointer"
             >
               <span>Apadrinar</span>
               <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                 <Heart weight="fill" className="w-4 h-4 text-white" />
               </span>
-            </a>
+            </button>
 
             {/* Mobile & Tablet Menu Trigger */}
             <button
