@@ -300,10 +300,10 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
                     <PhoneCall weight="fill" className="w-3.5 h-3.5" />
                     Teléfonos Oficiales y de Campaña
                   </p>
-                  <p className="font-mono text-base sm:text-lg font-extrabold text-zinc-900 mt-0.5">
+                  <p className="text-base sm:text-lg font-extrabold text-zinc-900 mt-0.5">
                     Fundación: {FOUNDATION_INFO.phoneDisplay}
                   </p>
-                  <p className="font-mono text-xs sm:text-sm font-bold text-rose-800 mt-0.5">
+                  <p className="text-xs sm:text-sm font-bold text-rose-800 mt-0.5">
                     Campaña: 302 832 5126 | 304 387 0899
                   </p>
                 </div>
@@ -313,7 +313,7 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
                     <IdentificationCard weight="fill" className="w-3.5 h-3.5" />
                     NIT Oficial (Certificados Tributarios)
                   </p>
-                  <p className="font-mono text-lg font-extrabold text-zinc-900 mt-0.5">
+                  <p className="text-lg font-extrabold text-zinc-900 mt-0.5">
                     NIT {FOUNDATION_INFO.nit}
                   </p>
                 </div>

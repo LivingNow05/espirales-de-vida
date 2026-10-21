@@ -667,7 +667,7 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
             {/* Official Campaign Footer Bar with Phones & Direct WhatsApp */}
             <div className="rounded-3xl bg-amber-50/90 border-2 border-amber-200 p-5 sm:p-6 flex flex-col lg:flex-row items-center justify-between gap-5">
               <div className="text-center lg:text-left">
-                <p className="text-xs sm:text-sm font-extrabold text-rose-700 uppercase tracking-wide mb-1">
+                <p className="font-logo text-base sm:text-xl font-bold text-rose-600 mb-1">
                   ¡Donaciones de insumos, talento profesional, infraestructura o aportes económicos!
                 </p>
                 <p className="text-sm sm:text-base font-extrabold text-zinc-900">
@@ -678,13 +678,13 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
                       : "Toca uno o varios pilares arriba"}
                   </span>
                 </p>
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-2 text-xs sm:text-sm font-mono font-extrabold text-zinc-800">
-                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white border border-amber-300">
-                    <PhoneCall weight="fill" className="w-3.5 h-3.5 text-rose-600" />
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-2.5 text-xs sm:text-sm font-extrabold text-zinc-800">
+                  <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-amber-300">
+                    <PhoneCall weight="fill" className="w-4 h-4 text-rose-600" />
                     Campaña: 302 832 5126 | 304 387 0899
                   </span>
-                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white border border-amber-300">
-                    <PhoneCall weight="fill" className="w-3.5 h-3.5 text-emerald-600" />
+                  <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-amber-300">
+                    <PhoneCall weight="fill" className="w-4 h-4 text-emerald-600" />
                     Fundación: {FOUNDATION_INFO.phoneDisplay}
                   </span>
                 </div>

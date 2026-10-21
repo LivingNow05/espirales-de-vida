@@ -113,7 +113,7 @@ export const Footer: React.FC<FooterProps> = ({
                   alt={FOUNDATION_INFO.name}
                   className="h-8 w-auto object-contain object-left mb-1"
                 />
-                <span className="block font-mono text-xs text-rose-400 font-bold">
+                <span className="block text-xs text-rose-400 font-bold">
                   NIT {FOUNDATION_INFO.nit} · Marinilla, Antioquia
                 </span>
               </div>
@@ -196,7 +196,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li className="flex items-center gap-2">
                 <IdentificationCard weight="fill" className="w-4 h-4 text-amber-400 shrink-0" />
                 <span>
-                  <strong>NIT:</strong> <span className="font-mono">{FOUNDATION_INFO.nit}</span>
+                  <strong>NIT:</strong> <span>{FOUNDATION_INFO.nit}</span>
                 </span>
               </li>
               <li className="flex items-center gap-2">
@@ -214,12 +214,12 @@ export const Footer: React.FC<FooterProps> = ({
                       href={buildWhatsAppLink()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-mono font-bold text-rose-400 hover:underline"
+                      className="font-bold text-rose-400 hover:underline"
                     >
                       +57 {FOUNDATION_INFO.phoneDisplay}
                     </a>
                   </span>
-                  <span className="block text-xs text-zinc-400 font-mono mt-0.5">
+                  <span className="block text-xs text-zinc-400 mt-0.5">
                     Campaña: 302 832 5126 | 304 387 0899
                   </span>
                 </div>

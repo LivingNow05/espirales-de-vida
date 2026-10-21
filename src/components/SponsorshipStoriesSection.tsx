@@ -495,7 +495,7 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
           <p className="text-sm sm:text-base text-zinc-600 font-medium mb-4">
             Escríbenos para asignarte uno de los 22 espacios de apadrinamiento o coordinar tu donación de insumos, talento profesional, infraestructura o aportes económicos.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-6 text-xs font-mono font-extrabold text-zinc-700">
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-6 text-xs sm:text-sm font-extrabold text-zinc-700">
             <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-50 border border-amber-200">
               <PhoneCall weight="fill" className="w-3.5 h-3.5 text-rose-600" />
               Campaña: 302 832 5126 | 304 387 0899
