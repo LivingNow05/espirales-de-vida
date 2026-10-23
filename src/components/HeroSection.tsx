@@ -123,20 +123,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             transition={{ duration: 0.55 }}
             className="lg:col-span-6 flex flex-col items-start text-left"
           >
-            {/* Official Logo Typography Lockup + Friendly Colorful Pill Badge */}
+            {/* Friendly Colorful Pill Badge */}
             <div className="flex flex-wrap items-center gap-3 mb-5">
-              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-white border-2 border-rose-200 shadow-xs">
-                <img
-                  src="/brand/isotipo-espirales-hd.png"
-                  alt="Isotipo Espirales de Vida"
-                  className="w-8 h-8 object-contain shrink-0"
-                />
-                <img
-                  src="/brand/wordmark-negro-hd.png"
-                  alt="Fundación Espirales de Vida"
-                  className="h-7 sm:h-8 w-auto object-contain"
-                />
-              </div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 border-2 border-amber-300 text-amber-950 text-xs sm:text-sm font-extrabold shadow-xs font-logo">
                 <Smiley weight="fill" className="w-5 h-5 text-rose-600 shrink-0" />
                 <span>22 niños en Marinilla, Antioquia</span>
