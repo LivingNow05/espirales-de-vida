@@ -335,17 +335,7 @@ const REAL_GALLERY_PHOTOS: GalleryPhoto[] = [
   },
 ];
 
-export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
-  onNavigateToStoriesPage,
-}) => {
-  const [activePhotoIndexByFront, setActivePhotoIndexByFront] = useState<
-    Record<string, 0 | 1>
-  >({
-    "frente-1-dignidad": 0,
-    "frente-2-desarrollo": 0,
-    "frente-3-infraestructura": 0,
-  });
-
+export const CampaignNeedsBanner: React.FC = () => {
   const [selectedPillarIds, setSelectedPillarIds] = useState<string[]>([
     "pilar-1-kits-escolares",
     "pilar-5-habitaciones",
@@ -354,8 +344,6 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
   const [pillarProgressMap, setPillarProgressMap] = useState<
     Record<string, PillarProgressData>
   >(INITIAL_PILLAR_PROGRESS);
-
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -396,6 +384,206 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
           "\n- "
         )}\n¿Cómo coordinamos la entrega o el aporte?`
       : `Hola Fundación Espirales de Vida, quiero sumarme a la campaña "Juntos por una Infancia con Amor" para apoyar a los 22 niños en Marinilla.`;
+
+  return (
+    <motion.div
+      id="campana"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="rounded-[2.25rem] p-2 bg-gradient-to-r from-sky-500/20 via-amber-500/20 to-rose-500/20 ring-2 ring-amber-300/90 mt-14 sm:mt-16 shadow-xl"
+    >
+      <div className="rounded-[calc(2.25rem-0.5rem)] bg-white p-5 sm:p-8 lg:p-10">
+        {/* Campaign Header Banner */}
+        <div className="text-center max-w-3xl mx-auto pb-8 mb-8 border-b-2 border-amber-100">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-amber-950 text-xs sm:text-sm font-extrabold mb-3">
+            <Sparkle weight="fill" className="w-4 h-4 text-rose-600" />
+            <span>Campaña Actual en Marinilla · Lista Oficial</span>
+          </div>
+          <h3 className="font-logo text-2xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-2">
+            JUNTOS POR UNA INFANCIA CON AMOR
+          </h3>
+          <p className="text-sm sm:text-lg font-bold text-rose-600">
+            LISTA DE NECESIDADES Y PILARES DE APOYO
+          </p>
+          <p className="text-xs sm:text-sm text-zinc-600 mt-1">
+            Toca cualquiera de los pilares de la campaña para seleccionar con qué insumos, talento profesional, infraestructura o aporte deseas sumarte hoy.
+          </p>
+        </div>
+
+        {/* 6 Official Pillars Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-8">
+          {OFFICIAL_CAMPAIGN_6_PILLARS.map((pillar) => {
+            const isSelected = selectedPillarIds.includes(pillar.id);
+            const progressInfo = pillarProgressMap[pillar.id];
+            const percentage = progressInfo ? progressInfo.percentage : 0;
+
+            return (
+              <div
+                key={pillar.id}
+                onClick={() => togglePillarSelection(pillar.id)}
+                className={`rounded-3xl border-2 overflow-hidden flex flex-col justify-between transition-all cursor-pointer ${
+                  isSelected
+                    ? `${pillar.cardBorder} ${pillar.cardBg} ring-4 ring-rose-500/20 shadow-md scale-[1.01]`
+                    : "border-zinc-200 bg-white hover:border-zinc-300 shadow-2xs"
+                }`}
+              >
+                <div>
+                  {/* Colored Top Header Bar matching the poster */}
+                  <div
+                    className={`px-4 py-3 flex items-center justify-between gap-2 ${pillar.headerBg}`}
+                  >
+                    <h4 className="font-logo text-sm sm:text-base font-extrabold tracking-wide uppercase">
+                      {pillar.title}
+                    </h4>
+                    <span
+                      className={`px-2.5 py-0.5 rounded-full text-[11px] font-extrabold ${
+                        isSelected
+                          ? "bg-white text-zinc-950"
+                          : "bg-black/25 text-white"
+                      }`}
+                    >
+                      {isSelected ? "✓ Elegido" : "+ Elegir"}
+                    </span>
+                  </div>
+
+                  {/* Real-Time Progress Bar per Card */}
+                  <div className="px-4 sm:px-5 pt-3.5 pb-3 bg-zinc-50/80 border-b border-zinc-200/70">
+                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                      <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-zinc-600 flex items-center gap-1.5">
+                        <span
+                          className={`w-2 h-2 rounded-full ${
+                            percentage > 0
+                              ? "bg-emerald-500 animate-pulse"
+                              : "bg-amber-400"
+                          }`}
+                        />
+                        Progreso estimado
+                      </span>
+                      <span
+                        className={`font-logo text-sm sm:text-base font-extrabold ${pillar.badgeText}`}
+                      >
+                        {percentage}%
+                      </span>
+                    </div>
+                    <div
+                      className={`w-full h-2.5 rounded-full overflow-hidden p-0.5 ${pillar.progressTrackBg} shadow-inner`}
+                    >
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{
+                          width: `${Math.max(percentage, percentage > 0 ? 6 : 0)}%`,
+                        }}
+                        transition={{ duration: 0.75, ease: "easeOut" }}
+                        className={`h-full rounded-full ${pillar.progressBarFill}`}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Subtitle & Exact Item List */}
+                  <div className="p-4 sm:p-5">
+                    <p className="text-xs sm:text-sm font-extrabold text-zinc-800 mb-3">
+                      {pillar.subtitle}
+                    </p>
+                    <ul className="space-y-1.5 text-xs sm:text-sm text-zinc-700 font-medium">
+                      {pillar.items.map((item) => (
+                        <li
+                          key={item.label}
+                          className="flex items-start gap-2 leading-snug"
+                        >
+                          {item.qty ? (
+                            <span
+                              className={`font-extrabold shrink-0 ${pillar.badgeText}`}
+                            >
+                              {item.qty}
+                            </span>
+                          ) : (
+                            <span
+                              className={`font-extrabold shrink-0 ${pillar.badgeText}`}
+                            >
+                              •
+                            </span>
+                          )}
+                          <span>{item.label}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="px-4 pb-4 pt-2 border-t border-black/5 flex items-center justify-between text-xs font-extrabold text-zinc-600">
+                  <span>
+                    {isSelected
+                      ? "Seleccionado para apoyar"
+                      : "Toca para apoyar este pilar"}
+                  </span>
+                  <CheckCircle
+                    weight="fill"
+                    className={`w-5 h-5 ${
+                      isSelected ? "text-rose-600" : "text-zinc-300"
+                    }`}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Official Campaign Footer Bar with Phones & Direct WhatsApp */}
+        <div className="rounded-3xl bg-amber-50/90 border-2 border-amber-200 p-5 sm:p-6 flex flex-col lg:flex-row items-center justify-between gap-5">
+          <div className="text-center lg:text-left">
+            <p className="font-logo text-base sm:text-xl font-bold text-rose-600 mb-1">
+              ¡Donaciones de insumos, talento profesional, infraestructura o aportes económicos!
+            </p>
+            <p className="text-sm sm:text-base font-extrabold text-zinc-900">
+              Pilares seleccionados ({selectedPillarIds.length}):{" "}
+              <span className="text-indigo-700">
+                {selectedPillarTitles.length > 0
+                  ? selectedPillarTitles.join(" · ")
+                  : "Toca uno o varios pilares arriba"}
+              </span>
+            </p>
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-2.5 text-xs sm:text-sm font-extrabold text-zinc-800">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-amber-300">
+                <PhoneCall weight="fill" className="w-4 h-4 text-rose-600" />
+                Campaña: 302 832 5126 | 304 387 0899
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-amber-300">
+                <PhoneCall weight="fill" className="w-4 h-4 text-emerald-600" />
+                Fundación: {FOUNDATION_INFO.phoneDisplay}
+              </span>
+            </div>
+          </div>
+
+          <a
+            href={buildWhatsAppLink(campaignWhatsAppMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full lg:w-auto shrink-0 inline-flex items-center justify-center gap-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-7 py-4 text-sm sm:text-base font-extrabold shadow-lg shadow-emerald-600/25 transition-all active:scale-95"
+          >
+            <WhatsappLogo weight="fill" className="w-5 h-5" />
+            <span>Coordinar mi Donación por WhatsApp</span>
+            <ArrowUpRight weight="bold" className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
+  onNavigateToStoriesPage,
+}) => {
+  const [activePhotoIndexByFront, setActivePhotoIndexByFront] = useState<
+    Record<string, 0 | 1>
+  >({
+    "frente-1-dignidad": 0,
+    "frente-2-desarrollo": 0,
+    "frente-3-infraestructura": 0,
+  });
+
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const getThemeClasses = (theme: OfficialFrontCard["theme"]) => {
     if (theme === "rose") {
@@ -601,190 +789,6 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
             );
           })}
         </div>
-
-        {/* PART 2: CAMPAÑA ACTUAL OFICIAL — "JUNTOS POR UNA INFANCIA CON AMOR: LISTA DE NECESIDADES Y PILARES DE APOYO" */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="rounded-[2.25rem] p-2 bg-gradient-to-r from-sky-500/20 via-amber-500/20 to-rose-500/20 ring-2 ring-amber-300/90 mb-20 shadow-xl"
-        >
-          <div className="rounded-[calc(2.25rem-0.5rem)] bg-white p-5 sm:p-8 lg:p-10">
-            {/* Campaign Header Banner */}
-            <div className="text-center max-w-3xl mx-auto pb-8 mb-8 border-b-2 border-amber-100">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-amber-950 text-xs sm:text-sm font-extrabold mb-3">
-                <Sparkle weight="fill" className="w-4 h-4 text-rose-600" />
-                <span>Campaña Actual en Marinilla · Lista Oficial</span>
-              </div>
-              <h3 className="font-logo text-2xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-2">
-                JUNTOS POR UNA INFANCIA CON AMOR
-              </h3>
-              <p className="text-sm sm:text-lg font-bold text-rose-600">
-                LISTA DE NECESIDADES Y PILARES DE APOYO
-              </p>
-              <p className="text-xs sm:text-sm text-zinc-600 mt-1">
-                Toca cualquiera de los pilares de la campaña para seleccionar con qué insumos, talento profesional, infraestructura o aporte deseas sumarte hoy.
-              </p>
-            </div>
-
-            {/* 6 Official Pillars Grid (Exact items and quantities from user's image) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-8">
-              {OFFICIAL_CAMPAIGN_6_PILLARS.map((pillar) => {
-                const isSelected = selectedPillarIds.includes(pillar.id);
-                const progressInfo = pillarProgressMap[pillar.id];
-                const percentage = progressInfo ? progressInfo.percentage : 0;
-
-                return (
-                  <div
-                    key={pillar.id}
-                    onClick={() => togglePillarSelection(pillar.id)}
-                    className={`rounded-3xl border-2 overflow-hidden flex flex-col justify-between transition-all cursor-pointer ${
-                      isSelected
-                        ? `${pillar.cardBorder} ${pillar.cardBg} ring-4 ring-rose-500/20 shadow-md scale-[1.01]`
-                        : "border-zinc-200 bg-white hover:border-zinc-300 shadow-2xs"
-                    }`}
-                  >
-                    <div>
-                      {/* Colored Top Header Bar matching the poster */}
-                      <div
-                        className={`px-4 py-3 flex items-center justify-between gap-2 ${pillar.headerBg}`}
-                      >
-                        <h4 className="font-logo text-sm sm:text-base font-extrabold tracking-wide uppercase">
-                          {pillar.title}
-                        </h4>
-                        <span
-                          className={`px-2.5 py-0.5 rounded-full text-[11px] font-extrabold ${
-                            isSelected
-                              ? "bg-white text-zinc-950"
-                              : "bg-black/25 text-white"
-                          }`}
-                        >
-                          {isSelected ? "✓ Elegido" : "+ Elegir"}
-                        </span>
-                      </div>
-
-                      {/* Real-Time Progress Bar per Card */}
-                      <div className="px-4 sm:px-5 pt-3.5 pb-3 bg-zinc-50/80 border-b border-zinc-200/70">
-                        <div className="flex items-center justify-between gap-2 mb-1.5">
-                          <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-zinc-600 flex items-center gap-1.5">
-                            <span
-                              className={`w-2 h-2 rounded-full ${
-                                percentage > 0
-                                  ? "bg-emerald-500 animate-pulse"
-                                  : "bg-amber-400"
-                              }`}
-                            />
-                            Progreso estimado
-                          </span>
-                          <span
-                            className={`font-logo text-sm sm:text-base font-extrabold ${pillar.badgeText}`}
-                          >
-                            {percentage}%
-                          </span>
-                        </div>
-                        <div
-                          className={`w-full h-2.5 rounded-full overflow-hidden p-0.5 ${pillar.progressTrackBg} shadow-inner`}
-                        >
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={{
-                              width: `${Math.max(percentage, percentage > 0 ? 6 : 0)}%`,
-                            }}
-                            transition={{ duration: 0.75, ease: "easeOut" }}
-                            className={`h-full rounded-full ${pillar.progressBarFill}`}
-                          />
-                        </div>
-                      </div>
-
-                      {/* Subtitle & Exact Item List */}
-                      <div className="p-4 sm:p-5">
-                        <p className="text-xs sm:text-sm font-extrabold text-zinc-800 mb-3">
-                          {pillar.subtitle}
-                        </p>
-                        <ul className="space-y-1.5 text-xs sm:text-sm text-zinc-700 font-medium">
-                          {pillar.items.map((item) => (
-                            <li
-                              key={item.label}
-                              className="flex items-start gap-2 leading-snug"
-                            >
-                              {item.qty ? (
-                                <span
-                                  className={`font-extrabold shrink-0 ${pillar.badgeText}`}
-                                >
-                                  {item.qty}
-                                </span>
-                              ) : (
-                                <span
-                                  className={`font-extrabold shrink-0 ${pillar.badgeText}`}
-                                >
-                                  •
-                                </span>
-                              )}
-                              <span>{item.label}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="px-4 pb-4 pt-2 border-t border-black/5 flex items-center justify-between text-xs font-extrabold text-zinc-600">
-                      <span>
-                        {isSelected
-                          ? "Seleccionado para apoyar"
-                          : "Toca para apoyar este pilar"}
-                      </span>
-                      <CheckCircle
-                        weight="fill"
-                        className={`w-5 h-5 ${
-                          isSelected ? "text-rose-600" : "text-zinc-300"
-                        }`}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Official Campaign Footer Bar with Phones & Direct WhatsApp */}
-            <div className="rounded-3xl bg-amber-50/90 border-2 border-amber-200 p-5 sm:p-6 flex flex-col lg:flex-row items-center justify-between gap-5">
-              <div className="text-center lg:text-left">
-                <p className="font-logo text-base sm:text-xl font-bold text-rose-600 mb-1">
-                  ¡Donaciones de insumos, talento profesional, infraestructura o aportes económicos!
-                </p>
-                <p className="text-sm sm:text-base font-extrabold text-zinc-900">
-                  Pilares seleccionados ({selectedPillarIds.length}):{" "}
-                  <span className="text-indigo-700">
-                    {selectedPillarTitles.length > 0
-                      ? selectedPillarTitles.join(" · ")
-                      : "Toca uno o varios pilares arriba"}
-                  </span>
-                </p>
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-2.5 text-xs sm:text-sm font-extrabold text-zinc-800">
-                  <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-amber-300">
-                    <PhoneCall weight="fill" className="w-4 h-4 text-rose-600" />
-                    Campaña: 302 832 5126 | 304 387 0899
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-amber-300">
-                    <PhoneCall weight="fill" className="w-4 h-4 text-emerald-600" />
-                    Fundación: {FOUNDATION_INFO.phoneDisplay}
-                  </span>
-                </div>
-              </div>
-
-              <a
-                href={buildWhatsAppLink(campaignWhatsAppMessage)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full lg:w-auto shrink-0 inline-flex items-center justify-center gap-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-7 py-4 text-sm sm:text-base font-extrabold shadow-lg shadow-emerald-600/25 transition-all active:scale-95"
-              >
-                <WhatsappLogo weight="fill" className="w-5 h-5" />
-                <span>Coordinar mi Donación por WhatsApp</span>
-                <ArrowUpRight weight="bold" className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        </motion.div>
 
         {/* PART 3: El Modelo de Apadrinamiento (Más allá de lo material · Tiempo, Guía y Presencia) */}
         <div className="rounded-[2rem] bg-white border-2 border-zinc-200/80 p-6 sm:p-10 shadow-sm mb-20">

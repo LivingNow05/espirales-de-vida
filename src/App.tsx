@@ -129,7 +129,7 @@ export const App: React.FC = () => {
             externalSelectedStoryId={quickSponsorStoryId}
             onClearExternalStory={handleClearExternalStory}
             onBackToHome={() => navigateToHomeSection("#inicio")}
-            onGoToMetas={() => navigateToHomeSection("#frentes")}
+            onGoToMetas={() => navigateToHomeSection("#campana")}
           />
         )}
       </main>
@@ -195,10 +195,10 @@ export const App: React.FC = () => {
           </a>
 
           <a
-            href="/#frentes"
+            href="/#campana"
             onClick={(e) => {
               e.preventDefault();
-              navigateToHomeSection("#frentes");
+              navigateToHomeSection("#campana");
             }}
             className="flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-sky-50 hover:bg-sky-100 active:scale-95 text-sky-950 border border-sky-200/80 transition-all"
           >

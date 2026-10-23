@@ -10,6 +10,7 @@ import {
   Camera,
   CheckCircle,
 } from "@phosphor-icons/react";
+import { CampaignNeedsBanner } from "./ThreeFrontsSection";
 
 interface ColorfulPillarCard {
   id: string;
@@ -261,6 +262,9 @@ export const PillarsAndVisionSection: React.FC = () => {
             </div>
           </div>
         </motion.div>
+
+        {/* Campaña Oficial: Juntos por una Infancia con Amor (Lista de Necesidades y Pilares de Apoyo) */}
+        <CampaignNeedsBanner />
       </div>
     </section>
   );
