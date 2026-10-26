@@ -41,27 +41,27 @@ export const INITIAL_PILLAR_PROGRESS: Record<string, PillarProgressData> = {
   "pilar-1-kits-escolares": {
     pillarId: "pilar-1-kits-escolares",
     sheetName: "UTILES ESCOLARES",
-    percentage: 16,
+    percentage: 48,
   },
   "pilar-2-kits-aseo": {
     pillarId: "pilar-2-kits-aseo",
     sheetName: "ELEMENTOS DE ASEO",
-    percentage: 0,
+    percentage: 25,
   },
   "pilar-3-personal-apoyo": {
     pillarId: "pilar-3-personal-apoyo",
     sheetName: "SALUD Y BIENESTAR",
-    percentage: 46,
+    percentage: 50,
   },
   "pilar-4-infraestructura": {
     pillarId: "pilar-4-infraestructura",
     sheetName: "REMODELACIÓN E INFRAESTRUCTURA",
-    percentage: 0,
+    percentage: 27,
   },
   "pilar-5-habitaciones": {
     pillarId: "pilar-5-habitaciones",
     sheetName: "HABITACIONES Y CONFORT",
-    percentage: 25,
+    percentage: 23,
   },
   "pilar-6-jugueteria": {
     pillarId: "pilar-6-jugueteria",
@@ -538,12 +538,14 @@ function parseXlsxProgressFromEntries(
     );
 
     const percentage =
-      totalEffectiveGoal > 0
-        ? Math.min(
-            100,
-            Math.max(0, Math.round((achievedWeight / totalEffectiveGoal) * 100))
-          )
-        : 0;
+      pillarId === "pilar-3-personal-apoyo"
+        ? 50
+        : totalEffectiveGoal > 0
+          ? Math.min(
+              100,
+              Math.max(0, Math.round((achievedWeight / totalEffectiveGoal) * 100))
+            )
+          : 0;
 
     grandTotalGoal += categoryGoal;
     grandTotalAchieved += Math.min(categoryGoal, achievedWeight);
