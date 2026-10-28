@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { WhatsappLogo } from "@phosphor-icons/react";
+import {
+  WhatsappLogo,
+  HouseLine,
+  Heart,
+  HandHeart,
+} from "@phosphor-icons/react";
 import { Navbar } from "./components/Navbar";
 import { HeaderSponsorModal } from "./components/HeaderSponsorModal";
 import { HeroSection } from "./components/HeroSection";
@@ -213,7 +218,12 @@ export const App: React.FC = () => {
                 : "bg-amber-50 hover:bg-amber-100 text-amber-950 border-amber-200/80"
             }`}
           >
-            <span className="text-lg leading-none mb-1">🏠</span>
+            <HouseLine
+              weight="fill"
+              className={`w-5 h-5 mb-1 ${
+                currentPage === "inicio" ? "text-zinc-950" : "text-amber-600"
+              }`}
+            />
             <span className="text-[11px] font-extrabold leading-none">Hogar</span>
           </a>
 
@@ -229,7 +239,12 @@ export const App: React.FC = () => {
                 : "bg-rose-50 hover:bg-rose-100 text-rose-950 border-rose-200/80"
             }`}
           >
-            <span className="text-lg leading-none mb-1">❤️</span>
+            <Heart
+              weight="fill"
+              className={`w-5 h-5 mb-1 ${
+                currentPage === "historias" ? "text-white" : "text-rose-600"
+              }`}
+            />
             <span className="text-[11px] font-extrabold leading-none">20 Historias</span>
           </a>
 
@@ -245,7 +260,12 @@ export const App: React.FC = () => {
                 : "bg-sky-50 hover:bg-sky-100 text-sky-950 border-sky-200/80"
             }`}
           >
-            <span className="text-lg leading-none mb-1">🎒</span>
+            <HandHeart
+              weight="fill"
+              className={`w-5 h-5 mb-1 ${
+                currentPage === "campana" ? "text-white" : "text-sky-600"
+              }`}
+            />
             <span className="text-[11px] font-extrabold leading-none">Campaña</span>
           </a>
 
@@ -257,7 +277,7 @@ export const App: React.FC = () => {
             rel="noopener noreferrer"
             className="flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white shadow-sm shadow-emerald-600/25 transition-all"
           >
-            <span className="text-lg leading-none mb-1">💬</span>
+            <WhatsappLogo weight="fill" className="w-5 h-5 mb-1 text-white" />
             <span className="text-[11px] font-extrabold leading-none">WhatsApp</span>
           </a>
         </div>

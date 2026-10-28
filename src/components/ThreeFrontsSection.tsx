@@ -15,6 +15,7 @@ import {
   Images,
   Sparkle,
   PhoneCall,
+  MagnifyingGlassPlus,
 } from "@phosphor-icons/react";
 import { FOUNDATION_INFO, buildWhatsAppLink } from "../data/foundationData";
 import {
@@ -61,9 +62,9 @@ const OFFICIAL_THREE_FRONTS: OfficialFrontCard[] = [
     secondaryCaption: "Bienestar diario en nuestro hogar",
     theme: "rose",
     pills: [
-      "🧼 Utensilios de aseo personal",
-      "🛏️ Cobijas abrigadoras",
-      "👕 Pijamas cómodas y juegos de sábanas",
+      "Utensilios de aseo personal",
+      "Cobijas abrigadoras",
+      "Pijamas cómodas y juegos de sábanas",
     ],
     whatsappMessage:
       "Hola Fundación Espirales de Vida, quiero apoyar el Frente 1 (Dignidad Diaria: utensilios de aseo personal, cobijas abrigadoras y pijamas cómodas para los 20 niños en Marinilla).",
@@ -81,9 +82,9 @@ const OFFICIAL_THREE_FRONTS: OfficialFrontCard[] = [
     secondaryCaption: "Espacio recreativo de la fundación",
     theme: "emerald",
     pills: [
-      "🎒 Kits escolares para su formación",
-      "🧸 Juguetes, libros y balones",
-      "🛝 Sueño grande: construir su parque propio",
+      "Kits escolares para su formación",
+      "Juguetes, libros y balones",
+      "Sueño grande: construir su parque propio",
     ],
     whatsappMessage:
       "Hola Fundación Espirales de Vida, quiero apoyar el Frente 2 (Desarrollo y Alegría: útiles escolares, juguetes y el sueño del espacio de juego propio en Marinilla).",
@@ -101,9 +102,9 @@ const OFFICIAL_THREE_FRONTS: OfficialFrontCard[] = [
     secondaryCaption: "Entorno de la fundación en Marinilla",
     theme: "sky",
     pills: [
-      "🎨 Pintura y limpieza de paredes",
-      "🚪 Puertas de madera, estantería y biblioteca",
-      "🤝 Mano de obra y trabajo voluntario",
+      "Pintura y limpieza de paredes",
+      "Puertas de madera, estantería y biblioteca",
+      "Mano de obra y trabajo voluntario",
     ],
     whatsappMessage:
       "Hola Fundación Espirales de Vida, quiero apoyar el Frente 3 (Infraestructura: intervenir y mejorar las instalaciones de la sede en Marinilla).",
@@ -276,7 +277,7 @@ const REAL_GALLERY_PHOTOS: GalleryPhoto[] = [
     title: "Nuestra Gran Familia en Marinilla",
     caption:
       "Niños, educadores y equipo unidos en la casa hogar de Vía El Peñol Km 10.",
-    tag: "🏠 Nuestro Hogar",
+    tag: "Nuestro Hogar",
     tagColor: "bg-rose-500 text-white",
   },
   {
@@ -285,7 +286,7 @@ const REAL_GALLERY_PHOTOS: GalleryPhoto[] = [
     title: "Miradas que Volvieron a Brillar",
     caption:
       "Cuando un niño se siente respaldado por una comunidad, crece invencible.",
-    tag: "❤️ Confianza",
+    tag: "Confianza",
     tagColor: "bg-amber-500 text-white",
   },
   {
@@ -294,7 +295,7 @@ const REAL_GALLERY_PHOTOS: GalleryPhoto[] = [
     title: "Tardes de Color y Alegría",
     caption:
       "El arte y el juego alimentan su infancia y llenan de sonrisas la fundación.",
-    tag: "🎨 Alegría",
+    tag: "Alegría",
     tagColor: "bg-purple-600 text-white",
   },
   {
@@ -303,7 +304,7 @@ const REAL_GALLERY_PHOTOS: GalleryPhoto[] = [
     title: "Educación para Soñar en Grande",
     caption:
       "La educación es la herramienta más poderosa para construir su futuro.",
-    tag: "🌱 Educación",
+    tag: "Educación",
     tagColor: "bg-emerald-600 text-white",
   },
   {
@@ -312,7 +313,7 @@ const REAL_GALLERY_PHOTOS: GalleryPhoto[] = [
     title: "Creciendo en Comunidad",
     caption:
       "Aprendiendo a trabajar en equipo, respetarse y cuidarse unos a otros.",
-    tag: "🤝 Fraternidad",
+    tag: "Fraternidad",
     tagColor: "bg-sky-600 text-white",
   },
   {
@@ -321,7 +322,7 @@ const REAL_GALLERY_PHOTOS: GalleryPhoto[] = [
     title: "Recreación al Aire Libre",
     caption:
       "Juegos y deporte rodeados de naturaleza en Marinilla, Antioquia.",
-    tag: "⚽ Recreación",
+    tag: "Recreación",
     tagColor: "bg-emerald-600 text-white",
   },
   {
@@ -330,7 +331,7 @@ const REAL_GALLERY_PHOTOS: GalleryPhoto[] = [
     title: "Cuidado Personal y Bienestar",
     caption:
       "Momentos de afecto, alimentación y cuidado diario para los 20 niños.",
-    tag: "🍦 Bienestar",
+    tag: "Bienestar",
     tagColor: "bg-rose-500 text-white",
   },
   {
@@ -339,7 +340,7 @@ const REAL_GALLERY_PHOTOS: GalleryPhoto[] = [
     title: "Apoyo Psicosocial y Escucha",
     caption:
       "Acompañamiento humano que sana las heridas de su historia y les devuelve la confianza.",
-    tag: "✨ Apoyo Psicosocial",
+    tag: "Apoyo Psicosocial",
     tagColor: "bg-indigo-600 text-white",
   },
 ];
@@ -1032,13 +1033,14 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
                             [front.id]: 0,
                           }))
                         }
-                        className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all cursor-pointer ${
+                        className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all cursor-pointer inline-flex items-center gap-1 ${
                           activePhotoIdx === 0
                             ? "bg-white text-zinc-900 shadow-xs"
                             : "text-white/80 hover:text-white"
                         }`}
                       >
-                        📷 Foto 1
+                        <Camera weight="fill" className="w-3 h-3" />
+                        <span>Foto 1</span>
                       </button>
                       <button
                         type="button"
@@ -1048,13 +1050,14 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
                             [front.id]: 1,
                           }))
                         }
-                        className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all cursor-pointer ${
+                        className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all cursor-pointer inline-flex items-center gap-1 ${
                           activePhotoIdx === 1
                             ? "bg-white text-zinc-900 shadow-xs"
                             : "text-white/80 hover:text-white"
                         }`}
                       >
-                        📷 Foto 2
+                        <Camera weight="fill" className="w-3 h-3" />
+                        <span>Foto 2</span>
                       </button>
                     </div>
 
@@ -1131,8 +1134,9 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
                 Desliza en tu celular o toca cualquier foto para ver en grande el día a día de nuestros 20 niños.
               </p>
             </div>
-            <span className="text-xs font-bold text-rose-700 bg-rose-50 border border-rose-200 px-3.5 py-2 rounded-full self-start sm:self-auto">
-              👆 Desliza o toca para ampliar (8 fotos)
+            <span className="text-xs font-bold text-rose-700 bg-rose-50 border border-rose-200 px-3.5 py-2 rounded-full self-start sm:self-auto inline-flex items-center gap-1.5">
+              <MagnifyingGlassPlus weight="bold" className="w-4 h-4 text-rose-600" />
+              <span>Desliza o toca para ampliar (8 fotos)</span>
             </span>
           </div>
 
@@ -1164,7 +1168,7 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
                   </span>
 
                   <span className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 text-white backdrop-blur-xs flex items-center justify-center text-xs font-bold opacity-90 group-hover:bg-rose-600 transition-colors">
-                    🔍
+                    <MagnifyingGlassPlus weight="bold" className="w-4 h-4" />
                   </span>
 
                   <div className="absolute bottom-3 left-3.5 right-3.5">

@@ -6,6 +6,10 @@ import {
   IdentificationCard,
   ArrowUpRight,
   WhatsappLogo,
+  HouseLine,
+  Sparkle,
+  HandHeart,
+  Images,
 } from "@phosphor-icons/react";
 import { FOUNDATION_INFO, buildWhatsAppLink } from "../data/foundationData";
 
@@ -143,63 +147,70 @@ export const Footer: React.FC<FooterProps> = ({
                 <a
                   href="/"
                   onClick={(e) => handleHomeLink(e, "#inicio")}
-                  className="hover:text-rose-400 transition-colors"
+                  className="hover:text-rose-400 transition-colors inline-flex items-center gap-2"
                 >
-                  🏠 Inicio y Hogar
+                  <HouseLine weight="fill" className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>Inicio y Hogar</span>
                 </a>
               </li>
               <li>
                 <a
                   href="#mision"
                   onClick={(e) => handleHomeLink(e, "#mision")}
-                  className="hover:text-rose-400 transition-colors"
+                  className="hover:text-rose-400 transition-colors inline-flex items-center gap-2"
                 >
-                  ✨ Nuestros 4 Pilares
+                  <Sparkle weight="fill" className="w-4 h-4 text-sky-400 shrink-0" />
+                  <span>Nuestros 4 Pilares</span>
                 </a>
               </li>
               <li>
                 <a
                   href="/campana"
                   onClick={handleCampaignLink}
-                  className="hover:text-amber-300 transition-colors font-bold text-amber-300"
+                  className="hover:text-amber-300 transition-colors font-bold text-amber-300 inline-flex items-center gap-2"
                 >
-                  🎒 Campaña y Lista de Necesidades
+                  <HandHeart weight="fill" className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>Campaña y Lista de Necesidades</span>
                 </a>
               </li>
               <li>
                 <a
                   href="/historias"
                   onClick={handleStoriesLink}
-                  className="hover:text-rose-400 transition-colors font-bold text-rose-300"
+                  className="hover:text-rose-400 transition-colors font-bold text-rose-300 inline-flex items-center gap-2"
                 >
-                  ❤️ Página de las 20 Historias
+                  <Heart weight="fill" className="w-4 h-4 text-rose-400 shrink-0" />
+                  <span>Página de las 20 Historias</span>
                 </a>
               </li>
               <li>
                 <a
                   href="#frentes"
                   onClick={(e) => handleHomeLink(e, "#frentes")}
-                  className="hover:text-rose-400 transition-colors"
+                  className="hover:text-rose-400 transition-colors inline-flex items-center gap-2"
                 >
-                  🛝 Las 3 Metas y el Parque
+                  <Sparkle weight="fill" className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Las 3 Metas y el Parque</span>
                 </a>
               </li>
               <li>
                 <a
                   href="#galeria"
                   onClick={(e) => handleHomeLink(e, "#galeria")}
-                  className="hover:text-rose-400 transition-colors"
+                  className="hover:text-rose-400 transition-colors inline-flex items-center gap-2"
                 >
-                  📷 Galería de Fotos
+                  <Images weight="fill" className="w-4 h-4 text-indigo-400 shrink-0" />
+                  <span>Galería de Fotos</span>
                 </a>
               </li>
               <li>
                 <a
                   href="#contacto"
                   onClick={(e) => handleHomeLink(e, "#contacto")}
-                  className="hover:text-rose-400 transition-colors"
+                  className="hover:text-rose-400 transition-colors inline-flex items-center gap-2"
                 >
-                  📍 Cómo Llegar y NIT
+                  <MapPin weight="fill" className="w-4 h-4 text-rose-400 shrink-0" />
+                  <span>Cómo Llegar y NIT</span>
                 </a>
               </li>
             </ul>

@@ -169,7 +169,7 @@ export const HomeStoriesPreviewSection: React.FC<HomeStoriesPreviewSectionProps>
                     className={`rounded-2xl p-3.5 border mb-5 ${space.dreamBox}`}
                   >
                     <span className="text-xs font-extrabold uppercase tracking-wider opacity-75 block mb-0.5">
-                      ✨ Cómo acompañas su vida
+                      Cómo acompañas su vida
                     </span>
                     <p className="text-sm font-extrabold leading-snug">
                       {space.highlight}

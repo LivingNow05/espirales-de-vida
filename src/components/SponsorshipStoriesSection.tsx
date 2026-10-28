@@ -190,17 +190,17 @@ const FULL_HOME_COLLECTIVE_SPACE: ChildStoryProfile = {
 const SIMPLE_HELP_OPTIONS = [
   {
     id: "apadrinar-tiempo-guia",
-    label: "❤️ Ser Padrino o Madrina (Tiempo, guía, presencia y apoyo)",
+    label: "Ser Padrino o Madrina (Tiempo, guía, presencia y apoyo)",
     shortTag: "Apadrinamiento (Tiempo, guía, presencia y recursos)",
   },
   {
     id: "donar-kits-campana",
-    label: "🎒 Donar Insumos de la Lista (Kit Escolar, Aseo, Cobijas o Juguetes)",
+    label: "Donar Insumos de la Lista (Kit Escolar, Aseo, Cobijas o Juguetes)",
     shortTag: "Donación de Insumos (Campaña Juntos por una Infancia con Amor)",
   },
   {
     id: "talento-infraestructura",
-    label: "🏡 Apoyar con Talento Profesional, Infraestructura o Empresa",
+    label: "Apoyar con Talento Profesional, Infraestructura o Empresa",
     shortTag: "Apoyo Profesional / Infraestructura / Empresa Aliada",
   },
 ] as const;
@@ -468,7 +468,7 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
                     className={`rounded-2xl p-3.5 border mb-5 ${palette.dreamBox}`}
                   >
                     <span className="text-xs font-extrabold uppercase tracking-wider opacity-75 block mb-0.5">
-                      ✨ Apoyo Directo para este Niño / Niña
+                      Apoyo Directo para este Niño / Niña
                     </span>
                     <p className="text-xs sm:text-sm font-extrabold leading-snug">
                       {story.dream}
@@ -603,7 +603,7 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
                 </p>
                 <div className="rounded-xl bg-white p-3 border border-rose-200">
                   <span className="text-xs font-extrabold text-rose-600 uppercase block">
-                    ✨ Necesidades y Apoyo Directo:
+                    Necesidades y Apoyo Directo:
                   </span>
                   <p className="text-sm sm:text-base font-extrabold text-zinc-900">
                     {selectedStory.dream}

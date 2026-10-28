@@ -11,12 +11,15 @@ import {
   Check,
   ArrowUpRight,
   Question,
+  Heart,
+  HandHeart,
+  ShieldCheck,
 } from "@phosphor-icons/react";
 import { FOUNDATION_INFO, buildWhatsAppLink } from "../data/foundationData";
 
 interface SimpleFaq {
   id: string;
-  emoji: string;
+  icon: React.ElementType;
   question: string;
   answer: string;
   badgeColor: string;
@@ -25,7 +28,7 @@ interface SimpleFaq {
 const SIMPLE_KIDS_FAQS: SimpleFaq[] = [
   {
     id: "faq-1",
-    emoji: "📍",
+    icon: MapPin,
     question: "¿Dónde queda la Fundación Espirales de Vida?",
     answer:
       "Estamos ubicados en la Vía El Peñol Km 10, en el municipio de Marinilla (Antioquia), donde viven y se forman nuestros 20 niños, niñas y adolescentes.",
@@ -33,7 +36,7 @@ const SIMPLE_KIDS_FAQS: SimpleFaq[] = [
   },
   {
     id: "faq-2",
-    emoji: "❤️",
+    icon: Heart,
     question: "¿En qué consiste el modelo de apadrinamiento?",
     answer:
       "Buscamos que las personas y empresas no solo donen un recurso, sino que se involucren acompañando el crecimiento de los niños con tiempo, guía y presencia.",
@@ -41,7 +44,7 @@ const SIMPLE_KIDS_FAQS: SimpleFaq[] = [
   },
   {
     id: "faq-3",
-    emoji: "🎒",
+    icon: HandHeart,
     question: "¿Cuáles son los pilares de la Lista de Necesidades?",
     answer:
       "Kits Escolares, Kits de Aseo Personal, Personal de Apoyo (salud, psicología, peluquería), Infraestructura y Remodelación, Habitaciones y Confort, y Juguetería y Entretenimiento.",
@@ -49,7 +52,7 @@ const SIMPLE_KIDS_FAQS: SimpleFaq[] = [
   },
   {
     id: "faq-4",
-    emoji: "🏢",
+    icon: ShieldCheck,
     question: "¿Cómo pueden sumarse empresas, directivos y colectivos?",
     answer:
       "Nuestra fundación cuenta con NIT oficial 900150558-5. Las empresas pueden aportar insumos, apoyar la remodelación de espacios, hacer voluntariado profesional o apadrinar a los 20 niños.",
@@ -57,7 +60,7 @@ const SIMPLE_KIDS_FAQS: SimpleFaq[] = [
   },
   {
     id: "faq-5",
-    emoji: "📞",
+    icon: PhoneCall,
     question: "¿A qué números podemos comunicarnos para donar o visitar?",
     answer:
       "Puedes comunicarte a la línea de la fundación 313 652 5841 o a las líneas de la campaña Juntos por una Infancia con Amor: 302 832 5126 y 304 387 0899.",
@@ -125,7 +128,7 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
             <div className="rounded-[calc(1.5rem-0.25rem)] bg-white p-5 sm:p-6 flex flex-col h-full shadow-xs">
               <div className="flex items-center gap-2.5 mb-3">
                 <span className="w-10 h-10 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-lg font-bold shadow-sm">
-                  📍
+                  <MapPin weight="fill" className="w-5 h-5" />
                 </span>
                 <div>
                   <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700">
@@ -146,7 +149,7 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/75 via-transparent to-transparent" />
                 <span className="absolute bottom-2.5 left-3 right-3 text-xs font-bold text-white">
-                  🏡 Vía El Peñol Km 10, Marinilla · A 40 min de Medellín
+                  Vía El Peñol Km 10, Marinilla · A 40 min de Medellín
                 </span>
               </div>
 
@@ -181,7 +184,7 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
             <div className="rounded-[calc(1.5rem-0.25rem)] bg-white p-5 sm:p-6 flex flex-col h-full shadow-xs">
               <div className="flex items-center gap-2.5 mb-4">
                 <span className="w-10 h-10 rounded-2xl bg-sky-600 text-white flex items-center justify-center text-lg font-bold shadow-sm">
-                  🚗
+                  <CarProfile weight="fill" className="w-5 h-5" />
                 </span>
                 <div>
                   <span className="text-[11px] font-bold uppercase tracking-wider text-sky-700">
@@ -263,7 +266,7 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
               <div className="flex items-center justify-between gap-2 mb-4">
                 <div className="flex items-center gap-2.5">
                   <span className="w-10 h-10 rounded-2xl bg-rose-600 text-white flex items-center justify-center text-lg font-bold shadow-sm">
-                    📞
+                    <PhoneCall weight="fill" className="w-5 h-5" />
                   </span>
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-wider text-rose-700">
@@ -347,8 +350,9 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           {/* Quick 3-Step Message Card */}
           <div className="lg:col-span-5 rounded-3xl bg-white border-2 border-zinc-200/80 p-6 sm:p-7 shadow-xs">
-            <h3 className="font-logo text-xl sm:text-2xl font-bold text-zinc-900 mb-1">
-              💬 Escríbenos en 10 Segundos
+            <h3 className="font-logo text-xl sm:text-2xl font-bold text-zinc-900 mb-1 flex items-center gap-2">
+              <WhatsappLogo weight="fill" className="w-6 h-6 text-emerald-600 shrink-0" />
+              <span>Escríbenos en 10 Segundos</span>
             </h3>
             <p className="text-xs sm:text-sm text-zinc-600 mb-5">
               Déjanos tu nombre y te abrimos el chat directo en WhatsApp ({FOUNDATION_INFO.phoneDisplay}).
@@ -408,19 +412,19 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
                   className="w-full rounded-xl bg-zinc-50 border-2 border-zinc-200 px-3.5 py-2.5 text-sm font-medium text-zinc-900 focus:outline-none focus:border-rose-500 focus:bg-white"
                 >
                   <option value="Quiero apadrinar o donar para los 20 niños">
-                    ❤️ Apadrinar a un niño o al hogar
+                    Apadrinar a un niño o al hogar
                   </option>
                   <option value="Quiero donar cobijas, pijamas, útiles o juguetes">
-                    🛏️ Donar cobijas, pijamas, útiles o juguetes
+                    Donar cobijas, pijamas, útiles o juguetes
                   </option>
                   <option value="Quiero apoyar el sueño del Parque Infantil">
-                    🛝 Apoyar la construcción del Parque Infantil
+                    Apoyar la construcción del Parque Infantil
                   </option>
                   <option value="Busco Alianza Empresarial RSE (NIT 900150558-5)">
-                    🏢 Alianza Empresarial RSE (NIT 900150558-5)
+                    Alianza Empresarial RSE (NIT 900150558-5)
                   </option>
                   <option value="Quiero visitar la fundación en Marinilla">
-                    🏡 Agendar una visita a Marinilla
+                    Agendar una visita a Marinilla
                   </option>
                 </select>
               </div>
@@ -448,6 +452,7 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
             <div className="space-y-2.5">
               {SIMPLE_KIDS_FAQS.map((faq) => {
                 const isOpen = openFaqId === faq.id;
+                const FaqIcon = faq.icon;
                 return (
                   <div
                     key={faq.id}
@@ -467,7 +472,7 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
                         <span
                           className={`w-9 h-9 rounded-xl border flex items-center justify-center text-base shrink-0 ${faq.badgeColor}`}
                         >
-                          {faq.emoji}
+                          <FaqIcon weight="fill" className="w-5 h-5" />
                         </span>
                         <h4 className="text-sm sm:text-base font-bold text-zinc-900 leading-snug">
                           {faq.question}

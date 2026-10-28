@@ -248,7 +248,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
 
               <div className="mt-3 pt-3 border-t border-zinc-100 flex items-center justify-between text-xs font-semibold text-zinc-500 px-2">
-                <span>📍 Vía El Peñol Km 10 · Marinilla</span>
+                <span className="inline-flex items-center gap-1">
+                  <MapPin weight="fill" className="w-3.5 h-3.5 text-rose-500" />
+                  <span>Vía El Peñol Km 10 · Marinilla</span>
+                </span>
                 <span>Tel: {FOUNDATION_INFO.phoneDisplay}</span>
               </div>
             </motion.div>

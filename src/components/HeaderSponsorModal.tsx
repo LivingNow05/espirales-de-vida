@@ -29,7 +29,7 @@ const PARTICIPATION_MODES = [
     title: "Ser Padrino o Madrina (Tiempo, Guía y Presencia)",
     subtitle:
       "Acompañar el crecimiento de los niños brindándoles tiempo, guía, presencia y apoyo constante.",
-    badge: "❤️ Apadrinamiento",
+    badge: "Apadrinamiento",
     icon: Heart,
   },
   {
@@ -37,7 +37,7 @@ const PARTICIPATION_MODES = [
     title: "Donar Insumos de la Campaña Actual",
     subtitle:
       "Aportar en cualquiera de los 6 pilares: kits escolares, aseo, habitaciones, juguetes, salud o remodelación.",
-    badge: "🎒 Campaña en Marinilla",
+    badge: "Campaña en Marinilla",
     icon: HandHeart,
   },
   {
@@ -45,7 +45,7 @@ const PARTICIPATION_MODES = [
     title: "Vincular Empresa, Entidad o Voluntariado Profesional",
     subtitle:
       "Aliarse como organización (NIT 900150558-5) o aportar talento en salud, psicología, odontología o infraestructura.",
-    badge: "🏢 Empresas y Aliados",
+    badge: "Empresas y Aliados",
     icon: ShieldCheck,
   },
 ] as const;
@@ -215,8 +215,9 @@ export const HeaderSponsorModal: React.FC<HeaderSponsorModalProps> = ({
                     }`}
                   >
                     <div>
-                      <span className="font-logo text-base font-extrabold block">
-                        ❤️ Apadrinar a un Niño o Niña
+                      <span className="font-logo text-base font-extrabold flex items-center gap-1.5">
+                        <Heart weight="fill" className="w-4 h-4 text-rose-600 shrink-0" />
+                        <span>Apadrinar a un Niño o Niña</span>
                       </span>
                       <span className="text-xs text-zinc-600 font-medium block mt-0.5">
                         Elige un espacio del #01 al #20 o permite que te asignemos quien más lo necesite.
@@ -242,8 +243,9 @@ export const HeaderSponsorModal: React.FC<HeaderSponsorModalProps> = ({
                     }`}
                   >
                     <div>
-                      <span className="font-logo text-base font-extrabold block">
-                        🏡 Toda la Fundación (20 Niños)
+                      <span className="font-logo text-base font-extrabold flex items-center gap-1.5">
+                        <UsersThree weight="fill" className="w-4 h-4 text-amber-600 shrink-0" />
+                        <span>Toda la Fundación (20 Niños)</span>
                       </span>
                       <span className="text-xs text-zinc-600 font-medium block mt-0.5">
                         Ideal para empresas, colectivos, familias o donaciones generales al hogar.
@@ -270,13 +272,14 @@ export const HeaderSponsorModal: React.FC<HeaderSponsorModalProps> = ({
                       <button
                         type="button"
                         onClick={() => setSelectedChildNumber("asignar")}
-                        className={`px-3 py-1 rounded-full text-xs font-extrabold transition-all cursor-pointer ${
+                        className={`px-3 py-1 rounded-full text-xs font-extrabold transition-all cursor-pointer inline-flex items-center gap-1 ${
                           selectedChildNumber === "asignar"
                             ? "bg-rose-600 text-white shadow-2xs"
                             : "bg-white text-rose-700 border border-rose-200 hover:bg-rose-100"
                         }`}
                       >
-                        ✨ Asignar quien más lo necesite
+                        <Sparkle weight="fill" className="w-3.5 h-3.5" />
+                        <span>Asignar quien más lo necesite</span>
                       </button>
                     </div>
 
