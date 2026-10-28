@@ -37,7 +37,7 @@ const NAV_ITEMS: NavItem[] = [
     icon: HouseLine,
   },
   {
-    label: "22 Historias",
+    label: "20 Historias",
     href: "/historias",
     isStoriesPage: true,
     dotColor: "bg-sky-500",
@@ -146,7 +146,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="h-7 sm:h-8 w-auto object-contain object-left"
               />
               <span className="text-[11px] font-bold text-rose-600 leading-tight mt-0.5">
-                22 niños en Marinilla
+                20 niños en Marinilla
               </span>
             </div>
           </a>

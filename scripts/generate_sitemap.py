@@ -29,7 +29,7 @@ def generate_sitemaps() -> None:
             "priority": "0.98",
             "changefreq": "daily",
             "image": f"{DOMAIN}/images/reales/sonrisa-confianza.jpg",
-            "title": "Las 22 Historias · Apadrinamiento de Ninos en Marinilla y Medellin",
+            "title": "Las 20 Historias · Apadrinamiento de Ninos en Marinilla y Medellin",
         },
         {
             "loc": f"{DOMAIN}/#mision",

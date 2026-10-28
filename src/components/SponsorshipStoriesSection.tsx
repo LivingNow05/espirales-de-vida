@@ -96,13 +96,13 @@ const STORY_ICONS = [
 ];
 
 /**
- * Los 22 espacios limpios (#01 al #22) para cada uno de los 22 niños, niñas y adolescentes
+ * Los 20 espacios limpios (#01 al #20) para cada uno de los 20 niños, niñas y adolescentes
  * que viven en la Fundación Espirales de Vida en Marinilla.
  * Cero nombres ficticios, cero precios inventados, 100% fiel al texto oficial y a la campaña
  * "Juntos por una Infancia con Amor".
  */
 const TWENTY_TWO_CLEAN_SPACES: ChildStoryProfile[] = Array.from(
-  { length: 22 },
+  { length: 20 },
   (_, index) => {
     const num = String(index + 1).padStart(2, "0");
 
@@ -124,7 +124,7 @@ const TWENTY_TWO_CLEAN_SPACES: ChildStoryProfile[] = Array.from(
       id: `espacio-nino-${num}`,
       slotNumber: index + 1,
       name: `Espacio del Niño / Niña #${num}`,
-      protectiveNote: `Niño / Niña #${num} de 22`,
+      protectiveNote: `Niño / Niña #${num} de 20`,
       age: "Hogar Marinilla",
       ageYears: 10,
       category: "Arte y Creatividad",
@@ -132,7 +132,7 @@ const TWENTY_TWO_CLEAN_SPACES: ChildStoryProfile[] = Array.from(
       shortStory:
         "Espacio limpio y sin fotografía reservado para su historia personal. En Espirales de Vida reconstruimos su dignidad día a día con amor, protección y educación.",
       fullStory:
-        "Este espacio representa a uno de los 22 niños, niñas y adolescentes que viven en nuestra fundación en Marinilla. Buscamos padrinos, madrinas y empresas que no solo donen un recurso, sino que se involucren brindándole tiempo, guía y presencia para que crezca invencible.",
+        "Este espacio representa a uno de los 20 niños, niñas y adolescentes que viven en nuestra fundación en Marinilla. Buscamos padrinos, madrinas y empresas que no solo donen un recurso, sino que se involucren brindándole tiempo, guía y presencia para que crezca invencible.",
       dream: campaignNeedsFocus[index % campaignNeedsFocus.length],
       favoriteWorkshop: pillarFocusList[index % pillarFocusList.length],
       pillarsImpact: [
@@ -148,30 +148,30 @@ const TWENTY_TWO_CLEAN_SPACES: ChildStoryProfile[] = Array.from(
       monthlySponsorshipFormatted: "Aporte voluntario / Insumos / Presencia",
       timeCommitmentSuggestion:
         "Acompañar su crecimiento brindándole tiempo, guía, presencia y apoyo directo.",
-      whatsappMessage: `Hola Fundación Espirales de Vida, quiero apadrinar y apoyar el Espacio del Niño / Niña #${num} de los 22 niños en Marinilla.`,
+      whatsappMessage: `Hola Fundación Espirales de Vida, quiero apadrinar y apoyar el Espacio del Niño / Niña #${num} de los 20 niños en Marinilla.`,
     };
   }
 );
 
 const FULL_HOME_COLLECTIVE_SPACE: ChildStoryProfile = {
-  id: "hogar-completo-22-ninos",
-  slotNumber: 22,
-  name: "Apadrinar a Toda la Fundación (Los 22 Niños)",
+  id: "hogar-completo-20-ninos",
+  slotNumber: 20,
+  name: "Apadrinar a Toda la Fundación (Los 20 Niños)",
   protectiveNote: "Empresas, Entidades, Colectivos y Familias",
-  age: "22 Niños en Marinilla",
-  ageYears: 22,
-  category: "Hogar Completo (22 Niños)",
+  age: "20 Niños en Marinilla",
+  ageYears: 20,
+  category: "Hogar Completo (20 Niños)",
   image: "",
   shortStory:
-    "Para empresas, directivos, colectivos y familias que desean respaldar a los 22 niños al mismo tiempo en los 3 frentes fundamentales y los 6 pilares de la campaña.",
+    "Para empresas, directivos, colectivos y familias que desean respaldar a los 20 niños al mismo tiempo en los 3 frentes fundamentales y los 6 pilares de la campaña.",
   fullStory:
-    "Las grandes transformaciones nunca son obra de una sola persona; son el resultado de un equipo comprometido. Con esta modalidad tu empresa u organización se involucra con los 22 niños en Marinilla: aportando kits escolares, kits de aseo, confort en habitaciones, remodelación de infraestructura, voluntariado profesional o apadrinamiento integral.",
+    "Las grandes transformaciones nunca son obra de una sola persona; son el resultado de un equipo comprometido. Con esta modalidad tu empresa u organización se involucra con los 20 niños en Marinilla: aportando kits escolares, kits de aseo, confort en habitaciones, remodelación de infraestructura, voluntariado profesional o apadrinamiento integral.",
   dream:
     "Abastecer los 6 Pilares de la campaña 'Juntos por una Infancia con Amor' y construir su espacio de juego propio",
   favoriteWorkshop:
     "Dignidad Diaria · Desarrollo y Alegría · Infraestructura y Remodelación",
   pillarsImpact: [
-    "Impacto directo e inmediato en la vida de los 22 niños, niñas y adolescentes",
+    "Impacto directo e inmediato en la vida de los 20 niños, niñas y adolescentes",
     "Respaldo institucional con NIT 900150558-5 en Marinilla, Antioquia",
   ],
   needsList: [
@@ -184,7 +184,7 @@ const FULL_HOME_COLLECTIVE_SPACE: ChildStoryProfile = {
   timeCommitmentSuggestion:
     "Involucrarse como empresa o colectivo con tiempo, guía, presencia y recursos.",
   whatsappMessage:
-    "Hola Fundación Espirales de Vida, queremos involucrarnos como empresa/colectivo para apoyar a los 22 niños en Marinilla.",
+    "Hola Fundación Espirales de Vida, queremos involucrarnos como empresa/colectivo para apoyar a los 20 niños en Marinilla.",
 };
 
 const SIMPLE_HELP_OPTIONS = [
@@ -226,7 +226,10 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
 
   useEffect(() => {
     if (externalSelectedStoryId) {
-      if (externalSelectedStoryId === "hogar-completo-22-ninos") {
+      if (
+        externalSelectedStoryId === "hogar-completo-20-ninos" ||
+        externalSelectedStoryId === "hogar-completo-22-ninos"
+      ) {
         handleOpenStory(FULL_HOME_COLLECTIVE_SPACE);
       } else {
         const found =
@@ -250,7 +253,10 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
 
   const handleOpenStory = (story: ChildStoryProfile) => {
     setSelectedStory(story);
-    if (story.id === "hogar-completo-22-ninos") {
+    if (
+      story.id === "hogar-completo-20-ninos" ||
+      story.id === "hogar-completo-22-ninos"
+    ) {
       setSelectedHelpOption(SIMPLE_HELP_OPTIONS[2].shortTag);
     } else {
       setSelectedHelpOption(SIMPLE_HELP_OPTIONS[0].shortTag);
@@ -303,7 +309,7 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
             </button>
             <span>/</span>
             <span className="text-rose-600 font-extrabold">
-              Los 22 Espacios de Apadrinamiento
+              Los 20 Espacios de Apadrinamiento
             </span>
           </div>
         </div>
@@ -318,13 +324,13 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
           <h1 className="font-logo text-3xl sm:text-5xl lg:text-[3.4rem] font-extrabold tracking-tight text-zinc-950 leading-[1.12] mb-4">
             Los{" "}
             <span className="text-rose-600 underline decoration-amber-400 decoration-4 underline-offset-4">
-              22 Niños
+              20 Niños
             </span>{" "}
             de Espirales de Vida en Marinilla
           </h1>
 
           <p className="text-base sm:text-lg text-zinc-700 font-medium leading-relaxed">
-            Promovemos un modelo de apadrinamiento donde personas, familias y empresas no solo donan un recurso, sino que se involucran acompañando el crecimiento de estos 22 niños con <strong>tiempo, guía y presencia</strong>.
+            Promovemos un modelo de apadrinamiento donde personas, familias y empresas no solo donan un recurso, sino que se involucran acompañando el crecimiento de estos 20 niños con <strong>tiempo, guía y presencia</strong>.
           </p>
         </div>
 
@@ -336,10 +342,10 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
             </span>
             <div>
               <p className="text-sm font-extrabold text-zinc-900">
-                Elige un espacio (#01 al #22)
+                Elige un espacio (#01 al #20)
               </p>
               <p className="text-xs text-zinc-600 font-medium">
-                Cada tarjeta representa a uno de los 22 niños de la fundación.
+                Cada tarjeta representa a uno de los 20 niños de la fundación.
               </p>
             </div>
           </div>
@@ -385,7 +391,7 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
                   Empresas (NIT {FOUNDATION_INFO.nit}), Directivos, Colectivos y Familias
                 </span>
                 <h2 className="font-logo text-xl sm:text-2xl font-extrabold text-zinc-950">
-                  ¿Desean involucrarse con los 22 niños como Hogar Completo?
+                  ¿Desean involucrarse con los 20 niños como Hogar Completo?
                 </h2>
               </div>
             </div>
@@ -394,12 +400,12 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
               onClick={() => handleOpenStory(FULL_HOME_COLLECTIVE_SPACE)}
               className="w-full md:w-auto min-h-[48px] px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm sm:text-base font-extrabold shrink-0 shadow-sm transition-all cursor-pointer active:scale-95"
             >
-              Apadrinar Hogar Completo (22 Niños)
+              Apadrinar Hogar Completo (20 Niños)
             </button>
           </div>
         </div>
 
-        {/* Vibrant, Airy 22 Clean Story Spaces Grid (Sin fotos y sin historias ficticias) */}
+        {/* Vibrant, Airy 20 Clean Story Spaces Grid (Sin fotos y sin historias ficticias) */}
         <motion.div
           layout
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-14"
@@ -493,7 +499,7 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
             “Hoy sus miradas y sus sueños están en nuestras manos”
           </h3>
           <p className="text-sm sm:text-base text-zinc-600 font-medium mb-4">
-            Escríbenos para asignarte uno de los 22 espacios de apadrinamiento o coordinar tu donación de insumos, talento profesional, infraestructura o aportes económicos.
+            Escríbenos para asignarte uno de los 20 espacios de apadrinamiento o coordinar tu donación de insumos, talento profesional, infraestructura o aportes económicos.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2 mb-6 text-xs sm:text-sm font-extrabold text-zinc-700">
             <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-50 border border-amber-200">
@@ -508,7 +514,7 @@ export const SponsorshipStoriesSection: React.FC<SponsorshipStoriesSectionProps>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href={buildWhatsAppLink(
-                "Hola Fundación Espirales de Vida, estoy en la página de los 22 niños y quiero información para apadrinar o sumarme a la campaña Juntos por una Infancia con Amor."
+                "Hola Fundación Espirales de Vida, estoy en la página de los 20 niños y quiero información para apadrinar o sumarme a la campaña Juntos por una Infancia con Amor."
               )}
               target="_blank"
               rel="noopener noreferrer"

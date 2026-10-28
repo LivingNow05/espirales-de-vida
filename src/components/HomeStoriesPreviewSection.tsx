@@ -18,7 +18,7 @@ export interface HomeStoriesPreviewSectionProps {
 const PREVIEW_SPACES = [
   {
     id: "espacio-nino-01",
-    badge: "Niño / Niña #01 de 22",
+    badge: "Niño / Niña #01 de 20",
     pillarTag: "4 Pilares · Albergue, Cuidado, Psicología y Educación",
     title: "Espacio #01 · Acompañar mi Crecimiento",
     description:
@@ -35,7 +35,7 @@ const PREVIEW_SPACES = [
   },
   {
     id: "espacio-nino-02",
-    badge: "Niño / Niña #02 de 22",
+    badge: "Niño / Niña #02 de 20",
     pillarTag: "4 Pilares · Albergue, Cuidado, Psicología y Educación",
     title: "Espacio #02 · Acompañar mi Crecimiento",
     description:
@@ -52,11 +52,11 @@ const PREVIEW_SPACES = [
   },
   {
     id: "espacio-nino-03",
-    badge: "Niño / Niña #03 de 22",
+    badge: "Niño / Niña #03 de 20",
     pillarTag: "4 Pilares · Albergue, Cuidado, Psicología y Educación",
     title: "Espacio #03 · Acompañar mi Crecimiento",
     description:
-      "Más allá de lo material, promovemos un modelo de apadrinamiento donde personas y empresas se involucren en el bienestar, la alegría y los sueños de nuestros 22 niños.",
+      "Más allá de lo material, promovemos un modelo de apadrinamiento donde personas y empresas se involucren en el bienestar, la alegría y los sueños de nuestros 20 niños.",
     highlight:
       "Apoyo integral: Recreación + Apoyo Psicosocial + Presencia",
     cardBg: "bg-emerald-50 border-emerald-200 text-emerald-950",
@@ -78,7 +78,7 @@ export const HomeStoriesPreviewSection: React.FC<HomeStoriesPreviewSectionProps>
       className="py-16 sm:py-24 bg-gradient-to-b from-[#FFFDF9] via-rose-50/35 to-sky-50/30 relative border-t border-zinc-200/60 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Clean Header + Direct CTA to the Dedicated 22 Stories Page */}
+        {/* Clean Header + Direct CTA to the Dedicated 20 Stories Page */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-100 border-2 border-rose-300 text-rose-800 text-xs sm:text-sm font-extrabold mb-4">
@@ -89,12 +89,12 @@ export const HomeStoriesPreviewSection: React.FC<HomeStoriesPreviewSectionProps>
             <h2 className="font-logo text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-950 leading-[1.12] mb-3">
               Conecta tu corazón con el futuro de estos{" "}
               <span className="text-rose-600 underline decoration-amber-400 decoration-4 underline-offset-4">
-                22 pequeños
+                20 pequeños
               </span>
             </h2>
 
             <p className="text-base sm:text-lg text-zinc-700 font-medium leading-relaxed">
-              Queremos que las empresas, padrinos y madrinas no solo donen un recurso, sino que se involucren: acompañando el crecimiento de nuestros 22 niños, niñas y adolescentes con <strong>tiempo, guía y presencia</strong>.
+              Queremos que las empresas, padrinos y madrinas no solo donen un recurso, sino que se involucren: acompañando el crecimiento de nuestros 20 niños, niñas y adolescentes con <strong>tiempo, guía y presencia</strong>.
             </p>
           </div>
 
@@ -105,7 +105,7 @@ export const HomeStoriesPreviewSection: React.FC<HomeStoriesPreviewSectionProps>
               className="w-full sm:w-auto min-h-[56px] inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full bg-rose-600 hover:bg-rose-700 text-white text-base sm:text-lg font-extrabold shadow-[0_12px_28px_rgba(225,29,72,0.3)] active:scale-95 transition-all cursor-pointer"
             >
               <BookOpen weight="fill" className="w-5 h-5 text-amber-300 shrink-0" />
-              <span>Ver los 22 Espacios de Apadrinamiento</span>
+              <span>Ver los 20 Espacios de Apadrinamiento</span>
               <ArrowRight weight="bold" className="w-5 h-5 shrink-0" />
             </button>
           </div>
@@ -193,7 +193,7 @@ export const HomeStoriesPreviewSection: React.FC<HomeStoriesPreviewSectionProps>
           })}
         </div>
 
-        {/* Dedicated CTA Portal Banner to open the full 22 Spaces Page */}
+        {/* Dedicated CTA Portal Banner to open the full 20 Spaces Page */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -208,15 +208,15 @@ export const HomeStoriesPreviewSection: React.FC<HomeStoriesPreviewSectionProps>
               </div>
               <div>
                 <h3 className="font-logo text-2xl sm:text-3xl font-extrabold text-zinc-950 mb-2">
-                  “Los 22 niños de Espirales de Vida en Marinilla no son invisibles”
+                  “Los 20 niños de Espirales de Vida en Marinilla no son invisibles”
                 </h3>
                 <p className="text-sm sm:text-base text-zinc-600 font-medium leading-relaxed mb-3">
-                  Entra a la página dedicada a los <strong>22 niños, niñas y adolescentes</strong> para elegir uno de los 22 espacios numerados o involucrar a tu empresa (NIT {FOUNDATION_INFO.nit}) con todo el hogar.
+                  Entra a la página dedicada a los <strong>20 niños, niñas y adolescentes</strong> para elegir uno de los 20 espacios numerados o involucrar a tu empresa (NIT {FOUNDATION_INFO.nit}) con todo el hogar.
                 </p>
                 <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 text-xs font-bold text-zinc-700">
                   <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-zinc-100">
                     <CheckCircle weight="fill" className="w-3.5 h-3.5 text-emerald-600" />
-                    22 Espacios Limpios
+                    20 Espacios Limpios
                   </span>
                   <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-zinc-100">
                     <CheckCircle weight="fill" className="w-3.5 h-3.5 text-rose-600" />
@@ -236,12 +236,12 @@ export const HomeStoriesPreviewSection: React.FC<HomeStoriesPreviewSectionProps>
                 onClick={() => onNavigateToStoriesPage()}
                 className="w-full lg:w-auto min-h-[58px] inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white text-base sm:text-lg font-extrabold shadow-[0_12px_30px_rgba(79,70,229,0.3)] active:scale-95 transition-all cursor-pointer"
               >
-                <span>Abrir Página de los 22 Niños</span>
+                <span>Abrir Página de los 20 Niños</span>
                 <ArrowRight weight="bold" className="w-5 h-5 shrink-0" />
               </button>
               <button
                 type="button"
-                onClick={() => onNavigateToStoriesPage("hogar-completo-22-ninos")}
+                onClick={() => onNavigateToStoriesPage("hogar-completo-20-ninos")}
                 className="w-full lg:w-auto min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 text-xs sm:text-sm font-extrabold transition-all cursor-pointer"
               >
                 <Heart weight="fill" className="w-4 h-4 text-rose-600" />

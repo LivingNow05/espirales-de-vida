@@ -64,7 +64,7 @@ const OFFICIAL_THREE_FRONTS: OfficialFrontCard[] = [
       "👕 Pijamas cómodas y juegos de sábanas",
     ],
     whatsappMessage:
-      "Hola Fundación Espirales de Vida, quiero apoyar el Frente 1 (Dignidad Diaria: utensilios de aseo personal, cobijas abrigadoras y pijamas cómodas para los 22 niños en Marinilla).",
+      "Hola Fundación Espirales de Vida, quiero apoyar el Frente 1 (Dignidad Diaria: utensilios de aseo personal, cobijas abrigadoras y pijamas cómodas para los 20 niños en Marinilla).",
   },
   {
     id: "frente-2-desarrollo",
@@ -92,7 +92,7 @@ const OFFICIAL_THREE_FRONTS: OfficialFrontCard[] = [
     badge: "Tercer Frente Fundamental",
     title: "La Infraestructura",
     description:
-      "Queremos intervenir y mejorar las instalaciones del establecimiento, garantizando espacios más seguros, cómodos y funcionales para los 22 niños, niñas y adolescentes.",
+      "Queremos intervenir y mejorar las instalaciones del establecimiento, garantizando espacios más seguros, cómodos y funcionales para los 20 niños, niñas y adolescentes.",
     primaryPhoto: "/images/reales/casa-hogar-instalaciones.jpg",
     primaryCaption: "Instalaciones en Vía El Peñol Km 10",
     secondaryPhoto: "/images/reales/circulo-integracion-campestre.jpg",
@@ -320,7 +320,7 @@ const REAL_GALLERY_PHOTOS: GalleryPhoto[] = [
     src: "/images/reales/tarde-de-helados.jpg",
     title: "Cuidado Personal y Bienestar",
     caption:
-      "Momentos de afecto, alimentación y cuidado diario para los 22 niños.",
+      "Momentos de afecto, alimentación y cuidado diario para los 20 niños.",
     tag: "🍦 Bienestar",
     tagColor: "bg-rose-500 text-white",
   },
@@ -383,7 +383,7 @@ export const CampaignNeedsBanner: React.FC = () => {
       ? `Hola Fundación Espirales de Vida, me uno a la campaña "Juntos por una Infancia con Amor" en Marinilla. Quiero apoyar en:\n- ${selectedPillarTitles.join(
           "\n- "
         )}\n¿Cómo coordinamos la entrega o el aporte?`
-      : `Hola Fundación Espirales de Vida, quiero sumarme a la campaña "Juntos por una Infancia con Amor" para apoyar a los 22 niños en Marinilla.`;
+      : `Hola Fundación Espirales de Vida, quiero sumarme a la campaña "Juntos por una Infancia con Amor" para apoyar a los 20 niños en Marinilla.`;
 
   return (
     <motion.div
@@ -645,7 +645,7 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
           </h2>
 
           <p className="text-base sm:text-lg text-zinc-700 leading-relaxed">
-            Tocamos las puertas de empresas, entidades y corazones generosos para multiplicar el impacto en la vida de nuestros <strong>22 niños, niñas y adolescentes</strong> en Marinilla.
+            Tocamos las puertas de empresas, entidades y corazones generosos para multiplicar el impacto en la vida de nuestros <strong>20 niños, niñas y adolescentes</strong> en Marinilla.
           </p>
         </div>
 
@@ -800,7 +800,7 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
               “Un niño que se siente respaldado por una comunidad es un niño que crece invencible”
             </h3>
             <p className="text-sm sm:text-base text-zinc-600 leading-relaxed">
-              Queremos que las empresas, familias, padrinos y madrinas no solo donen un recurso, sino que se involucren: acompañando el crecimiento de nuestros 22 niños con <strong>tiempo, guía y presencia</strong>.
+              Queremos que las empresas, familias, padrinos y madrinas no solo donen un recurso, sino que se involucren: acompañando el crecimiento de nuestros 20 niños con <strong>tiempo, guía y presencia</strong>.
             </p>
           </div>
 
@@ -818,7 +818,7 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
                   Tiempo, Guía y Presencia
                 </h4>
                 <p className="text-xs sm:text-sm text-zinc-700 leading-relaxed mb-4">
-                  Acompaña el crecimiento de uno de los 22 niños de la fundación brindándole tu apoyo, motivación, presencia y respaldo constante.
+                  Acompaña el crecimiento de uno de los 20 niños de la fundación brindándole tu apoyo, motivación, presencia y respaldo constante.
                 </p>
               </div>
               <a
@@ -831,7 +831,7 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
                 }}
                 className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-rose-600 hover:bg-rose-700 text-white py-2.5 px-4 text-xs sm:text-sm font-bold transition-colors"
               >
-                <span>Conocer los 22 Espacios</span>
+                <span>Conocer los 20 Espacios</span>
                 <ArrowUpRight weight="bold" className="w-4 h-4" />
               </a>
             </div>
@@ -857,7 +857,7 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
               </div>
               <a
                 href={buildWhatsAppLink(
-                  "Hola Fundación Espirales de Vida, escribo en nombre de una empresa u organización para involucrarnos con los 22 niños en Marinilla."
+                  "Hola Fundación Espirales de Vida, escribo en nombre de una empresa u organización para involucrarnos con los 20 niños en Marinilla."
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -886,7 +886,7 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
               </div>
               <a
                 href={buildWhatsAppLink(
-                  "Hola Fundación Espirales de Vida, quiero sumar mi apoyo con insumos o voluntariado profesional para los 22 niños en Marinilla."
+                  "Hola Fundación Espirales de Vida, quiero sumar mi apoyo con insumos o voluntariado profesional para los 20 niños en Marinilla."
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -911,7 +911,7 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
                 Galería de Fotos en Marinilla
               </h3>
               <p className="text-sm sm:text-base text-zinc-600 mt-1">
-                Desliza en tu celular o toca cualquier foto para ver en grande el día a día de nuestros 22 niños.
+                Desliza en tu celular o toca cualquier foto para ver en grande el día a día de nuestros 20 niños.
               </p>
             </div>
             <span className="text-xs font-bold text-rose-700 bg-rose-50 border border-rose-200 px-3.5 py-2 rounded-full self-start sm:self-auto">
@@ -1044,7 +1044,7 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
 
                 <a
                   href={buildWhatsAppLink(
-                    "Hola Fundación Espirales de Vida, vi las fotos del hogar en Marinilla y quiero apoyar a los 22 niños."
+                    "Hola Fundación Espirales de Vida, vi las fotos del hogar en Marinilla y quiero apoyar a los 20 niños."
                   )}
                   target="_blank"
                   rel="noopener noreferrer"

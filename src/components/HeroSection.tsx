@@ -51,7 +51,7 @@ const REAL_HERO_PHOTOS: RealHeroPhoto[] = [
 
 const COLORFUL_IMPACT_CARDS = [
   {
-    metric: "22 Niños",
+    metric: "20 Niños",
     label: "Niños, niñas y adolescentes en un verdadero hogar",
     cardStyle: "bg-rose-50 border-rose-200 text-rose-900",
     badgeStyle: "bg-rose-600 text-white",
@@ -127,7 +127,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="flex flex-wrap items-center gap-3 mb-5">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 border-2 border-amber-300 text-amber-950 text-xs sm:text-sm font-extrabold shadow-xs font-logo">
                 <Smiley weight="fill" className="w-5 h-5 text-rose-600 shrink-0" />
-                <span>22 niños en Marinilla, Antioquia</span>
+                <span>20 niños en Marinilla, Antioquia</span>
               </div>
             </div>
 
@@ -135,14 +135,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <h1 className="font-logo text-3xl sm:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight text-zinc-950 leading-[1.12] mb-5">
               Un refugio lleno de color donde{" "}
               <span className="text-rose-600 underline decoration-amber-400 decoration-4 underline-offset-4">
-                22 niños
+                20 niños
               </span>{" "}
               construyen sus sueños
             </h1>
 
             {/* Max 2 short, simple sentences */}
             <p className="text-base sm:text-lg lg:text-xl text-zinc-700 font-medium leading-relaxed mb-8 max-w-[48ch]">
-              En nuestra casa campestre de Marinilla cuidamos, educamos y abrazamos a 22 niños y adolescentes todos los días. ¡Tú puedes ser el padrino o madrina que impulse su historia!
+              En nuestra casa campestre de Marinilla cuidamos, educamos y abrazamos a 20 niños y adolescentes todos los días. ¡Tú puedes ser el padrino o madrina que impulse su historia!
             </p>
 
             {/* Big Touch-Friendly Buttons for Mobile & Tablet */}
@@ -153,7 +153,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 className="group min-h-[54px] inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-full bg-rose-600 text-white text-base sm:text-lg font-extrabold hover:bg-rose-700 active:scale-95 transition-all shadow-[0_10px_28px_rgba(225,29,72,0.3)]"
               >
                 <Heart weight="fill" className="w-5 h-5 text-amber-300 shrink-0" />
-                <span>Conocer las 22 Historias</span>
+                <span>Conocer las 20 Historias</span>
               </a>
 
               <a

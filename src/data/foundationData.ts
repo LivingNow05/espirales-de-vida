@@ -1,5 +1,5 @@
 /**
- * Datos oficiales, historias de los 22 niños y galería fotográfica real
+ * Datos oficiales, historias de los 20 niños y galería fotográfica real
  * de la Fundación Espirales de Vida · NIT 900150558-5 · Vía El Peñol Km 10, Marinilla, Antioquia.
  * Lenguaje claro, cálido y sencillo para que cualquier persona, desde un niño de 9 años hasta un empresario,
  * comprenda cómo ayudar hoy mismo.
@@ -12,7 +12,7 @@ export type StoryCategory =
   | "Deporte y Trabajo en Equipo"
   | "Lectura y Ciencia"
   | "Naturaleza y Oficios"
-  | "Hogar Completo (22 Niños)";
+  | "Hogar Completo (20 Niños)";
 
 export type StoryColorTheme = "rose" | "sky" | "emerald" | "indigo" | "amber";
 
@@ -170,10 +170,10 @@ export interface RealGalleryPhoto {
 }
 
 const VISION_TEXT =
-  "Cuidamos, educamos y acompañamos con amor a 22 niños, niñas y jóvenes que han vivido momentos difíciles. Les damos las herramientas para que crezcan seguros, estudien y cumplan sus sueños.";
+  "Cuidamos, educamos y acompañamos con amor a 20 niños, niñas y jóvenes que han vivido momentos difíciles. Les damos las herramientas para que crezcan seguros, estudien y cumplan sus sueños.";
 
 const MISSION_INTRO_TEXT =
-  "En Marinilla, Antioquia, existe una casa llena de vida llamada Fundación Espirales de Vida. Aquí viven 22 niños, niñas y jóvenes que antes pasaron por momentos duros, pero que hoy tienen una cama calientica, comida rica, colegio y personas que los quieren y los cuidan todos los días.";
+  "En Marinilla, Antioquia, existe una casa llena de vida llamada Fundación Espirales de Vida. Aquí viven 20 niños, niñas y jóvenes que antes pasaron por momentos duros, pero que hoy tienen una cama calientica, comida rica, colegio y personas que los quieren y los cuidan todos los días.";
 
 export const FOUNDATION_INFO: FoundationInfo = {
   name: "Fundación Espirales de Vida",
@@ -186,12 +186,12 @@ export const FOUNDATION_INFO: FoundationInfo = {
   phoneRaw: "573136525841",
   phoneDisplay: "313 652 5841",
   whatsappBaseUrl: "https://wa.me/573136525841",
-  totalChildren: 22,
+  totalChildren: 20,
   vision: VISION_TEXT,
   missionIntro: MISSION_INTRO_TEXT,
   closingManifesto:
-    "Cambiar una vida es más fácil cuando lo hacemos juntos. Los 22 niños de Espirales de Vida en Marinilla tienen grandes sueños y hoy tú puedes ser parte de su familia de apoyo.",
-  slogan: "Un hogar donde 22 niños vuelven a sonreír y a soñar",
+    "Cambiar una vida es más fácil cuando lo hacemos juntos. Los 20 niños de Espirales de Vida en Marinilla tienen grandes sueños y hoy tú puedes ser parte de su familia de apoyo.",
+  slogan: "Un hogar donde 20 niños vuelven a sonreír y a soñar",
   heroRealImage: "/images/reales/comunidad-equipo-hogar.jpg",
   communityRealImage: "/images/reales/circulo-integracion-campestre.jpg",
   coordinates: {
@@ -213,7 +213,7 @@ export const FOUNDATION_INFO: FoundationInfo = {
   Address: "Vía El Peñol Km 10, Marinilla, Antioquia",
   PhoneRaw: "573136525841",
   PhoneDisplay: "313 652 5841",
-  TotalChildren: 22,
+  TotalChildren: 20,
   Vision: VISION_TEXT,
   MissionIntro: MISSION_INTRO_TEXT,
 };
@@ -226,7 +226,7 @@ export const ALUMNA_TESTIMONIAL: AlumnaTestimonial = {
   context:
     "Escogimos apoyar a Espirales de Vida porque sabemos de verdad cómo este hogar abraza y cambia la vida de cada niño que llega.",
   fullTestimony:
-    "De todas las fundaciones propuestas se escogió la mía: Espirales de Vida. Es una casa hogar que cuida a 22 niños que necesitan protección, dándoles cariño, ayuda psicológica, comida rica y estudio. Quiero que todos apoyemos esta fundación porque yo viví allí un año cuando era niña. Es un lugar hermoso donde me dieron mucho amor y paz.",
+    "De todas las fundaciones propuestas se escogió la mía: Espirales de Vida. Es una casa hogar que cuida a 20 niños que necesitan protección, dándoles cariño, ayuda psicológica, comida rica y estudio. Quiero que todos apoyemos esta fundación porque yo viví allí un año cuando era niña. Es un lugar hermoso donde me dieron mucho amor y paz.",
   yearDuration: "1 año viviendo en el hogar durante su infancia",
   location: "Marinilla, Antioquia",
   realPhoto: "/images/reales/sonrisa-confianza.jpg",
@@ -245,8 +245,8 @@ export const FOUR_PILLARS: FoundationPillar[] = [
     title: "Un Hogar Seguro",
     subtitle: "Cuidado y paz día y noche en Marinilla",
     description:
-      "Una casa en el campo donde los 22 niños duermen tranquilos, juegan al aire libre y se sienten cuidados las 24 horas del día.",
-    impactMetric: "22 niños y jóvenes bajo un techo seguro",
+      "Una casa en el campo donde los 20 niños duermen tranquilos, juegan al aire libre y se sienten cuidados las 24 horas del día.",
+    impactMetric: "20 niños y jóvenes bajo un techo seguro",
     highlights: [
       "Casa rodeada de naturaleza en la Vía El Peñol Km 10",
       "Educadores y cuidadores cariñosos día y noche",
@@ -278,7 +278,7 @@ export const FOUR_PILLARS: FoundationPillar[] = [
     subtitle: "Escucha y cariño para volver a confiar",
     description:
       "Psicólogos y profes que escuchan a cada niño con paciencia. Les ayudan a sanar la tristeza y a descubrir lo valiosos que son.",
-    impactMetric: "Los 22 niños reciben apoyo emocional y escucha diaria",
+    impactMetric: "Los 20 niños reciben apoyo emocional y escucha diaria",
     highlights: [
       "Espacios para hablar, dibujar y expresar lo que sienten",
       "Juegos en grupo que enseñan a respetar y a tener buenos amigos",
@@ -309,32 +309,32 @@ export const THREE_CAMPAIGN_FRONTS: CampaignFront[] = [
   {
     id: "frente-dignidad-diaria",
     number: "Frente 01",
-    badge: "Ayuda Inmediata · 22 Niños",
+    badge: "Ayuda Inmediata · 20 Niños",
     title: "Noches Calienticas y Cuidado Diario",
-    subtitle: "Cobijas, pijamas y kits de aseo para los 22 niños",
+    subtitle: "Cobijas, pijamas y kits de aseo para los 20 niños",
     description:
-      "En Marinilla hace frío por las noches. Por eso necesitamos cobijas gruesas, pijamas suaves y kits de aseo (cepillo de dientes, crema, jabón y champú) para que los 22 niños duerman calienticos y se cuiden todos los días.",
+      "En Marinilla hace frío por las noches. Por eso necesitamos cobijas gruesas, pijamas suaves y kits de aseo (cepillo de dientes, crema, jabón y champú) para que los 20 niños duerman calienticos y se cuiden todos los días.",
     image: "/images/reales/comunidad-equipo-hogar.jpg",
     fallbackImage: "/images/reales/fraternidad-compartir.jpg",
     progressPercentage: 45,
-    currentMetric: "10 de 22 kits completos ya fueron entregados",
-    targetMetric: "Meta: 22 kits completos de abrigo y aseo",
+    currentMetric: "10 de 20 kits completos ya fueron entregados",
+    targetMetric: "Meta: 20 kits completos de abrigo y aseo",
     urgentItems: [
       {
         name: "Cobijas térmicas y abrigadoras",
-        quantityNeeded: "22 cobijas nuevas",
+        quantityNeeded: "20 cobijas nuevas",
         priority: "Urgente",
         detail: "Para abrigar a los niños en las noches frías y lluviosas de Marinilla.",
       },
       {
         name: "Pijamas cómodas y calienticas",
-        quantityNeeded: "44 pijamas (2 para cada niño)",
+        quantityNeeded: "40 pijamas (2 para cada niño)",
         priority: "Urgente",
         detail: "Tallas desde los 6 hasta los 16 años para niños, niñas y jóvenes.",
       },
       {
         name: "Kits de aseo personal",
-        quantityNeeded: "22 kits cada mes",
+        quantityNeeded: "20 kits cada mes",
         priority: "Alta",
         detail: "Cepillo y crema de dientes, jabón, champú, desodorante y toallas suaves.",
       },
@@ -344,7 +344,7 @@ export const THREE_CAMPAIGN_FRONTS: CampaignFront[] = [
     corporateRseNote:
       "Es una campaña hermosa y muy fácil para hacer entre compañeros de oficina, colegios o grupos de amigos en Medellín y el Oriente Antioqueño.",
     whatsappMessage:
-      "Hola Fundación Espirales de Vida, quiero ayudar en el Frente 1 (cobijas, pijamas y kits de aseo para los 22 niños en Marinilla). ¿Cómo podemos coordinar?",
+      "Hola Fundación Espirales de Vida, quiero ayudar en el Frente 1 (cobijas, pijamas y kits de aseo para los 20 niños en Marinilla). ¿Cómo podemos coordinar?",
   },
   {
     id: "frente-desarrollo-parque",
@@ -353,12 +353,12 @@ export const THREE_CAMPAIGN_FRONTS: CampaignFront[] = [
     title: "Útiles, Juguetes y Nuestro Parque Infantil",
     subtitle: "Cuadernos para estudiar y un parque seguro para jugar",
     description:
-      "Queremos que los 22 niños tengan sus cuadernos y colores para el colegio, juguetes para divertirse y cumplir nuestro gran sueño: renovar y construir un Parque Infantil hermoso y seguro dentro de la casa hogar.",
+      "Queremos que los 20 niños tengan sus cuadernos y colores para el colegio, juguetes para divertirse y cumplir nuestro gran sueño: renovar y construir un Parque Infantil hermoso y seguro dentro de la casa hogar.",
     image: "/images/reales/parque-actual-marinilla.jpg",
     fallbackImage: "/images/reales/parque-juegos-detalle.jpg",
     progressPercentage: 32,
     currentMetric: "Avance del 32% para hacer realidad el parque y los kits",
-    targetMetric: "Meta: 1 Parque Infantil renovado + 22 Kits Escolares",
+    targetMetric: "Meta: 1 Parque Infantil renovado + 20 Kits Escolares",
     urgentItems: [
       {
         name: "Mejora y construcción del Parque Infantil",
@@ -368,7 +368,7 @@ export const THREE_CAMPAIGN_FRONTS: CampaignFront[] = [
       },
       {
         name: "Morrales con útiles escolares y pinturas",
-        quantityNeeded: "22 morrales completos",
+        quantityNeeded: "20 morrales completos",
         priority: "Alta",
         detail: "Cuadernos, lápices, colores, témperas, pinceles, reglas y zapatos para ir a estudiar.",
       },
@@ -393,7 +393,7 @@ export const THREE_CAMPAIGN_FRONTS: CampaignFront[] = [
     title: "Mejorar las Habitaciones y Salones",
     subtitle: "Pintura, techos sin goteras, camas cómodas y agua calientica",
     description:
-      "La casa donde viven los 22 niños en la Vía El Peñol Km 10 necesita arreglos importantes: pintar paredes, arreglar techos para que no entre la humedad, renovar camas y asegurar duchas con agua caliente.",
+      "La casa donde viven los 20 niños en la Vía El Peñol Km 10 necesita arreglos importantes: pintar paredes, arreglar techos para que no entre la humedad, renovar camas y asegurar duchas con agua caliente.",
     image: "/images/reales/casa-hogar-instalaciones.jpg",
     fallbackImage: "/images/reales/circulo-integracion-campestre.jpg",
     progressPercentage: 38,
@@ -404,7 +404,7 @@ export const THREE_CAMPAIGN_FRONTS: CampaignFront[] = [
         name: "Pintura y arreglo de techos y paredes",
         quantityNeeded: "Arreglo de habitaciones y comedor",
         priority: "Urgente",
-        detail: "Quitar la humedad y pintar con colores alegres los cuartos donde duermen los 22 niños.",
+        detail: "Quitar la humedad y pintar con colores alegres los cuartos donde duermen los 20 niños.",
       },
       {
         name: "Camas, colchones cómodos y mesas de estudio",
@@ -435,11 +435,11 @@ export const STORY_CATEGORIES: StoryCategory[] = [
   "Deporte y Trabajo en Equipo",
   "Lectura y Ciencia",
   "Naturaleza y Oficios",
-  "Hogar Completo (22 Niños)",
+  "Hogar Completo (20 Niños)",
 ];
 
 /**
- * Los 22 espacios de historias de los niños de la Fundación Espirales de Vida.
+ * Los 20 espacios de historias de los niños de la Fundación Espirales de Vida.
  * REGLA FUNDAMENTAL: Ninguna tarjeta de niño lleva fotografía (image: "").
  * Protegemos su identidad y dejamos el espacio limpio porque LA HISTORIA ES LO IMPORTANTE.
  */
@@ -452,14 +452,14 @@ export const ALL_22_CHILDREN_SLOTS: ChildStoryProfile[] = [
     title: "Historia #01 · Espacio para conocer mi historia",
     name: "Historia #01 · Pintar un nuevo comienzo",
     protectiveNote: "Tarjeta sin foto: cuidamos su rostro porque su historia es lo más importante",
-    age: "9 años · Espacio #01 de 22",
+    age: "9 años · Espacio #01 de 20",
     ageYears: 9,
     category: "Arte y Creatividad",
     image: "",
     shortStory:
       "Cuando llegué a la casa hogar hablaba muy bajito. Hoy uso témperas y pinceles para pintar montañas verdes, soles gigantes y contar con colores lo feliz que me siento de estar seguro.",
     fullStory:
-      "Este es el espacio de la Historia #01 de nuestros 22 niños en Marinilla. No ponemos su foto para cuidar su intimidad y porque lo que de verdad importa es lo que vive su corazón. Al llegar a Espirales de Vida era muy tímido, pero en la mesa de dibujo descubrió que pintar le daba alegría y calma. Hoy le encanta ayudar a los más pequeños a mezclar colores y sueña con llenar de murales toda la fundación.",
+      "Este es el espacio de la Historia #01 de nuestros 20 niños en Marinilla. No ponemos su foto para cuidar su intimidad y porque lo que de verdad importa es lo que vive su corazón. Al llegar a Espirales de Vida era muy tímido, pero en la mesa de dibujo descubrió que pintar le daba alegría y calma. Hoy le encanta ayudar a los más pequeños a mezclar colores y sueña con llenar de murales toda la fundación.",
     dream: "Pintar cuentos infantiles y enseñar arte a otros niños",
     favoriteWorkshop: "Tardes de Pintura, Colores y Murales",
     pillarsImpact: [
@@ -486,14 +486,14 @@ export const ALL_22_CHILDREN_SLOTS: ChildStoryProfile[] = [
     title: "Historia #02 · Espacio para conocer mi historia",
     name: "Historia #02 · Cantar para perder el miedo",
     protectiveNote: "Tarjeta sin foto: cuidamos su rostro porque su historia es lo más importante",
-    age: "12 años · Espacio #02 de 22",
+    age: "12 años · Espacio #02 de 20",
     ageYears: 12,
     category: "Música y Expresión",
     image: "",
     shortStory:
       "Antes de llegar a Marinilla tuve que cambiar muchas veces de lugar y dejé el colegio. Aquí volví a estudiar y descubrí que cantar en grupo me llena el corazón de alegría.",
     fullStory:
-      "Este es el espacio de la Historia #02 de nuestros 22 niños. Dejamos el recuadro de foto vacío a propósito: aquí miramos con el corazón. En la fundación encontró una cama segura, amigas que la quieren y tardes enteras para aprender canciones con la guitarra. Cantar le devolvió la confianza en su propia voz y hoy nunca falta a sus clases del colegio.",
+      "Este es el espacio de la Historia #02 de nuestros 20 niños. Dejamos el recuadro de foto vacío a propósito: aquí miramos con el corazón. En la fundación encontró una cama segura, amigas que la quieren y tardes enteras para aprender canciones con la guitarra. Cantar le devolvió la confianza en su propia voz y hoy nunca falta a sus clases del colegio.",
     dream: "Ser profesora de música y dirigir un coro de niños",
     favoriteWorkshop: "Taller de Canto, Guitarra y Ritmo",
     pillarsImpact: [
@@ -520,14 +520,14 @@ export const ALL_22_CHILDREN_SLOTS: ChildStoryProfile[] = [
     title: "Historia #03 · Espacio para conocer mi historia",
     name: "Historia #03 · Sembrar semillas con paciencia",
     protectiveNote: "Tarjeta sin foto: cuidamos su rostro porque su historia es lo más importante",
-    age: "14 años · Espacio #03 de 22",
+    age: "14 años · Espacio #03 de 20",
     ageYears: 14,
     category: "Naturaleza y Oficios",
     image: "",
     shortStory:
       "Cuidar las plantas y los árboles de la casa hogar en Marinilla me enseñó algo muy bonito: cuando cuidas una semilla todos los días con cariño, siempre crece fuerte.",
     fullStory:
-      "Este es el espacio de la Historia #03 de nuestros 22 niños y jóvenes. Sin fotografías, porque su dignidad y su relato valen más que cualquier imagen. A sus 14 años le encanta estar al aire libre en la Vía El Peñol Km 10, sembrar en la tierra y enseñarles a los niños más pequeños cómo regar cada planta sin dañarla. Cuidar la naturaleza le ayudó a ser paciente y responsable.",
+      "Este es el espacio de la Historia #03 de nuestros 20 niños y jóvenes. Sin fotografías, porque su dignidad y su relato valen más que cualquier imagen. A sus 14 años le encanta estar al aire libre en la Vía El Peñol Km 10, sembrar en la tierra y enseñarles a los niños más pequeños cómo regar cada planta sin dañarla. Cuidar la naturaleza le ayudó a ser paciente y responsable.",
     dream: "Trabajar cuidando el campo y cultivando alimentos sanos en Antioquia",
     favoriteWorkshop: "Huerta Escolar, Naturaleza y Oficios del Campo",
     pillarsImpact: [
@@ -554,14 +554,14 @@ export const ALL_22_CHILDREN_SLOTS: ChildStoryProfile[] = [
     title: "Historia #04 · Espacio para conocer mi historia",
     name: "Historia #04 · En equipo nadie juega solo",
     protectiveNote: "Tarjeta sin foto: cuidamos su rostro porque su historia es lo más importante",
-    age: "10 años · Espacio #04 de 22",
+    age: "10 años · Espacio #04 de 20",
     ageYears: 10,
     category: "Deporte y Trabajo en Equipo",
     image: "",
     shortStory:
       "Lo que más me gusta después de hacer las tareas es salir corriendo a jugar con mis amigos. Mi sueño más grande es que arreglemos el Parque Infantil de la fundación.",
     fullStory:
-      "Este es el espacio de la Historia #04 de nuestros 22 niños. En la cancha de grama de la fundación aprendió que jugar en equipo significa esperar al compañero, dar la mano cuando alguien se cae y celebrar juntos. Todos los días sueña con ver el Parque Infantil renovado y lleno de color para jugar con sus 21 hermanos de vida.",
+      "Este es el espacio de la Historia #04 de nuestros 20 niños. En la cancha de grama de la fundación aprendió que jugar en equipo significa esperar al compañero, dar la mano cuando alguien se cae y celebrar juntos. Todos los días sueña con ver el Parque Infantil renovado y lleno de color para jugar con sus 19 hermanos de vida.",
     dream: "Ser futbolista o profesor de educación física y estrenar el Parque Infantil",
     favoriteWorkshop: "Fútbol en Equipo, Juegos al Aire Libre y Recreación",
     pillarsImpact: [
@@ -588,14 +588,14 @@ export const ALL_22_CHILDREN_SLOTS: ChildStoryProfile[] = [
     title: "Historia #05 · Espacio para conocer mi historia",
     name: "Historia #05 · La niña que lee cuentos antes de dormir",
     protectiveNote: "Tarjeta sin foto: cuidamos su rostro porque su historia es lo más importante",
-    age: "11 años · Espacio #05 de 22",
+    age: "11 años · Espacio #05 de 20",
     ageYears: 11,
     category: "Lectura y Ciencia",
     image: "",
     shortStory:
       "Me encanta hacer preguntas sobre las estrellas, los animales y los libros. Ahora que aprendí a leer muy bien, les leo cuentos a los niños más chiquitos de la casa.",
     fullStory:
-      "Este es el espacio de la Historia #05 de nuestros 22 niños. Antes de vivir en Espirales de Vida había perdido muchos meses de escuela. Con la ayuda diaria de los profes de la fundación se puso al día rápido. Hoy su rincón favorito es la biblioteca del hogar, donde descubre historias de aventuras y se las cuenta a sus compañeros.",
+      "Este es el espacio de la Historia #05 de nuestros 20 niños. Antes de vivir en Espirales de Vida había perdido muchos meses de escuela. Con la ayuda diaria de los profes de la fundación se puso al día rápido. Hoy su rincón favorito es la biblioteca del hogar, donde descubre historias de aventuras y se las cuenta a sus compañeros.",
     dream: "Ser médica o científica para cuidar y curar a los niños",
     favoriteWorkshop: "Club de Cuentos, Lectura y Experimentos Sencillos",
     pillarsImpact: [
@@ -622,14 +622,14 @@ export const ALL_22_CHILDREN_SLOTS: ChildStoryProfile[] = [
     title: "Historia #06 · Espacio para conocer mi historia",
     name: "Historia #06 · Aprender un oficio para salir adelante",
     protectiveNote: "Tarjeta sin foto: cuidamos su rostro porque su historia es lo más importante",
-    age: "15 años · Espacio #06 de 22",
+    age: "15 años · Espacio #06 de 20",
     ageYears: 15,
     category: "Naturaleza y Oficios",
     image: "",
     shortStory:
       "Soy uno de los grandes de la casa hogar. Aquí aprendí que mi pasado no decide mi futuro y hoy me preparo con juicio para ser un joven independiente y trabajador.",
     fullStory:
-      "Este es el espacio de la Historia #06 de nuestros 22 niños y jóvenes. En Espirales de Vida encontró personas que creyeron en él cuando más lo necesitaba. Hoy da buen ejemplo a los más pequeños, ayuda a cuidar la casa en Marinilla y participa en talleres prácticos de madera, dibujo y oficios para tener un trabajo digno cuando cumpla 18 años.",
+      "Este es el espacio de la Historia #06 de nuestros 20 niños y jóvenes. En Espirales de Vida encontró personas que creyeron en él cuando más lo necesitaba. Hoy da buen ejemplo a los más pequeños, ayuda a cuidar la casa en Marinilla y participa en talleres prácticos de madera, dibujo y oficios para tener un trabajo digno cuando cumpla 18 años.",
     dream: "Estudiar carpintería y diseño para construir muebles y casas bonitas",
     favoriteWorkshop: "Taller de Oficios Prácticos y Preparación para la Vida",
     pillarsImpact: [
@@ -656,14 +656,14 @@ export const ALL_22_CHILDREN_SLOTS: ChildStoryProfile[] = [
     title: "Historia #07 · Espacio abierto para conocer mi historia",
     name: "Historia #07 · Espacio listo para escribir en Marinilla",
     protectiveNote: "Espacio sin foto reservado para la historia del niño #07 en la fundación",
-    age: "Niño o niña del hogar · Espacio #07 de 22",
+    age: "Niño o niña del hogar · Espacio #07 de 20",
     ageYears: 8,
     category: "Arte y Creatividad",
     image: "",
     shortStory:
-      "Cada uno de los 22 niños de Espirales de Vida tiene su propia voz. Este espacio está abierto para escribir su historia, sus dibujos, su juego favorito y su sueño.",
+      "Cada uno de los 20 niños de Espirales de Vida tiene su propia voz. Este espacio está abierto para escribir su historia, sus dibujos, su juego favorito y su sueño.",
     fullStory:
-      "En nuestra casa hogar de Marinilla viven 22 niños, niñas y jóvenes. Guardamos este espacio #07 limpio y sin foto para compartir contigo su historia cuando nos visites o inicies tu apadrinamiento. Así protegemos su privacidad en internet y te invitamos a conocer de forma humana y cercana cómo tu ayuda transforma su día a día.",
+      "En nuestra casa hogar de Marinilla viven 20 niños, niñas y jóvenes. Guardamos este espacio #07 limpio y sin foto para compartir contigo su historia cuando nos visites o inicies tu apadrinamiento. Así protegemos su privacidad en internet y te invitamos a conocer de forma humana y cercana cómo tu ayuda transforma su día a día.",
     dream: "Crecer feliz, estudiar y cumplir sus sueños acompañado por un padrino o madrina",
     favoriteWorkshop: "Juegos, Arte, Lectura y Vida en Comunidad",
     pillarsImpact: [
@@ -680,32 +680,32 @@ export const ALL_22_CHILDREN_SLOTS: ChildStoryProfile[] = [
     timeCommitmentSuggestion:
       "Escríbenos por WhatsApp para asignarte este espacio de apadrinamiento y contarte cómo acompañarlo.",
     whatsappMessage:
-      "Hola Fundación Espirales de Vida, quiero conocer y apadrinar la Historia #07 de los 22 niños del hogar en Marinilla.",
+      "Hola Fundación Espirales de Vida, quiero conocer y apadrinar la Historia #07 de los 20 niños del hogar en Marinilla.",
   },
   {
-    id: "hogar-completo-22-ninos",
+    id: "hogar-completo-20-ninos",
     slotNumber: 8,
     colorTheme: "indigo",
     isEmptyTemplate: false,
-    title: "Historia #08 · Apadrinar a los 22 Niños del Hogar",
-    name: "Apadrinar a Toda la Familia (Los 22 Niños)",
+    title: "Historia #08 · Apadrinar a los 20 Niños del Hogar",
+    name: "Apadrinar a Toda la Familia (Los 20 Niños)",
     protectiveNote: "Modalidad sin fotos de rostros: pensada para Empresas, Familias o Grupos de Amigos",
-    age: "Los 22 niños y jóvenes del hogar",
-    ageYears: 22,
-    category: "Hogar Completo (22 Niños)",
+    age: "Los 20 niños y jóvenes del hogar",
+    ageYears: 20,
+    category: "Hogar Completo (20 Niños)",
     image: "",
     shortStory:
-      "Si tienes una empresa, una familia grande o un grupo de amigos, pueden unirse para apoyar al mismo tiempo a los 22 niños de la casa hogar en Marinilla.",
+      "Si tienes una empresa, una familia grande o un grupo de amigos, pueden unirse para apoyar al mismo tiempo a los 20 niños de la casa hogar en Marinilla.",
     fullStory:
-      "En Espirales de Vida los 22 niños viven como hermanos. Este espacio colectivo permite que empresas de Medellín, Rionegro, Marinilla y toda Colombia, o grupos de amigos y familias, apoyen a toda la casa al mismo tiempo: asegurando comida rica, cobijas, útiles escolares, el arreglo del Parque Infantil y habitaciones seguras.",
-    dream: "Tener nuestro Parque Infantil renovado, cuartos calienticos y educación para los 22 niños",
+      "En Espirales de Vida los 20 niños viven como hermanos. Este espacio colectivo permite que empresas de Medellín, Rionegro, Marinilla y toda Colombia, o grupos de amigos y familias, apoyen a toda la casa al mismo tiempo: asegurando comida rica, cobijas, útiles escolares, el arreglo del Parque Infantil y habitaciones seguras.",
+    dream: "Tener nuestro Parque Infantil renovado, cuartos calienticos y educación para los 20 niños",
     favoriteWorkshop: "Todos los programas: Comedor, Psicología, Colegio, Arte, Música y Deporte",
     pillarsImpact: [
-      "Ayuda Completa: Sostiene el hogar, la comida, el apoyo emocional y el estudio de los 22 niños.",
+      "Ayuda Completa: Sostiene el hogar, la comida, el apoyo emocional y el estudio de los 20 niños.",
       "Certificado de Donación: Respaldo legal con NIT 900150558-5 para empresas en Colombia.",
     ],
     needsList: [
-      "22 cobijas térmicas, 44 pijamas y 22 kits de aseo personal",
+      "20 cobijas térmicas, 40 pijamas y 20 kits de aseo personal",
       "Apoyo para renovar el Parque Infantil y pintar los dormitorios",
       "Día de visita y voluntariado en Marinilla con tu equipo o familia",
     ],
@@ -714,13 +714,13 @@ export const ALL_22_CHILDREN_SLOTS: ChildStoryProfile[] = [
     timeCommitmentSuggestion:
       "Visitas grupales o empresariales en Marinilla, celebración de fechas especiales e informes claros del impacto logrado.",
     whatsappMessage:
-      "Hola Fundación Espirales de Vida, queremos apadrinar en grupo o como empresa a los 22 niños del hogar en Marinilla. ¿Podemos conversar?",
+      "Hola Fundación Espirales de Vida, queremos apadrinar en grupo o como empresa a los 20 niños del hogar en Marinilla. ¿Podemos conversar?",
   },
-  ...([9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22].map(
+  ...([9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(
     (slotNumber, index): ChildStoryProfile => {
       const padded = slotNumber < 10 ? `0${slotNumber}` : `${slotNumber}`;
       const themes: StoryColorTheme[] = ["sky", "emerald", "amber", "rose", "indigo"];
-      const categories: Exclude<StoryCategory, "Todas" | "Hogar Completo (22 Niños)">[] = [
+      const categories: Exclude<StoryCategory, "Todas" | "Hogar Completo (20 Niños)">[] = [
         "Arte y Creatividad",
         "Música y Expresión",
         "Deporte y Trabajo en Equipo",
@@ -753,12 +753,12 @@ export const ALL_22_CHILDREN_SLOTS: ChildStoryProfile[] = [
         isEmptyTemplate: true,
         title: `Historia #${padded} · Espacio para conocer mi historia`,
         name: `Historia #${padded} · Espacio reservado para mi historia`,
-        protectiveNote: `Sin foto por protección infantil · Espacio #${padded} de los 22 niños en Marinilla`,
-        age: `Niño o joven del hogar · Espacio #${padded} de 22`,
+        protectiveNote: `Sin foto por protección infantil · Espacio #${padded} de los 20 niños en Marinilla`,
+        age: `Niño o joven del hogar · Espacio #${padded} de 20`,
         ageYears: 7 + (index % 9),
         category,
         image: "",
-        shortStory: `Soy el corazón #${padded} de los 22 niños que viven en la Fundación Espirales de Vida. Este recuadro no tiene foto porque lo más lindo de mí es mi historia, mis sueños y mis ganas de salir adelante.`,
+        shortStory: `Soy el corazón #${padded} de los 20 niños que viven en la Fundación Espirales de Vida. Este recuadro no tiene foto porque lo más lindo de mí es mi historia, mis sueños y mis ganas de salir adelante.`,
         fullStory: `Este espacio corresponde al niño o joven #${padded} de nuestra casa hogar en Marinilla (Vía El Peñol Km 10). No publicamos fotografías de sus rostros para cuidarlos con amor y respeto. Aquí guardamos el lugar para contarte directamente cómo le va en el colegio, qué le gusta dibujar o jugar, y cómo tu apadrinamiento le brinda cama calientica, comida nutritiva y educación.`,
         dream,
         favoriteWorkshop,
@@ -775,7 +775,7 @@ export const ALL_22_CHILDREN_SLOTS: ChildStoryProfile[] = [
         monthlySponsorshipFormatted: "$120.000 COP / mes",
         timeCommitmentSuggestion:
           "Aporte mensual para su cuidado diario, cartas de motivación y visitas programadas en Marinilla.",
-        whatsappMessage: `Hola Fundación Espirales de Vida, quiero conocer y apadrinar la Historia #${padded} de los 22 niños del hogar en Marinilla.`,
+        whatsappMessage: `Hola Fundación Espirales de Vida, quiero conocer y apadrinar la Historia #${padded} de los 20 niños del hogar en Marinilla.`,
       };
     }
   )),
@@ -783,12 +783,12 @@ export const ALL_22_CHILDREN_SLOTS: ChildStoryProfile[] = [
 
 /**
  * En la vista principal mostramos las primeras 8 tarjetas (que incluyen ejemplos de cada taller
- * más el espacio abierto y el apadrinamiento de los 22 niños), y el usuario puede desplegar las 22 completas.
+ * más el espacio abierto y el apadrinamiento de los 20 niños), y el usuario puede desplegar las 20 completas.
  */
 export const CHILDREN_STORIES: ChildStoryProfile[] = ALL_22_CHILDREN_SLOTS.slice(0, 8);
 
-export function getChildrenStories(showAll22 = false): ChildStoryProfile[] {
-  return showAll22 ? ALL_22_CHILDREN_SLOTS : CHILDREN_STORIES;
+export function getChildrenStories(showAll20 = false): ChildStoryProfile[] {
+  return showAll20 ? ALL_22_CHILDREN_SLOTS : CHILDREN_STORIES;
 }
 
 /**
@@ -853,8 +853,8 @@ export const REAL_GALLERY_PHOTOS: RealGalleryPhoto[] = [
     dscCode: "DSC_1019",
     rawDscPath: "/images/reales/DSC_1019.jpg",
     title: "El espacio de nuestro Parque Infantil",
-    caption: "Aquí vemos los juegos actuales al aire libre que soñamos renovar y ampliar para los 22 niños.",
-    description: "Aquí vemos los juegos actuales al aire libre que soñamos renovar y ampliar para los 22 niños.",
+    caption: "Aquí vemos los juegos actuales al aire libre que soñamos renovar y ampliar para los 20 niños.",
+    description: "Aquí vemos los juegos actuales al aire libre que soñamos renovar y ampliar para los 20 niños.",
     alt: "Fotografía del parque infantil actual en la sede de Marinilla",
     category: "Parque y Recreación",
     featured: true,
@@ -878,8 +878,8 @@ export const REAL_GALLERY_PHOTOS: RealGalleryPhoto[] = [
     dscCode: "DSC_1045",
     rawDscPath: "/images/reales/DSC_1045.jpg",
     title: "La casa hogar en Vía El Peñol Km 10",
-    caption: "Vista de nuestras instalaciones campestres en Marinilla, donde viven y estudian los 22 niños.",
-    description: "Vista de nuestras instalaciones campestres en Marinilla, donde viven y estudian los 22 niños.",
+    caption: "Vista de nuestras instalaciones campestres en Marinilla, donde viven y estudian los 20 niños.",
+    description: "Vista de nuestras instalaciones campestres en Marinilla, donde viven y estudian los 20 niños.",
     alt: "Fotografía de la casa hogar e instalaciones en Marinilla",
     category: "Instalaciones Marinilla",
     featured: true,
@@ -958,7 +958,7 @@ export const SPONSORSHIP_MODELS: SponsorshipModel[] = [
     suggestedContribution: "Desde $120.000 COP al mes (o el valor que puedas aportar)",
     commitmentType: "Aporte mensual + visitas y cartas opcionales en Marinilla",
     benefits: [
-      "Apoyas directamente la historia de uno de los 22 niños o de todo el hogar",
+      "Apoyas directamente la historia de uno de los 20 niños o de todo el hogar",
       "Te contamos cómo avanza en el colegio, en sus talleres de arte y en su bienestar",
       "Puedes venir a las jornadas de visita, muestras de pintura y días especiales en Marinilla",
       "Puedes enviarle cartas de ánimo, útiles escolares o un detalle en su cumpleaños",
@@ -973,9 +973,9 @@ export const SPONSORSHIP_MODELS: SponsorshipModel[] = [
     badge: "Para Empresas · Medellín y Antioquia · NIT 900150558-5",
     title: "Empresas Amigas (Alianza RSE)",
     targetAudience: "Empresas, negocios, fundaciones y equipos de trabajo en Antioquia y Colombia",
-    subtitle: "Apoyo directo para los 22 niños con Certificado de Donación",
+    subtitle: "Apoyo directo para los 20 niños con Certificado de Donación",
     description:
-      "Invitamos a las empresas de Medellín, Rionegro, Marinilla y toda Colombia a apadrinar uno de los 3 Frentes de Ayuda o a respaldar a los 22 niños del hogar. Tu empresa transforma vidas de verdad y recibe su certificado legal de donación.",
+      "Invitamos a las empresas de Medellín, Rionegro, Marinilla y toda Colombia a apadrinar uno de los 3 Frentes de Ayuda o a respaldar a los 20 niños del hogar. Tu empresa transforma vidas de verdad y recibe su certificado legal de donación.",
     suggestedContribution: "Desde $850.000 COP al mes o donación para el Parque Infantil y mejoras de la casa",
     commitmentType: "Apoyo mensual, donación de obra o jornada de voluntariado con tu equipo",
     benefits: [
@@ -988,7 +988,7 @@ export const SPONSORSHIP_MODELS: SponsorshipModel[] = [
       "Fundación sin ánimo de lucro legalmente constituida · NIT 900150558-5 · Entregamos certificado oficial de donación en Colombia.",
     ctaLabel: "Sumar Mi Empresa",
     whatsappMessage:
-      "Hola Fundación Espirales de Vida, escribo de parte de una empresa interesada en apoyar a los 22 niños en Marinilla (NIT 900150558-5).",
+      "Hola Fundación Espirales de Vida, escribo de parte de una empresa interesada en apoyar a los 20 niños en Marinilla (NIT 900150558-5).",
     featured: true,
   },
   {
@@ -998,7 +998,7 @@ export const SPONSORSHIP_MODELS: SponsorshipModel[] = [
     targetAudience: "Familias, colegios, grupos de amigos y comercios solidarios",
     subtitle: "Cada cobija, cuaderno o tarro de pintura hace más feliz nuestra casa hoy mismo",
     description:
-      "También puedes ayudar donando las cosas que los 22 niños necesitan todos los días: cobijas calienticas, pijamas, cepillos de dientes, jabón, cuadernos, cuentos, balones o pintura para arreglar sus cuartos.",
+      "También puedes ayudar donando las cosas que los 20 niños necesitan todos los días: cobijas calienticas, pijamas, cepillos de dientes, jabón, cuadernos, cuentos, balones o pintura para arreglar sus cuartos.",
     suggestedContribution: "Kits de aseo, pijamas, cobijas, útiles escolares, juguetes o pintura",
     commitmentType: "Entrega cuando quieras o colecta con tus amigos y familia",
     benefits: [
@@ -1008,7 +1008,7 @@ export const SPONSORSHIP_MODELS: SponsorshipModel[] = [
     ],
     ctaLabel: "Donar Cobijas o Útiles",
     whatsappMessage:
-      "Hola Fundación Espirales de Vida, quiero donar cosas útiles (cobijas, pijamas, aseo, útiles escolares o materiales) para los 22 niños en Marinilla.",
+      "Hola Fundación Espirales de Vida, quiero donar cosas útiles (cobijas, pijamas, aseo, útiles escolares o materiales) para los 20 niños en Marinilla.",
     featured: false,
   },
 ];
@@ -1019,14 +1019,14 @@ export const LOCAL_SEO_FAQS: LocalSeoFaq[] = [
     category: "Ubicación y Visitas",
     question: "¿Dónde queda la Fundación Espirales de Vida y cómo se llega desde Medellín?",
     answer:
-      "Nuestra casa hogar queda en la Vía El Peñol Km 10, en el municipio de Marinilla, Antioquia. Estamos a unos 45 minutos de Medellín por la Autopista Medellín-Bogotá y a 20 minutos de Rionegro. Es una casa campestre rodeada de naturaleza donde viven y estudian nuestros 22 niños.",
+      "Nuestra casa hogar queda en la Vía El Peñol Km 10, en el municipio de Marinilla, Antioquia. Estamos a unos 45 minutos de Medellín por la Autopista Medellín-Bogotá y a 20 minutos de Rionegro. Es una casa campestre rodeada de naturaleza donde viven y estudian nuestros 20 niños.",
   },
   {
     id: "faq-como-apadrinar-nino",
     category: "Apadrinamiento",
-    question: "¿Cómo puedo apadrinar a uno de los 22 niños y por qué sus tarjetas no tienen foto?",
+    question: "¿Cómo puedo apadrinar a uno de los 20 niños y por qué sus tarjetas no tienen foto?",
     answer:
-      "Para cuidar la intimidad y seguridad de los menores, nunca ponemos fotos de sus rostros en las tarjetas de apadrinamiento: aquí lo más importante es su historia. Puedes elegir uno de los 22 espacios de historia y apoyar con un aporte mensual (desde $120.000 COP) que cubre comida rica, estudio, abrigo y apoyo psicológico, además de enviarle cartas y visitarnos en Marinilla.",
+      "Para cuidar la intimidad y seguridad de los menores, nunca ponemos fotos de sus rostros en las tarjetas de apadrinamiento: aquí lo más importante es su historia. Puedes elegir uno de los 20 espacios de historia y apoyar con un aporte mensual (desde $120.000 COP) que cubre comida rica, estudio, abrigo y apoyo psicológico, además de enviarle cartas y visitarnos en Marinilla.",
   },
   {
     id: "faq-certificado-tributario-empresas",
@@ -1038,16 +1038,16 @@ export const LOCAL_SEO_FAQS: LocalSeoFaq[] = [
   {
     id: "faq-donaciones-especie-necesidades",
     category: "Donaciones en Especie",
-    question: "¿Qué cosas necesitan con más urgencia los 22 niños hoy?",
+    question: "¿Qué cosas necesitan con más urgencia los 20 niños hoy?",
     answer:
-      "Hoy necesitamos ayuda en 3 cosas muy claras: 1) Para el frío y el cuidado diario: 22 cobijas térmicas, 44 pijamas (tallas 6 a 16) y kits de aseo (cepillo, crema dental, jabón, champú y toallas). 2) Para estudiar y jugar: cuadernos, colores, juguetes y apoyo para mejorar nuestro Parque Infantil. 3) Para la casa: pintura, arreglo de techos, colchones y duchas de agua caliente.",
+      "Hoy necesitamos ayuda en 3 cosas muy claras: 1) Para el frío y el cuidado diario: 20 cobijas térmicas, 40 pijamas (tallas 6 a 16) y kits de aseo (cepillo, crema dental, jabón, champú y toallas). 2) Para estudiar y jugar: cuadernos, colores, juguetes y apoyo para mejorar nuestro Parque Infantil. 3) Para la casa: pintura, arreglo de techos, colchones y duchas de agua caliente.",
   },
   {
     id: "faq-sueno-parque-infantil",
     category: "Donaciones en Especie",
     question: "¿Cuál es el sueño del Parque Infantil dentro de la fundación?",
     answer:
-      "Queremos arreglar, pintar y ampliar los juegos al aire libre de nuestra sede en Marinilla para que los 22 niños tengan un Parque Infantil seguro, firme y lleno de color donde puedan correr y jugar todos los días después de hacer las tareas.",
+      "Queremos arreglar, pintar y ampliar los juegos al aire libre de nuestra sede en Marinilla para que los 20 niños tengan un Parque Infantil seguro, firme y lleno de color donde puedan correr y jugar todos los días después de hacer las tareas.",
   },
   {
     id: "faq-voluntariado-visitas-marinilla",
@@ -1060,7 +1060,7 @@ export const LOCAL_SEO_FAQS: LocalSeoFaq[] = [
 
 export function buildWhatsAppLink(customMessage?: string): string {
   const defaultMsg =
-    "Hola Fundación Espirales de Vida, vi su página web y quiero saber cómo apadrinar o ayudar a los 22 niños en Marinilla.";
+    "Hola Fundación Espirales de Vida, vi su página web y quiero saber cómo apadrinar o ayudar a los 20 niños en Marinilla.";
   const encoded = encodeURIComponent(customMessage || defaultMsg);
   return `https://wa.me/${FOUNDATION_INFO.phoneRaw}?text=${encoded}`;
 }

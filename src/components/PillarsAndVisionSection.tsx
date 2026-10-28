@@ -32,7 +32,7 @@ const COLORFUL_PILLARS: ColorfulPillarCard[] = [
     number: "Pilar 01",
     title: "Albergue Seguro",
     shortText:
-      "Un verdadero hogar y refugio en Marinilla donde los 22 niños, niñas y adolescentes se sienten protegidos todos los días.",
+      "Un verdadero hogar y refugio en Marinilla donde los 20 niños, niñas y adolescentes se sienten protegidos todos los días.",
     realPhoto: "/images/reales/casa-hogar-instalaciones.jpg",
     photoCaption: "Nuestra casa en Vía El Peñol Km 10",
     tags: ["Hogar protegido", "Dignidad diaria"],
@@ -229,7 +229,7 @@ export const PillarsAndVisionSection: React.FC = () => {
                     className="overflow-hidden"
                   >
                     <p className="pt-3 mt-3 border-t border-zinc-100 text-base text-zinc-700 leading-relaxed mb-3">
-                      “Chicos, en el día de hoy quiero contarles un poco sobre la fundación escogida por mi equipo. De todas las fundaciones propuestas se escogió la mía. Esta se llama Espirales de Vida. Es una fundación que alberga 22 niños en condiciones de vulnerabilidad, las cuales les presta ayuda psicológica, alimentación y educación, entre otras.”
+                      “Chicos, en el día de hoy quiero contarles un poco sobre la fundación escogida por mi equipo. De todas las fundaciones propuestas se escogió la mía. Esta se llama Espirales de Vida. Es una fundación que alberga 20 niños en condiciones de vulnerabilidad, las cuales les presta ayuda psicológica, alimentación y educación, entre otras.”
                     </p>
                   </motion.div>
                 )}

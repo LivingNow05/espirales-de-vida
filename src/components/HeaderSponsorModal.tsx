@@ -107,10 +107,10 @@ export const HeaderSponsorModal: React.FC<HeaderSponsorModalProps> = ({
     const cleanName = sponsorName.trim() || "Un aliado solidario";
     const targetDescription =
       targetMode === "toda-la-fundacion"
-        ? "Toda la Fundación (Los 22 niños en Marinilla)"
+        ? "Toda la Fundación (Los 20 niños en Marinilla)"
         : selectedChildNumber === "asignar"
-          ? "Uno de los 22 niños (asignar el niño o niña que más lo necesite)"
-          : `Espacio del Niño / Niña #${String(selectedChildNumber).padStart(2, "0")} de 22`;
+          ? "Uno de los 20 niños (asignar el niño o niña que más lo necesite)"
+          : `Espacio del Niño / Niña #${String(selectedChildNumber).padStart(2, "0")} de 20`;
 
     const lines = [
       `Hola Fundación Espirales de Vida, soy *${cleanName}* y escribo desde *${sponsorCity}*.`,
@@ -183,7 +183,7 @@ export const HeaderSponsorModal: React.FC<HeaderSponsorModalProps> = ({
             </div>
 
             <div className="space-y-6">
-              {/* STEP 1: Target Selection (1 Child #01-#22 vs All 22 Children) */}
+              {/* STEP 1: Target Selection (1 Child #01-#20 vs All 20 Children) */}
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2.5">
                   <label className="text-sm sm:text-base font-extrabold text-zinc-900">
@@ -198,7 +198,7 @@ export const HeaderSponsorModal: React.FC<HeaderSponsorModalProps> = ({
                       }}
                       className="text-xs font-extrabold text-rose-600 hover:text-rose-700 underline underline-offset-2 inline-flex items-center gap-1 cursor-pointer"
                     >
-                      <span>Ver los 22 espacios</span>
+                      <span>Ver los 20 espacios</span>
                       <ArrowUpRight weight="bold" className="w-3.5 h-3.5" />
                     </button>
                   )}
@@ -219,7 +219,7 @@ export const HeaderSponsorModal: React.FC<HeaderSponsorModalProps> = ({
                         ❤️ Apadrinar a un Niño o Niña
                       </span>
                       <span className="text-xs text-zinc-600 font-medium block mt-0.5">
-                        Elige un espacio del #01 al #22 o permite que te asignemos quien más lo necesite.
+                        Elige un espacio del #01 al #20 o permite que te asignemos quien más lo necesite.
                       </span>
                     </div>
                     <CheckCircle
@@ -243,7 +243,7 @@ export const HeaderSponsorModal: React.FC<HeaderSponsorModalProps> = ({
                   >
                     <div>
                       <span className="font-logo text-base font-extrabold block">
-                        🏡 Toda la Fundación (22 Niños)
+                        🏡 Toda la Fundación (20 Niños)
                       </span>
                       <span className="text-xs text-zinc-600 font-medium block mt-0.5">
                         Ideal para empresas, colectivos, familias o donaciones generales al hogar.
@@ -260,12 +260,12 @@ export const HeaderSponsorModal: React.FC<HeaderSponsorModalProps> = ({
                   </button>
                 </div>
 
-                {/* Quick Child Number Selector (#01 to #22) when "un-nino" is selected */}
+                {/* Quick Child Number Selector (#01 to #20) when "un-nino" is selected */}
                 {targetMode === "un-nino" && (
                   <div className="rounded-2xl bg-rose-50/50 border border-rose-200/80 p-3.5">
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                       <span className="text-xs font-extrabold text-rose-900">
-                        Selecciona el espacio del niño/niña (#01 al #22):
+                        Selecciona el espacio del niño/niña (#01 al #20):
                       </span>
                       <button
                         type="button"
@@ -280,8 +280,8 @@ export const HeaderSponsorModal: React.FC<HeaderSponsorModalProps> = ({
                       </button>
                     </div>
 
-                    <div className="grid grid-cols-6 sm:grid-cols-11 gap-1.5">
-                      {Array.from({ length: 22 }, (_, i) => i + 1).map((num) => {
+                    <div className="grid grid-cols-5 sm:grid-cols-10 gap-1.5">
+                      {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => {
                         const isSelectedNum = selectedChildNumber === num;
                         return (
                           <button

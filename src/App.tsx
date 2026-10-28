@@ -110,7 +110,7 @@ export const App: React.FC = () => {
             {/* 2. Official Vision, Alumna Testimony & 4 Pillars */}
             <PillarsAndVisionSection />
 
-            {/* 3. Uncluttered 3-Card Preview + Dedicated CTA to the 22 Stories Page (/historias) */}
+            {/* 3. Uncluttered 3-Card Preview + Dedicated CTA to the 20 Stories Page (/historias) */}
             <HomeStoriesPreviewSection
               onNavigateToStoriesPage={navigateToStoriesPage}
             />
@@ -124,7 +124,7 @@ export const App: React.FC = () => {
             <SeoMedellinMarinillaSection />
           </>
         ) : (
-          /* Dedicated Page (/historias): All 22 Children's Spaces & Sponsorship Hub */
+          /* Dedicated Page (/historias): All 20 Children's Spaces & Sponsorship Hub */
           <SponsorshipStoriesSection
             externalSelectedStoryId={quickSponsorStoryId}
             onClearExternalStory={handleClearExternalStory}
@@ -143,7 +143,7 @@ export const App: React.FC = () => {
       {/* Desktop Floating Direct WhatsApp Support Pill */}
       <a
         href={buildWhatsAppLink(
-          "Hola Fundación Espirales de Vida, visito su sitio web desde Antioquia y quiero información sobre cómo apadrinar o apoyar a los 22 niños en Marinilla."
+          "Hola Fundación Espirales de Vida, visito su sitio web desde Antioquia y quiero información sobre cómo apadrinar o apoyar a los 20 niños en Marinilla."
         )}
         target="_blank"
         rel="noopener noreferrer"
@@ -191,7 +191,7 @@ export const App: React.FC = () => {
             }`}
           >
             <span className="text-lg leading-none mb-1">❤️</span>
-            <span className="text-[11px] font-extrabold leading-none">22 Historias</span>
+            <span className="text-[11px] font-extrabold leading-none">20 Historias</span>
           </a>
 
           <a
@@ -208,7 +208,7 @@ export const App: React.FC = () => {
 
           <a
             href={buildWhatsAppLink(
-              "Hola Fundación Espirales de Vida, les escribo desde mi celular para conocer cómo ayudar a los 22 niños en Marinilla."
+              "Hola Fundación Espirales de Vida, les escribo desde mi celular para conocer cómo ayudar a los 20 niños en Marinilla."
             )}
             target="_blank"
             rel="noopener noreferrer"

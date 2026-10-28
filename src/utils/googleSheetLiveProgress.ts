@@ -121,6 +121,7 @@ const IGNORED_ROW_TITLES = new Set([
   "PASEO Y RECREACION",
   "CATEGORIAS",
   "X22",
+  "X20",
 ]);
 
 /**
@@ -438,8 +439,12 @@ function parseXlsxProgressFromEntries(
     for (const r of rows) {
       const aTextUpper = (r.values["A"] || "").toUpperCase().trim();
 
-      // En UTILES ESCOLARES, después de la fila 19 ("IMPLEMENTOS ADICIONALES"), las filas ya no se multiplican por 22
-      if (aTextUpper === "IMPLEMENTOS ADICIONALES" || r.values["E"] === "X22") {
+      // En UTILES ESCOLARES, después de la fila 19 ("IMPLEMENTOS ADICIONALES"), las filas ya no se multiplican por niño
+      if (
+        aTextUpper === "IMPLEMENTOS ADICIONALES" ||
+        r.values["E"] === "X22" ||
+        r.values["E"] === "X20"
+      ) {
         isInsideSchoolKitPerChildTable = false;
         continue;
       }

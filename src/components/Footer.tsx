@@ -53,10 +53,10 @@ export const Footer: React.FC<FooterProps> = ({
               <div>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 text-xs font-bold mb-2">
                   <Heart weight="fill" className="w-3.5 h-3.5 text-rose-400" />
-                  <span>22 Corazones en Marinilla, Antioquia</span>
+                  <span>20 Corazones en Marinilla, Antioquia</span>
                 </div>
                 <p className="font-logo text-lg sm:text-2xl font-bold text-white leading-snug mb-2">
-                  “Los 22 niños de Espirales de Vida no son invisibles: hoy sus sueños están en nuestras manos.”
+                  “Los 20 niños de Espirales de Vida no son invisibles: hoy sus sueños están en nuestras manos.”
                 </p>
                 <p className="text-xs sm:text-sm text-zinc-400">
                   NIT {FOUNDATION_INFO.nit} · {FOUNDATION_INFO.address} · Tel:{" "}
@@ -72,12 +72,12 @@ export const Footer: React.FC<FooterProps> = ({
                 className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3.5 text-sm sm:text-base font-bold transition-all active:scale-95"
               >
                 <Heart weight="fill" className="w-4 h-4 text-rose-400" />
-                <span>Ver las 22 Historias</span>
+                <span>Ver las 20 Historias</span>
               </a>
 
               <a
                 href={buildWhatsAppLink(
-                  "Hola Fundación Espirales de Vida, quiero apadrinar o hacer mi aporte hoy para los 22 niños en Marinilla."
+                  "Hola Fundación Espirales de Vida, quiero apadrinar o hacer mi aporte hoy para los 20 niños en Marinilla."
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -120,7 +120,7 @@ export const Footer: React.FC<FooterProps> = ({
             </a>
 
             <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-md">
-              Hogar, protección, educación y amor diario para 22 niños, niñas y adolescentes en la Vía El Peñol Km 10, Marinilla.
+              Hogar, protección, educación y amor diario para 20 niños, niñas y adolescentes en la Vía El Peñol Km 10, Marinilla.
             </p>
           </div>
 
@@ -154,7 +154,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={handleStoriesLink}
                   className="hover:text-rose-400 transition-colors font-bold text-rose-300"
                 >
-                  ❤️ Página de las 22 Historias
+                  ❤️ Página de las 20 Historias
                 </a>
               </li>
               <li>

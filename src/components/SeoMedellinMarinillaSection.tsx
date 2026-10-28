@@ -28,7 +28,7 @@ const SIMPLE_KIDS_FAQS: SimpleFaq[] = [
     emoji: "📍",
     question: "¿Dónde queda la Fundación Espirales de Vida?",
     answer:
-      "Estamos ubicados en la Vía El Peñol Km 10, en el municipio de Marinilla (Antioquia), donde viven y se forman nuestros 22 niños, niñas y adolescentes.",
+      "Estamos ubicados en la Vía El Peñol Km 10, en el municipio de Marinilla (Antioquia), donde viven y se forman nuestros 20 niños, niñas y adolescentes.",
     badgeColor: "bg-emerald-100 text-emerald-900 border-emerald-200",
   },
   {
@@ -52,7 +52,7 @@ const SIMPLE_KIDS_FAQS: SimpleFaq[] = [
     emoji: "🏢",
     question: "¿Cómo pueden sumarse empresas, directivos y colectivos?",
     answer:
-      "Nuestra fundación cuenta con NIT oficial 900150558-5. Las empresas pueden aportar insumos, apoyar la remodelación de espacios, hacer voluntariado profesional o apadrinar a los 22 niños.",
+      "Nuestra fundación cuenta con NIT oficial 900150558-5. Las empresas pueden aportar insumos, apoyar la remodelación de espacios, hacer voluntariado profesional o apadrinar a los 20 niños.",
     badgeColor: "bg-amber-100 text-amber-900 border-amber-200",
   },
   {
@@ -73,7 +73,7 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
   const [visitorName, setVisitorName] = useState<string>("");
   const [visitorCity, setVisitorCity] = useState<string>("Medellín");
   const [visitorTopic, setVisitorTopic] = useState<string>(
-    "Quiero apadrinar o donar para los 22 niños"
+    "Quiero apadrinar o donar para los 20 niños"
   );
 
   const handleCopyInfo = () => {
@@ -152,7 +152,7 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
 
               <p className="text-sm text-zinc-700 leading-relaxed mb-4 flex-1">
                 Vivimos en una casa campestre rodeada de naturaleza en{" "}
-                <strong>{FOUNDATION_INFO.address}</strong>, donde los 22 niños crecen seguros y en paz.
+                <strong>{FOUNDATION_INFO.address}</strong>, donde los 20 niños crecen seguros y en paz.
               </p>
 
               <div className="flex flex-wrap gap-1.5">
@@ -330,7 +330,7 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
 
               <a
                 href={buildWhatsAppLink(
-                  "Hola Fundación Espirales de Vida, me comunico al 313 652 5841 para apoyar a los 22 niños en Marinilla."
+                  "Hola Fundación Espirales de Vida, me comunico al 313 652 5841 para apoyar a los 20 niños en Marinilla."
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -407,7 +407,7 @@ export const SeoMedellinMarinillaSection: React.FC = () => {
                   onChange={(e) => setVisitorTopic(e.target.value)}
                   className="w-full rounded-xl bg-zinc-50 border-2 border-zinc-200 px-3.5 py-2.5 text-sm font-medium text-zinc-900 focus:outline-none focus:border-rose-500 focus:bg-white"
                 >
-                  <option value="Quiero apadrinar o donar para los 22 niños">
+                  <option value="Quiero apadrinar o donar para los 20 niños">
                     ❤️ Apadrinar a un niño o al hogar
                   </option>
                   <option value="Quiero donar cobijas, pijamas, útiles o juguetes">
