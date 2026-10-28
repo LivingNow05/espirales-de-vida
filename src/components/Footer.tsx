@@ -12,11 +12,13 @@ import { FOUNDATION_INFO, buildWhatsAppLink } from "../data/foundationData";
 export interface FooterProps {
   onNavigateHomeSection?: (sectionHash?: string) => void;
   onNavigateToStoriesPage?: () => void;
+  onNavigateToCampaignPage?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onNavigateHomeSection,
   onNavigateToStoriesPage,
+  onNavigateToCampaignPage,
 }) => {
   const currentYear = new Date().getFullYear();
 
@@ -34,6 +36,13 @@ export const Footer: React.FC<FooterProps> = ({
     if (onNavigateToStoriesPage) {
       e.preventDefault();
       onNavigateToStoriesPage();
+    }
+  };
+
+  const handleCampaignLink = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (onNavigateToCampaignPage) {
+      e.preventDefault();
+      onNavigateToCampaignPage();
     }
   };
 
@@ -146,6 +155,15 @@ export const Footer: React.FC<FooterProps> = ({
                   className="hover:text-rose-400 transition-colors"
                 >
                   ✨ Nuestros 4 Pilares
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/campana"
+                  onClick={handleCampaignLink}
+                  className="hover:text-amber-300 transition-colors font-bold text-amber-300"
+                >
+                  🎒 Campaña y Lista de Necesidades
                 </a>
               </li>
               <li>

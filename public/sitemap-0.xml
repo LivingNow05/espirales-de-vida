@@ -21,6 +21,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://espiralesdevida.org/campana</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
+    <image:image>
+      <image:loc>https://espiralesdevida.org/images/reales/comunidad-equipo-hogar.jpg</image:loc>
+      <image:title>Campana Juntos por una Infancia con Amor · Lista de Necesidades y 6 Pilares de Apoyo</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://espiralesdevida.org/#mision</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>

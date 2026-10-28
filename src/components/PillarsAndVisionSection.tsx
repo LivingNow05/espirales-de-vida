@@ -10,7 +10,11 @@ import {
   Camera,
   CheckCircle,
 } from "@phosphor-icons/react";
-import { CampaignNeedsBanner } from "./ThreeFrontsSection";
+import { HomeCampaignPreviewBanner } from "./ThreeFrontsSection";
+
+export interface PillarsAndVisionSectionProps {
+  onNavigateToCampaignPage?: (initialPillarId?: string) => void;
+}
 
 interface ColorfulPillarCard {
   id: string;
@@ -85,7 +89,9 @@ const COLORFUL_PILLARS: ColorfulPillarCard[] = [
   },
 ];
 
-export const PillarsAndVisionSection: React.FC = () => {
+export const PillarsAndVisionSection: React.FC<
+  PillarsAndVisionSectionProps
+> = ({ onNavigateToCampaignPage }) => {
   const [showFullTestimony, setShowFullTestimony] = useState(false);
 
   return (
@@ -263,8 +269,10 @@ export const PillarsAndVisionSection: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Campaña Oficial: Juntos por una Infancia con Amor (Lista de Necesidades y Pilares de Apoyo) */}
-        <CampaignNeedsBanner />
+        {/* Resumen en Vivo de la Campaña Oficial + Acceso a la Página Dedicada (/campana) */}
+        <HomeCampaignPreviewBanner
+          onNavigateToCampaignPage={onNavigateToCampaignPage}
+        />
       </div>
     </section>
   );

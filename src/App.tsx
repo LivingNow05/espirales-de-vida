@@ -6,18 +6,24 @@ import { HeroSection } from "./components/HeroSection";
 import { PillarsAndVisionSection } from "./components/PillarsAndVisionSection";
 import { HomeStoriesPreviewSection } from "./components/HomeStoriesPreviewSection";
 import { SponsorshipStoriesSection } from "./components/SponsorshipStoriesSection";
-import { ThreeFrontsSection } from "./components/ThreeFrontsSection";
+import {
+  ThreeFrontsSection,
+  CampaignPageSection,
+} from "./components/ThreeFrontsSection";
 import { SeoMedellinMarinillaSection } from "./components/SeoMedellinMarinillaSection";
 import { Footer } from "./components/Footer";
 import { FOUNDATION_INFO, buildWhatsAppLink } from "./data/foundationData";
 
-export type ActivePage = "inicio" | "historias";
+export type ActivePage = "inicio" | "historias" | "campana";
 
 function detectInitialPage(): ActivePage {
   if (typeof window === "undefined") return "inicio";
   const path = window.location.pathname.toLowerCase();
   if (path.startsWith("/historias")) {
     return "historias";
+  }
+  if (path.startsWith("/campana")) {
+    return "campana";
   }
   return "inicio";
 }
@@ -27,6 +33,9 @@ export const App: React.FC = () => {
   const [quickSponsorStoryId, setQuickSponsorStoryId] = useState<string | null>(
     null
   );
+  const [quickCampaignPillarId, setQuickCampaignPillarId] = useState<
+    string | null
+  >(null);
   const [isSponsorModalOpen, setIsSponsorModalOpen] = useState<boolean>(false);
 
   // Sync browser back/forward button
@@ -51,6 +60,19 @@ export const App: React.FC = () => {
     }
   };
 
+  const navigateToCampaignPage = (initialPillarId?: string) => {
+    if (typeof window !== "undefined") {
+      if (window.location.pathname !== "/campana") {
+        window.history.pushState({}, "", "/campana");
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    setCurrentPage("campana");
+    if (initialPillarId) {
+      setQuickCampaignPillarId(initialPillarId);
+    }
+  };
+
   const navigateToHomeSection = (sectionHash?: string) => {
     if (typeof window !== "undefined") {
       const targetUrl =
@@ -61,7 +83,7 @@ export const App: React.FC = () => {
     }
     setCurrentPage("inicio");
 
-    // Wait a tick for the home page DOM to mount if coming from /historias
+    // Wait a tick for the home page DOM to mount if coming from /historias or /campana
     setTimeout(() => {
       if (!sectionHash || sectionHash === "#inicio") {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -81,6 +103,10 @@ export const App: React.FC = () => {
     setQuickSponsorStoryId(null);
   };
 
+  const handleClearExternalPillar = () => {
+    setQuickCampaignPillarId(null);
+  };
+
   return (
     <div className="min-h-screen bg-[#FFFDF9] text-zinc-900 flex flex-col selection:bg-rose-600/15 selection:text-rose-900">
       {/* Floating Top Navigation */}
@@ -88,6 +114,7 @@ export const App: React.FC = () => {
         currentPage={currentPage}
         onNavigateHomeSection={navigateToHomeSection}
         onNavigateToStoriesPage={navigateToStoriesPage}
+        onNavigateToCampaignPage={navigateToCampaignPage}
         onOpenSponsorModal={() => setIsSponsorModalOpen(true)}
       />
 
@@ -107,29 +134,40 @@ export const App: React.FC = () => {
               onNavigateToStoriesPage={() => navigateToStoriesPage()}
             />
 
-            {/* 2. Official Vision, Alumna Testimony & 4 Pillars */}
-            <PillarsAndVisionSection />
+            {/* 2. Official Vision, Alumna Testimony & Live Campaign Preview */}
+            <PillarsAndVisionSection
+              onNavigateToCampaignPage={navigateToCampaignPage}
+            />
 
             {/* 3. Uncluttered 3-Card Preview + Dedicated CTA to the 20 Stories Page (/historias) */}
             <HomeStoriesPreviewSection
               onNavigateToStoriesPage={navigateToStoriesPage}
             />
 
-            {/* 4. 3 Metas + 1-Click Help Checklist + Photo Gallery in Marinilla */}
+            {/* 4. 3 Frentes Fundamentales + Photo Gallery in Marinilla */}
             <ThreeFrontsSection
               onNavigateToStoriesPage={() => navigateToStoriesPage()}
+              onNavigateToCampaignPage={navigateToCampaignPage}
             />
 
             {/* 5. Where We Are, How to Arrive in 3 Steps, NIT & Simple 1-Sentence FAQs */}
             <SeoMedellinMarinillaSection />
           </>
+        ) : currentPage === "campana" ? (
+          /* Dedicated Page (/campana): Lista Oficial de Necesidades y 6 Pilares en Tiempo Real */
+          <CampaignPageSection
+            initialPillarId={quickCampaignPillarId}
+            onClearInitialPillar={handleClearExternalPillar}
+            onBackToHome={() => navigateToHomeSection("#inicio")}
+            onNavigateToStoriesPage={() => navigateToStoriesPage()}
+          />
         ) : (
           /* Dedicated Page (/historias): All 20 Children's Spaces & Sponsorship Hub */
           <SponsorshipStoriesSection
             externalSelectedStoryId={quickSponsorStoryId}
             onClearExternalStory={handleClearExternalStory}
             onBackToHome={() => navigateToHomeSection("#inicio")}
-            onGoToMetas={() => navigateToHomeSection("#campana")}
+            onGoToMetas={() => navigateToCampaignPage()}
           />
         )}
       </main>
@@ -138,6 +176,7 @@ export const App: React.FC = () => {
       <Footer
         onNavigateHomeSection={navigateToHomeSection}
         onNavigateToStoriesPage={() => navigateToStoriesPage()}
+        onNavigateToCampaignPage={() => navigateToCampaignPage()}
       />
 
       {/* Desktop Floating Direct WhatsApp Support Pill */}
@@ -195,12 +234,16 @@ export const App: React.FC = () => {
           </a>
 
           <a
-            href="/#campana"
+            href="/campana"
             onClick={(e) => {
               e.preventDefault();
-              navigateToHomeSection("#campana");
+              navigateToCampaignPage();
             }}
-            className="flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-sky-50 hover:bg-sky-100 active:scale-95 text-sky-950 border border-sky-200/80 transition-all"
+            className={`flex flex-col items-center justify-center py-2 px-1 rounded-2xl border transition-all active:scale-95 ${
+              currentPage === "campana"
+                ? "bg-sky-600 text-white border-sky-600 shadow-xs"
+                : "bg-sky-50 hover:bg-sky-100 text-sky-950 border-sky-200/80"
+            }`}
           >
             <span className="text-lg leading-none mb-1">🎒</span>
             <span className="text-[11px] font-extrabold leading-none">Campaña</span>

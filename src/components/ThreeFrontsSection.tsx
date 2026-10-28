@@ -3,9 +3,10 @@ import { motion, AnimatePresence } from "motion/react";
 import {
   CheckCircle,
   ArrowUpRight,
+  ArrowRight,
+  ArrowLeft,
+  HouseLine,
   WhatsappLogo,
-  ShieldCheck,
-  UsersThree,
   Heart,
   Camera,
   X,
@@ -24,6 +25,7 @@ import {
 
 export interface ThreeFrontsSectionProps {
   onNavigateToStoriesPage?: () => void;
+  onNavigateToCampaignPage?: (initialPillarId?: string) => void;
 }
 
 interface OfficialFrontCard {
@@ -113,6 +115,7 @@ interface CampaignNeedPillar {
   number: string;
   title: string;
   subtitle: string;
+  shortSummary: string;
   headerBg: string;
   progressBarFill: string;
   progressTrackBg: string;
@@ -126,12 +129,13 @@ interface CampaignNeedPillar {
  * Los 6 Pilares de Apoyo y Lista Oficial de Necesidades de la campaña:
  * "JUNTOS POR UNA INFANCIA CON AMOR" (extraídos fielmente del afiche oficial).
  */
-const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
+export const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
   {
     id: "pilar-1-kits-escolares",
     number: "1",
     title: "KITS ESCOLARES",
     subtitle: "Cada kit contiene los siguientes elementos:",
+    shortSummary: "Morrales, cuadernos, colores, cartucheras y útiles",
     headerBg: "bg-sky-700 text-white",
     progressBarFill: "bg-gradient-to-r from-sky-500 to-sky-700",
     progressTrackBg: "bg-sky-100",
@@ -155,6 +159,7 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
     number: "2",
     title: "KITS DE ASEO PERSONAL",
     subtitle: "Insumos de higiene personal y femenina:",
+    shortSummary: "Cepillos, crema dental, desodorantes, talcos y toallas",
     headerBg: "bg-emerald-700 text-white",
     progressBarFill: "bg-gradient-to-r from-emerald-500 to-emerald-700",
     progressTrackBg: "bg-emerald-100",
@@ -175,6 +180,7 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
     number: "3",
     title: "PERSONAL DE APOYO",
     subtitle: "Voluntariado y profesionales aliados:",
+    shortSummary: "Médico general, odontología, psicología y peluquería",
     headerBg: "bg-amber-700 text-white",
     progressBarFill: "bg-gradient-to-r from-amber-500 to-amber-700",
     progressTrackBg: "bg-amber-100",
@@ -194,6 +200,7 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
     number: "4",
     title: "INFRAESTRUCTURA Y REMODELACIÓN",
     subtitle: "Materiales e insumos para la sede:",
+    shortSummary: "Pintura, puertas de madera, estantería y mano de obra",
     headerBg: "bg-purple-700 text-white",
     progressBarFill: "bg-gradient-to-r from-purple-500 to-purple-700",
     progressTrackBg: "bg-purple-100",
@@ -214,6 +221,7 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
     number: "5",
     title: "HABITACIONES Y CONFORT",
     subtitle: "Dotación de dormitorios y descanso:",
+    shortSummary: "Cobijas térmicas, almohadas, sábanas, camarotes y closets",
     headerBg: "bg-rose-700 text-white",
     progressBarFill: "bg-gradient-to-r from-rose-500 to-rose-700",
     progressTrackBg: "bg-rose-100",
@@ -234,6 +242,7 @@ const OFFICIAL_CAMPAIGN_6_PILLARS: CampaignNeedPillar[] = [
     number: "6",
     title: "JUGUETERÍA Y ENTRETENIMIENTO",
     subtitle: "Recreación, deporte y aprendizaje:",
+    shortSummary: "Libros, juegos de mesa, balones, arcos y recreación",
     headerBg: "bg-teal-700 text-white",
     progressBarFill: "bg-gradient-to-r from-teal-500 to-teal-700",
     progressTrackBg: "bg-teal-100",
@@ -335,11 +344,191 @@ const REAL_GALLERY_PHOTOS: GalleryPhoto[] = [
   },
 ];
 
-export const CampaignNeedsBanner: React.FC = () => {
+export interface HomeCampaignPreviewBannerProps {
+  onNavigateToCampaignPage?: (initialPillarId?: string) => void;
+}
+
+export const HomeCampaignPreviewBanner: React.FC<
+  HomeCampaignPreviewBannerProps
+> = ({ onNavigateToCampaignPage }) => {
+  const [pillarProgressMap, setPillarProgressMap] = useState<
+    Record<string, PillarProgressData>
+  >(INITIAL_PILLAR_PROGRESS);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const syncProgress = async () => {
+      try {
+        const liveState = await fetchLiveCampaignProgress();
+        if (isMounted && liveState.pillars) {
+          setPillarProgressMap(liveState.pillars);
+        }
+      } catch {
+        // Mantiene el estado de respaldo si hay corte temporal de red
+      }
+    };
+
+    syncProgress();
+    const intervalId = window.setInterval(syncProgress, 60000);
+
+    return () => {
+      isMounted = false;
+      window.clearInterval(intervalId);
+    };
+  }, []);
+
+  return (
+    <motion.div
+      id="campana"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="rounded-[2.25rem] p-2 bg-gradient-to-r from-sky-500/20 via-amber-500/20 to-rose-500/20 ring-2 ring-amber-300/90 mt-14 sm:mt-16 shadow-xl"
+    >
+      <div className="rounded-[calc(2.25rem-0.5rem)] bg-white p-5 sm:p-8 lg:p-10">
+        {/* Compact Header + Direct CTA to /campana */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 pb-6 mb-6 border-b-2 border-amber-100">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-amber-950 text-xs sm:text-sm font-extrabold mb-3">
+              <Sparkle weight="fill" className="w-4 h-4 text-rose-600" />
+              <span>Campaña Actual en Marinilla · Avance en Tiempo Real</span>
+            </div>
+            <h3 className="font-logo text-2xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-1.5">
+              JUNTOS POR UNA INFANCIA CON AMOR
+            </h3>
+            <p className="text-sm sm:text-base font-bold text-rose-600 mb-1">
+              LISTA DE NECESIDADES Y 6 PILARES DE APOYO
+            </p>
+            <p className="text-xs sm:text-sm text-zinc-600">
+              Conoce el avance actual de cada pilar y entra a la página de la campaña para ver la lista completa de útiles, aseo, confort, voluntariado e infraestructura.
+            </p>
+          </div>
+
+          <div className="shrink-0">
+            <button
+              type="button"
+              onClick={() => onNavigateToCampaignPage?.()}
+              className="w-full sm:w-auto min-h-[54px] inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-full bg-rose-600 hover:bg-rose-700 text-white text-sm sm:text-base font-extrabold shadow-[0_12px_28px_rgba(225,29,72,0.28)] active:scale-95 transition-all cursor-pointer"
+            >
+              <Sparkle weight="fill" className="w-5 h-5 text-amber-300 shrink-0" />
+              <span>Ver Lista Oficial de Necesidades (6 Pilares)</span>
+              <ArrowRight weight="bold" className="w-5 h-5 shrink-0" />
+            </button>
+          </div>
+        </div>
+
+        {/* 6 Compact Progress Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+          {OFFICIAL_CAMPAIGN_6_PILLARS.map((pillar) => {
+            const progressInfo = pillarProgressMap[pillar.id];
+            const percentage = progressInfo ? progressInfo.percentage : 0;
+
+            return (
+              <button
+                key={pillar.id}
+                type="button"
+                onClick={() => onNavigateToCampaignPage?.(pillar.id)}
+                className={`group text-left rounded-2xl border-2 ${pillar.cardBorder} ${pillar.cardBg} hover:bg-white p-4 transition-all shadow-2xs hover:shadow-md cursor-pointer flex flex-col justify-between`}
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span
+                      className={`px-2.5 py-1 rounded-lg font-logo text-xs sm:text-sm font-extrabold uppercase tracking-wide ${pillar.headerBg}`}
+                    >
+                      {pillar.title}
+                    </span>
+                    <span
+                      className={`font-logo text-base sm:text-lg font-extrabold ${pillar.badgeText}`}
+                    >
+                      {percentage}%
+                    </span>
+                  </div>
+
+                  <div
+                    className={`w-full h-2.5 rounded-full overflow-hidden p-0.5 ${pillar.progressTrackBg} shadow-inner mb-2.5`}
+                  >
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{
+                        width: `${Math.max(percentage, percentage > 0 ? 6 : 0)}%`,
+                      }}
+                      transition={{ duration: 0.75, ease: "easeOut" }}
+                      className={`h-full rounded-full ${pillar.progressBarFill}`}
+                    />
+                  </div>
+
+                  <p className="text-xs sm:text-sm font-semibold text-zinc-700 leading-snug">
+                    {pillar.shortSummary}
+                  </p>
+                </div>
+
+                <div className="mt-3 pt-2 border-t border-black/5 flex items-center justify-between text-xs font-extrabold text-rose-600 group-hover:text-rose-700">
+                  <span>Ver lista de este pilar</span>
+                  <ArrowRight
+                    weight="bold"
+                    className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
+                  />
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Compact Footer Strip */}
+        <div className="rounded-2xl bg-amber-50/90 border border-amber-200 px-4 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5 text-xs sm:text-sm font-extrabold text-zinc-800">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-amber-300">
+              <PhoneCall weight="fill" className="w-3.5 h-3.5 text-rose-600" />
+              Campaña: 302 832 5126 | 304 387 0899
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-amber-300">
+              <PhoneCall weight="fill" className="w-3.5 h-3.5 text-emerald-600" />
+              Fundación: {FOUNDATION_INFO.phoneDisplay}
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => onNavigateToCampaignPage?.()}
+            className="text-xs sm:text-sm font-extrabold text-indigo-700 hover:text-rose-600 inline-flex items-center gap-1.5 cursor-pointer"
+          >
+            <span>Abrir página completa de la campaña</span>
+            <ArrowRight weight="bold" className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export interface CampaignNeedsBannerProps {
+  initialPillarId?: string | null;
+  onClearInitialPillar?: () => void;
+  withoutTopMargin?: boolean;
+}
+
+export const CampaignNeedsBanner: React.FC<CampaignNeedsBannerProps> = ({
+  initialPillarId,
+  onClearInitialPillar,
+  withoutTopMargin = false,
+}) => {
   const [selectedPillarIds, setSelectedPillarIds] = useState<string[]>([
     "pilar-1-kits-escolares",
     "pilar-5-habitaciones",
   ]);
+
+  useEffect(() => {
+    if (initialPillarId) {
+      setSelectedPillarIds((prev) =>
+        prev.includes(initialPillarId) ? prev : [...prev, initialPillarId]
+      );
+      if (onClearInitialPillar) {
+        onClearInitialPillar();
+      }
+    }
+  }, [initialPillarId, onClearInitialPillar]);
 
   const [pillarProgressMap, setPillarProgressMap] = useState<
     Record<string, PillarProgressData>
@@ -392,7 +581,9 @@ export const CampaignNeedsBanner: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="rounded-[2.25rem] p-2 bg-gradient-to-r from-sky-500/20 via-amber-500/20 to-rose-500/20 ring-2 ring-amber-300/90 mt-14 sm:mt-16 shadow-xl"
+      className={`rounded-[2.25rem] p-2 bg-gradient-to-r from-sky-500/20 via-amber-500/20 to-rose-500/20 ring-2 ring-amber-300/90 shadow-xl ${
+        withoutTopMargin ? "" : "mt-14 sm:mt-16"
+      }`}
     >
       <div className="rounded-[calc(2.25rem-0.5rem)] bg-white p-5 sm:p-8 lg:p-10">
         {/* Campaign Header Banner */}
@@ -569,6 +760,141 @@ export const CampaignNeedsBanner: React.FC = () => {
         </div>
       </div>
     </motion.div>
+  );
+};
+
+export interface CampaignPageSectionProps {
+  initialPillarId?: string | null;
+  onClearInitialPillar?: () => void;
+  onBackToHome?: () => void;
+  onNavigateToStoriesPage?: () => void;
+}
+
+export const CampaignPageSection: React.FC<CampaignPageSectionProps> = ({
+  initialPillarId,
+  onClearInitialPillar,
+  onBackToHome,
+  onNavigateToStoriesPage,
+}) => {
+  return (
+    <section
+      id="campana-pagina"
+      className="pt-24 sm:pt-28 lg:pt-32 pb-20 sm:pb-28 bg-gradient-to-b from-amber-50/50 via-[#FFFDF9] to-sky-50/35 relative min-h-screen"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Top Breadcrumb & Back to Home Bar */}
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-8 pb-4 border-b border-amber-200/80">
+          <button
+            type="button"
+            onClick={onBackToHome}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white hover:bg-amber-50 text-zinc-900 border-2 border-zinc-200 hover:border-amber-300 text-xs sm:text-sm font-extrabold shadow-2xs transition-all cursor-pointer active:scale-95"
+          >
+            <ArrowLeft weight="bold" className="w-4 h-4 text-rose-600" />
+            <span>Volver a la Página de Inicio</span>
+          </button>
+
+          <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-zinc-600">
+            <button
+              type="button"
+              onClick={onBackToHome}
+              className="inline-flex items-center gap-1 hover:text-rose-600 transition-colors cursor-pointer"
+            >
+              <HouseLine weight="fill" className="w-4 h-4 text-rose-500" />
+              <span>Inicio</span>
+            </button>
+            <span>/</span>
+            <span className="text-rose-600 font-extrabold">
+              Campaña Juntos por una Infancia con Amor
+            </span>
+          </div>
+        </div>
+
+        {/* 3 Simple Steps Strip for the Campaign Page */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8 max-w-4xl mx-auto">
+          <div className="rounded-2xl bg-white border-2 border-sky-200 p-4 flex items-center gap-3.5 shadow-2xs">
+            <span className="w-10 h-10 rounded-xl bg-sky-600 text-white font-logo text-xl font-extrabold flex items-center justify-center shrink-0">
+              1
+            </span>
+            <div>
+              <p className="text-sm font-extrabold text-zinc-900">
+                Revisa el avance en vivo
+              </p>
+              <p className="text-xs text-zinc-600 font-medium">
+                Cada pilar muestra el porcentaje actualizado de la campaña.
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-2xl bg-white border-2 border-amber-200 p-4 flex items-center gap-3.5 shadow-2xs">
+            <span className="w-10 h-10 rounded-xl bg-amber-500 text-zinc-950 font-logo text-xl font-extrabold flex items-center justify-center shrink-0">
+              2
+            </span>
+            <div>
+              <p className="text-sm font-extrabold text-zinc-900">
+                Elige uno o varios pilares
+              </p>
+              <p className="text-xs text-zinc-600 font-medium">
+                Toca las tarjetas de útiles, aseo, confort, salud o sede.
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-2xl bg-white border-2 border-emerald-200 p-4 flex items-center gap-3.5 shadow-2xs">
+            <span className="w-10 h-10 rounded-xl bg-emerald-600 text-white font-logo text-xl font-extrabold flex items-center justify-center shrink-0">
+              3
+            </span>
+            <div>
+              <p className="text-sm font-extrabold text-zinc-900">
+                Coordina por WhatsApp
+              </p>
+              <p className="text-xs text-zinc-600 font-medium">
+                Envía tu selección con un clic al equipo en Marinilla.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Full Interactive 6 Pillars Checklist */}
+        <CampaignNeedsBanner
+          initialPillarId={initialPillarId}
+          onClearInitialPillar={onClearInitialPillar}
+          withoutTopMargin
+        />
+
+        {/* Bottom Cross-Navigation Banner on /campana */}
+        <div className="mt-10 rounded-3xl bg-white border-2 border-rose-200 p-6 sm:p-8 text-center max-w-3xl mx-auto shadow-sm">
+          <h3 className="font-logo text-2xl sm:text-3xl font-extrabold text-zinc-950 mb-2">
+            ¿También deseas apadrinar a uno de los 20 niños?
+          </h3>
+          <p className="text-sm sm:text-base text-zinc-600 font-medium mb-5">
+            Conoce los 20 espacios de apadrinamiento en Marinilla para acompañar su crecimiento con tiempo, guía y presencia.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            {onNavigateToStoriesPage && (
+              <button
+                type="button"
+                onClick={onNavigateToStoriesPage}
+                className="w-full sm:w-auto min-h-[52px] inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-rose-600 hover:bg-rose-700 text-white text-sm sm:text-base font-extrabold shadow-md transition-all cursor-pointer"
+              >
+                <Heart weight="fill" className="w-5 h-5 text-amber-300" />
+                <span>Ver los 20 Espacios de Apadrinamiento</span>
+              </button>
+            )}
+
+            {onBackToHome && (
+              <button
+                type="button"
+                onClick={onBackToHome}
+                className="w-full sm:w-auto min-h-[52px] inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-800 text-sm sm:text-base font-extrabold transition-all cursor-pointer"
+              >
+                <ArrowLeft weight="bold" className="w-4 h-4" />
+                <span>Volver al Inicio</span>
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
@@ -790,116 +1116,7 @@ export const ThreeFrontsSection: React.FC<ThreeFrontsSectionProps> = ({
           })}
         </div>
 
-        {/* PART 3: El Modelo de Apadrinamiento (Más allá de lo material · Tiempo, Guía y Presencia) */}
-        <div className="rounded-[2rem] bg-white border-2 border-zinc-200/80 p-6 sm:p-10 shadow-sm mb-20">
-          <div className="text-center max-w-3xl mx-auto mb-8">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-extrabold mb-3">
-              ❤️ Más Allá de lo Material · Modelo de Apadrinamiento
-            </span>
-            <h3 className="font-logo text-2xl sm:text-4xl font-bold text-zinc-900 mb-3">
-              “Un niño que se siente respaldado por una comunidad es un niño que crece invencible”
-            </h3>
-            <p className="text-sm sm:text-base text-zinc-600 leading-relaxed">
-              Queremos que las empresas, familias, padrinos y madrinas no solo donen un recurso, sino que se involucren: acompañando el crecimiento de nuestros 20 niños con <strong>tiempo, guía y presencia</strong>.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {/* Card 1: Padrinos y Madrinas */}
-            <div className="rounded-2xl bg-rose-50/70 border-2 border-rose-200 p-5 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="px-3 py-1 rounded-full bg-rose-600 text-white text-xs font-bold">
-                    ❤️ Padrinos y Madrinas
-                  </span>
-                  <Heart weight="fill" className="w-6 h-6 text-rose-600" />
-                </div>
-                <h4 className="font-logo text-xl font-bold text-zinc-900 mb-2">
-                  Tiempo, Guía y Presencia
-                </h4>
-                <p className="text-xs sm:text-sm text-zinc-700 leading-relaxed mb-4">
-                  Acompaña el crecimiento de uno de los 20 niños de la fundación brindándole tu apoyo, motivación, presencia y respaldo constante.
-                </p>
-              </div>
-              <a
-                href="/historias"
-                onClick={(e) => {
-                  if (onNavigateToStoriesPage) {
-                    e.preventDefault();
-                    onNavigateToStoriesPage();
-                  }
-                }}
-                className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-rose-600 hover:bg-rose-700 text-white py-2.5 px-4 text-xs sm:text-sm font-bold transition-colors"
-              >
-                <span>Conocer los 20 Espacios</span>
-                <ArrowUpRight weight="bold" className="w-4 h-4" />
-              </a>
-            </div>
-
-            {/* Card 2: Empresas y Organizaciones */}
-            <div className="rounded-2xl bg-emerald-50/70 border-2 border-emerald-200 p-5 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-bold">
-                    🏢 Empresas y Directivos
-                  </span>
-                  <ShieldCheck
-                    weight="fill"
-                    className="w-6 h-6 text-emerald-600"
-                  />
-                </div>
-                <h4 className="font-logo text-xl font-bold text-zinc-900 mb-2">
-                  Empresas que se Involucran
-                </h4>
-                <p className="text-xs sm:text-sm text-zinc-700 leading-relaxed mb-4">
-                  Invitamos a empresarios, directivos y organizaciones (NIT {FOUNDATION_INFO.nit}) a involucrarse con recursos, remodelación de espacios y voluntariado.
-                </p>
-              </div>
-              <a
-                href={buildWhatsAppLink(
-                  "Hola Fundación Espirales de Vida, escribo en nombre de una empresa u organización para involucrarnos con los 20 niños en Marinilla."
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-4 text-xs sm:text-sm font-bold transition-colors"
-              >
-                <span>Vincular mi Organización</span>
-                <ArrowUpRight weight="bold" className="w-4 h-4" />
-              </a>
-            </div>
-
-            {/* Card 3: Colectivos, Profesionales y Ciudadanos */}
-            <div className="rounded-2xl bg-sky-50/70 border-2 border-sky-200 p-5 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="px-3 py-1 rounded-full bg-sky-600 text-white text-xs font-bold">
-                    🎁 Colectivos y Ciudadanos
-                  </span>
-                  <UsersThree weight="fill" className="w-6 h-6 text-sky-600" />
-                </div>
-                <h4 className="font-logo text-xl font-bold text-zinc-900 mb-2">
-                  Insumos y Talento Profesional
-                </h4>
-                <p className="text-xs sm:text-sm text-zinc-700 leading-relaxed mb-4">
-                  Cada donación, desde un paquete de útiles escolares o cobijas hasta apoyo en salud, psicología o remodelación, cambia vidas de manera directa e inmediata.
-                </p>
-              </div>
-              <a
-                href={buildWhatsAppLink(
-                  "Hola Fundación Espirales de Vida, quiero sumar mi apoyo con insumos o voluntariado profesional para los 20 niños en Marinilla."
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-sky-600 hover:bg-sky-700 text-white py-2.5 px-4 text-xs sm:text-sm font-bold transition-colors"
-              >
-                <span>Sumarme a la Causa</span>
-                <ArrowUpRight weight="bold" className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* PART 4: Galería de Fotos en Marinilla */}
+        {/* PART 2: Galería de Fotos en Marinilla */}
         <div id="galeria" className="scroll-mt-24">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
             <div>

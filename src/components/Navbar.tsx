@@ -13,9 +13,10 @@ import {
 import { FOUNDATION_INFO } from "../data/foundationData";
 
 export interface NavbarProps {
-  currentPage?: "inicio" | "historias";
+  currentPage?: "inicio" | "historias" | "campana";
   onNavigateHomeSection?: (sectionHash?: string) => void;
   onNavigateToStoriesPage?: (initialStoryId?: string) => void;
+  onNavigateToCampaignPage?: (initialPillarId?: string) => void;
   onOpenSponsorModal?: () => void;
 }
 
@@ -23,6 +24,7 @@ interface NavItem {
   label: string;
   href: string;
   isStoriesPage?: boolean;
+  isCampaignPage?: boolean;
   dotColor: string;
   mobileBg: string;
   icon: React.ElementType;
@@ -35,6 +37,14 @@ const NAV_ITEMS: NavItem[] = [
     dotColor: "bg-rose-500",
     mobileBg: "bg-rose-50 text-rose-800 border-rose-200",
     icon: HouseLine,
+  },
+  {
+    label: "Campaña",
+    href: "/campana",
+    isCampaignPage: true,
+    dotColor: "bg-amber-500",
+    mobileBg: "bg-amber-50 text-amber-900 border-amber-200",
+    icon: Sparkle,
   },
   {
     label: "20 Historias",
@@ -71,6 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   currentPage = "inicio",
   onNavigateHomeSection,
   onNavigateToStoriesPage,
+  onNavigateToCampaignPage,
   onOpenSponsorModal,
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -92,6 +103,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     setMobileOpen(false);
     if (item.isStoriesPage) {
       onNavigateToStoriesPage?.();
+    } else if (item.isCampaignPage) {
+      onNavigateToCampaignPage?.();
     } else {
       onNavigateHomeSection?.(item.href);
     }
@@ -156,13 +169,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             {NAV_ITEMS.map((item) => {
               const isActiveStories =
                 item.isStoriesPage && currentPage === "historias";
+              const isActiveCampaign =
+                item.isCampaignPage && currentPage === "campana";
+              const isActive = isActiveStories || isActiveCampaign;
               return (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item)}
-                  className={`px-3.5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
-                    isActiveStories
+                  className={`px-3 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
+                    isActive
                       ? "bg-rose-50 text-rose-700 ring-2 ring-rose-200"
                       : "text-zinc-700 hover:text-zinc-950 hover:bg-zinc-100/90"
                   }`}
